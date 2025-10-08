@@ -25,9 +25,22 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/remixicon/fonts/remixicon.css",
+              "src/assets/css/style.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "src/assets/js/gsap.min.js",
+              "src/assets/js/ScrollTrigger.min.js",
+              "src/assets/js/ScrollSmoother.min.js",
+              "src/assets/js/ScrollSmoother.min.js",
+              "src/assets/js/SplitText.min.js",
+              "src/assets/js/MotionPathPlugin.min.js",
+              "src/assets/js/main.js"
+            ]
           },
           "configurations": {
             "production": {
