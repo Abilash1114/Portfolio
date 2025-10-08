@@ -152,3 +152,11 @@ p {
     color: white;
     text-align: center;
 }
+
+.hero_smtit{
+    margin-top: 100px;
+}
+
+.robo{
+    scale: 0.5;
+}
