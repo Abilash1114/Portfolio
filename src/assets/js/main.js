@@ -111,7 +111,7 @@ function sward() {
       start: "top 90%",
       end: "bottom 50%",
       scrub: 1,
-      markers: true,
+      markers: false,
     },
   });
 
@@ -183,4 +183,33 @@ function sward1() {
 //       scrub: 1,
 //     },
 //   });
+}
+
+function about() {
+    gsap.registerPlugin(ScrollTrigger);
+    const aboutTitle = document.getElementById('about-title');
+    gsap.to(aboutTitle, {
+        color: "#ffffffff",
+        ease: "power2.out",
+        scrollTrigger: {
+            trigger: aboutTitle,
+            start: "top center",
+            end: "bottom center",
+            scrub: 1,
+            markers: false
+        },
+    });
+
+    gsap.to(aboutTitle, {
+        scale: 1.1,
+        ease: "power2.out",
+        scrollTrigger: {
+            trigger: aboutTitle,
+            start: "top center",
+            end: "bottom center",
+            scrub: 1,
+            markers: false,
+        },
+    });
+
 }

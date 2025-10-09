@@ -9,7 +9,7 @@ p{
     width: 100%;
     padding: 20px;
     margin: 0 auto;
-    height: 50vh;
+    height: 100vh;
     overflow: hidden;
     transition: transform 1s ease-in-out, opacity 1s ease-in-out;
 }
@@ -90,4 +90,17 @@ p{
         width: 100%;
         max-width: 300px;
     }
+}
+.about-title {
+    font-size: 8rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0);
+    -webkit-text-stroke: 1px rgb(103, 99, 99);
+    text-stroke: 1px rgb(255, 255, 255);
+    margin: 0;
+    transition: all 0.5s ease;
+}
+
+.about_me{
+    margin-top: 60px;
 }

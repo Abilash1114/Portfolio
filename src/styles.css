@@ -1,14 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 /* font-family: "Roboto", sans-serif; */
 /* font-family: "Lora", serif; */
 /* font-family: "Barlow", sans-serif; */
-body{
+body {
     width: 100vw;
     overflow-x: hidden !important;
     height: auto;
     background: #010C0A;
     background: linear-gradient(180deg, rgba(1, 12, 10, 1) 0%, rgba(1, 28, 23, 1) 100%) !important;
 }
+
 p {
     margin: 0px;
     padding: 0px;
@@ -167,16 +169,151 @@ p {
     scale: 0.5;
 }
 
-.smooth-wrapper {
-
-}
-
 .about_section {
     height: 100vh;
 }
 
-.about_me{
+.about_me {
     font-size: 20px;
     line-height: 40px;
     text-align: justify;
+}
+
+.me_tooles {
+    /* border: 2px dashed #c0b7b767; */
+    border-top: 2px dashed #c0b7b767;
+    border-left: 2px dashed #c0b7b767;
+    border-right: 2px dashed #c0b7b767;
+    border-bottom: 2px dashed #c0b7b767;
+    padding: 10px;
+    border-radius: 2px;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+}
+
+.me_tooles.develop {
+    border-radius: 1px;
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+    border-bottom-left-radius: 2px !important;
+    border-bottom-right-radius: 2px !important;
+}
+
+
+.me_tooles h6 {
+    font-size: 40px;
+    font-weight: bold;
+    color: #A9A8A8;
+    letter-spacing: 0.4px;
+    font-family: "Roboto", sans-serif;
+}
+
+.me_tooles p {
+    font-size: 16px;
+    font-weight: 400;
+    color: #6F8D87;
+}
+
+.me_des p {
+    color: #D3D9D8;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 5px 0px !important;
+}
+
+/* Base container */
+.me_tooles {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s ease;
+}
+
+/* Heading & description */
+.me_tooles h6 {
+    font-size: 40px;
+    font-weight: 700;
+    color: rgb(246, 246, 247);
+    margin-bottom: 0px;
+    font-family: "Roboto", sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.me_tooles .dees {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+
+/* Hidden details section */
+.details {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+    visibility: hidden;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transform: translateY(10px);
+    transition: all 0.6s ease;
+}
+
+/* On hover: expand + fade in + slide up */
+.me_tooles:hover .details {
+    visibility: visible;
+    opacity: 1;
+    max-height: 600px;
+    /* enough to show all items */
+    transform: translateY(0);
+}
+
+/* Tag boxes */
+.details .bx p {
+    padding: 6px 12px;
+    font-size: 12px;
+    color: #f8f5f5;
+    border: 1px solid #6F8D87;
+    border-radius: 10px;
+    transition: 0.3s ease;
+    white-space: nowrap;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .me_tooles {
+        padding: 15px;
+    }
+
+    .details .bx p {
+        font-size: 11px;
+        padding: 5px 10px;
+    }
+}
+
+.roboclass{
+    scale: 1.3;
+}
+
+.bach_name h6{
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 45px;
+    letter-spacing: 0.2px;
+    color: #f8f5f5;
+    font-family: "Roboto", sans-serif;
+}
+
+.bach_name p{
+    color: #0ABB9C;
+    font-size: 20px;
+}
+
+.bach_de{
+    padding-top: 100px;
 }
