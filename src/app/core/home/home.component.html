@@ -58,16 +58,21 @@
             </div>
         </div>
         <!-- hero section end-->
-        <section class="about_section">
-
+        <section class="about_section" style="position: relative;overflow: hidden;">
+            
             <div class="container">
+
+
+              
+
                 <div class="row d-flex align-items-center justify-content-center">
-                    <div class="starimage sword-area">
+                    <div class="starimage sword-area" style="position: absolute;left: 0px; top: 10px;">
                         <div class="sword-area">
                             <img src="assets/images/bu.png" class="img-fluid ">
                         </div>
-
                     </div>
+
+
                     <div class="col-lg-8">
                         <p class="about_me">I’m Abilash, a passionate UI/UX Designer and Frontend Developer with 3 years
                             of experience
@@ -87,5 +92,19 @@
                 </div>
             </div>
         </section>
+    </div>
+</div>
+
+<div #mainContainer class="containers" [class.hidden]="!containerVisible">
+    <!-- <div class="titles">
+        <p>Welcome to the <br>Saravana Stores Super Jewellery</p>
+        <img src="assets/images/logo.png" class="img-fluid logo" width="200px">
+    </div> -->
+    <div class="slider-container">
+        <div #sliderContainer class="mdw-curved-slider">
+        </div>
+    </div>
+    <div class="image-counter">
+        Image {{ currentImage }} of {{ totalImages }}
     </div>
 </div>

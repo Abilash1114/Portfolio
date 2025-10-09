@@ -2,3 +2,92 @@ p{
     margin: 0px;
     padding: 0px;
 }
+
+/* home.component.css */
+.containers {
+    max-width: 100vw;
+    width: 100%;
+    padding: 20px;
+    margin: 0 auto;
+    height: 50vh;
+    overflow: hidden;
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+.containers.hidden {
+    display: none !important;
+}
+
+
+.slider-container {
+    position: relative;
+    margin: 40px auto;
+    border-radius: 12px;
+    overflow: hidden;
+    max-width: 100vw;
+    height: 800px;
+}
+
+.mdw-curved-slider {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.mdw-curved-slider canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+.titles p {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: 250px;
+    font-size: 36px;
+    font-weight: 600;
+
+}
+
+.logo {
+    position: absolute;
+    left: 45%;
+    right: 0;
+    top: 200px;
+}
+
+.slider-control {
+    width: 100%;
+    margin: 8px 0;
+}
+
+
+.image-counter {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 1.1rem;
+    color: white;
+}
+
+
+@media (max-width: 368px) {
+
+    .slider-container {
+        height: 300px;
+    }
+
+    .controls {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .control-group {
+        width: 100%;
+        max-width: 300px;
+    }
+}

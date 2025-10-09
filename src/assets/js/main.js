@@ -116,13 +116,71 @@ function sward() {
   });
 
   gsap.to(".sword-area", {
+    rotate: "90deg",
+    ease: "none",
+    scrollTrigger: {
+      trigger: ".sword-area",
+      start: "bottom 25%",
+      end: "bottom top",
+      scrub: 1,
+      duration:1,
+    },
+  });
+
+    gsap.to(".sword-area", {
     rotate: "180deg",
     ease: "none",
     scrollTrigger: {
       trigger: ".sword-area",
-      start: "bottom 90%",
-      end: "bottom top",
+      start: "bottom 80%",
+      end: "bottom 30%",
       scrub: 1,
+  
     },
   });
+}
+
+function sward1() {
+//   gsap.registerPlugin(ScrollTrigger);
+
+//   gsap.to(".sword-area1", {
+//     // right: "unset",
+//     // left: "0%",
+//     // bottom: "0%",
+//     // top: "10%",
+//     opacity: 1,
+//     scale: 1,
+//     rotate: "180deg",
+//     ease: "power1.inOut",
+//     scrollTrigger: {
+//       trigger: ".sword-area1",
+//       start: "top 90%",
+//       end: "bottom 50%",
+//       scrub: 1,
+//       markers: true,
+//     },
+//   });
+
+//   gsap.to(".sword-area1", {
+//     rotate: "-90deg",
+//     ease: "none",
+//     scrollTrigger: {
+//       trigger: ".sword-area1",
+//       start: "bottom 25%",
+//       end: "bottom top",
+//       scrub: 1,
+//       duration:1,
+//     },
+//   });
+
+//     gsap.to(".sword-area1", {
+//     rotate: "-180deg",
+//     ease: "none",
+//     scrollTrigger: {
+//       trigger: ".sword-area1",
+//       start: "bottom 75%",
+//       end: "bottom 30%",
+//       scrub: 1,
+//     },
+//   });
 }
