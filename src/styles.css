@@ -2,7 +2,13 @@
 /* font-family: "Roboto", sans-serif; */
 /* font-family: "Lora", serif; */
 /* font-family: "Barlow", sans-serif; */
-
+body{
+    width: 100vw;
+    overflow-x: hidden !important;
+    height: auto;
+    background: #010C0A;
+    background: linear-gradient(180deg, rgba(1, 12, 10, 1) 0%, rgba(1, 28, 23, 1) 100%) !important;
+}
 p {
     margin: 0px;
     padding: 0px;
@@ -153,10 +159,24 @@ p {
     text-align: center;
 }
 
-.hero_smtit{
+.hero_smtit {
     margin-top: 100px;
 }
 
-.robo{
+.robo {
     scale: 0.5;
+}
+
+.smooth-wrapper {
+
+}
+
+.about_section {
+    height: 100vh;
+}
+
+.about_me{
+    font-size: 20px;
+    line-height: 40px;
+    text-align: justify;
 }
