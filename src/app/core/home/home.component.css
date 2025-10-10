@@ -104,3 +104,71 @@ p{
 .about_me{
     margin-top: 60px;
 }
+
+/* html {
+  background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+}
+
+#starContainer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+#star {
+  display: flex;
+  background: transparent;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  left: 48.5%;
+  justify-content: center;
+  animation: starRotation 6.5s linear infinite;
+  z-index: 999;
+}
+
+.half {
+  display: flex;
+}
+
+.starQuarter {
+  width: 20px;
+  height: 20px;
+  animation: animStarSize 6.5s ease-in-out infinite;
+}
+
+#topLeft {
+  background: radial-gradient(ellipse at top left, transparent 70%, rgb(180, 254, 255) 100%);
+}
+
+#topRight {
+  background: radial-gradient(ellipse at top right, transparent 70%, rgb(157, 226, 255) 100%);
+}
+
+#bottomLeft {
+  background: radial-gradient(ellipse at bottom left, transparent 70%, rgb(173, 254, 253) 100%);
+}
+
+#bottomRight {
+  background: radial-gradient(ellipse at bottom right, transparent 70%, rgb(174, 241, 254) 100%);
+}
+
+@keyframes starRotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(45deg);
+  }
+  50% {
+    transform: rotate(90deg);
+  }
+  75% {
+    transform: rotate(135deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}

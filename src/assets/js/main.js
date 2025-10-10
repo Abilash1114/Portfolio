@@ -229,12 +229,25 @@ function what() {
 
     })
 }
-
 function careerLine() {
   gsap.registerPlugin(ScrollTrigger);
 
+  // Animate line height (from bottom to top)
   gsap.to(".my_careeor", {
-    "--line-height": "100%", 
+    "--line-height": "100%",
+    ease: "none",
+    scrollTrigger: {
+      trigger: ".my_careeor",
+      start: "top center",
+      end: "bottom center",
+      scrub: true,
+      markers: false,
+    },
+  });
+
+  // Move star along the line from bottom (0%) to top (100%)
+  gsap.to("#star", {
+    bottom: "0%",
     ease: "none",
     scrollTrigger: {
       trigger: ".my_careeor",
@@ -245,3 +258,5 @@ function careerLine() {
     },
   });
 }
+
+

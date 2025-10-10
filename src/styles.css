@@ -343,7 +343,7 @@ p {
     background-color: white;
 }
 
-.my_careeor {
+/* .my_careeor {
     position: relative;
     --line-height: 0%;
 }
@@ -353,10 +353,42 @@ p {
     position: absolute;
     width: 2px;
     height: var(--line-height);
-    /* animated variable */
     background-color: white;
    left: 50%;
+} */
+
+
+.my_careeor {
+  position: relative;
+  margin: 0 auto;
+  --line-height: 0%;
 }
+
+.my_careeor::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: var(--line-height);
+  background: linear-gradient(to bottom, #47ceff, #00ddff);
+  border-radius: 4px;
+  box-shadow: 0 0 10px #47e6ff, 0 0 25px #00ffff;
+  
+}
+
+
+.my_careeor::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, #e2e2e20c, #e1e1e10c);
+  border-radius: 4px;
+}
+
 
 .ex_details {
     padding-left: 50px;
