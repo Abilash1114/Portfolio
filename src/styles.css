@@ -296,11 +296,11 @@ p {
     }
 }
 
-.roboclass{
+.roboclass {
     scale: 1.3;
 }
 
-.bach_name h6{
+.bach_name h6 {
     font-size: 30px;
     font-weight: 600;
     line-height: 45px;
@@ -309,11 +309,66 @@ p {
     font-family: "Roboto", sans-serif;
 }
 
-.bach_name p{
+.bach_name p {
     color: #0ABB9C;
     font-size: 20px;
 }
 
-.bach_de{
+.bach_de {
     padding-top: 100px;
+}
+
+.roboclass {
+    position: absolute;
+    left: 0px;
+    top: 0%;
+    scale: 0.5;
+}
+
+.what_i {
+    position: relative;
+    height: 100vh;
+}
+
+.year {
+    font-size: 36px;
+    font-weight: 600;
+    font-family: "Roboto", sans-serif;
+    padding-right: 50px !important;
+}
+
+.progress {
+    width: 2px;
+    height: 100%;
+    background-color: white;
+}
+
+.my_careeor {
+    position: relative;
+    --line-height: 0%;
+}
+
+.my_careeor::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: var(--line-height);
+    /* animated variable */
+    background-color: white;
+   left: 50%;
+}
+
+.ex_details {
+    padding-left: 50px;
+    padding-top: 160px;
+
+}
+
+.ex_details p {
+    text-align: justify;
+
+}
+
+.myes{
+    padding-top: 100px !important;
 }

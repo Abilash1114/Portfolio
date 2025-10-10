@@ -10,6 +10,7 @@
 
 
 
+
 function text() {
     gsap.registerPlugin(SplitText);
     gsap.set("h1", { opacity: 1 });
@@ -41,28 +42,37 @@ function timer() {
 
 function heroheading() {
     gsap.registerPlugin(SplitText, ScrollTrigger);
+
     let split = SplitText.create("#hero_heading", { type: "chars" });
-    gsap.from(split.chars, {
-        y: 20,
-        autoAlpha: 0,
-        stagger: 0.05,
-        opacity: 0,
-        duration: 1,
-        ease: "power2.out"
+
+    // Animate each character with a small delay
+    split.chars.forEach((char, i) => {
+        gsap.from(char, {
+            y: 20,
+            autoAlpha: 0,
+            opacity: 0,
+            duration: 1,
+            delay: i * 0.05,
+            ease: "power2.out"
+        });
     });
 
+    // Animate .robo element
     gsap.to(".robo", {
         scale: 1,
         duration: 1,
         ease: "power2.out"
     });
 
+    // Animate .hero_details element
     gsap.from(".hero_details", {
         x: 100,
+        opacity: 0,
         duration: 2,
         ease: "power2.out"
-    })
+    });
 }
+
 
 function parallax() {
     gsap.registerPlugin(ScrollTrigger)
@@ -83,133 +93,155 @@ function parallax() {
         y: "30%",
         opacity: 0,
         ease: "power2.out",
-        scrollTrigger: {    
+        scrollTrigger: {
             trigger: ".about_section",
             start: "top 85%",
             end: "top 50%",
             scrub: true,
-               markers: false,
+            markers: false,
         },
     })
 }
 
 
 function sward() {
-  gsap.registerPlugin(ScrollTrigger);
-
-  gsap.to(".sword-area", {
-    // right: "unset",
-    // left: "0%",
-    // bottom: "0%",
-    // top: "10%",
-    // opacity: 1,
-    // scale: 1.2,
-    // rotate: "180deg",
-    ease: "power1.inOut",
-    scrollTrigger: {
-      trigger: ".sword-area",
-      start: "top 90%",
-      end: "bottom 50%",
-      scrub: 1,
-      markers: false,
-    },
-  });
-
-  gsap.to(".sword-area", {
-    rotate: "90deg",
-    ease: "none",
-    scrollTrigger: {
-      trigger: ".sword-area",
-      start: "bottom 25%",
-      end: "bottom top",
-      scrub: 1,
-      duration:1,
-    },
-  });
+    gsap.registerPlugin(ScrollTrigger);
 
     gsap.to(".sword-area", {
-    rotate: "180deg",
-    ease: "none",
-    scrollTrigger: {
-      trigger: ".sword-area",
-      start: "bottom 80%",
-      end: "bottom 30%",
-      scrub: 1,
-  
-    },
-  });
-}
-
-function sward1() {
-//   gsap.registerPlugin(ScrollTrigger);
-
-//   gsap.to(".sword-area1", {
-//     // right: "unset",
-//     // left: "0%",
-//     // bottom: "0%",
-//     // top: "10%",
-//     opacity: 1,
-//     scale: 1,
-//     rotate: "180deg",
-//     ease: "power1.inOut",
-//     scrollTrigger: {
-//       trigger: ".sword-area1",
-//       start: "top 90%",
-//       end: "bottom 50%",
-//       scrub: 1,
-//       markers: true,
-//     },
-//   });
-
-//   gsap.to(".sword-area1", {
-//     rotate: "-90deg",
-//     ease: "none",
-//     scrollTrigger: {
-//       trigger: ".sword-area1",
-//       start: "bottom 25%",
-//       end: "bottom top",
-//       scrub: 1,
-//       duration:1,
-//     },
-//   });
-
-//     gsap.to(".sword-area1", {
-//     rotate: "-180deg",
-//     ease: "none",
-//     scrollTrigger: {
-//       trigger: ".sword-area1",
-//       start: "bottom 75%",
-//       end: "bottom 30%",
-//       scrub: 1,
-//     },
-//   });
-}
-
-function about() {
-    gsap.registerPlugin(ScrollTrigger);
-    const aboutTitle = document.getElementById('about-title');
-    gsap.to(aboutTitle, {
-        color: "#ffffffff",
-        ease: "power2.out",
+        // right: "unset",
+        // left: "0%",
+        // bottom: "0%",
+        // top: "10%",
+        // opacity: 1,
+        // scale: 1.2,
+        // rotate: "180deg",
+        ease: "power1.inOut",
         scrollTrigger: {
-            trigger: aboutTitle,
-            start: "top center",
-            end: "bottom center",
-            scrub: 1,
-            markers: false
-        },
-    });
-
-    gsap.to(aboutTitle, {
-        scale: 1.1,
-        ease: "power2.out",
-        scrollTrigger: {
-            trigger: aboutTitle,
-            start: "top center",
-            end: "bottom center",
+            trigger: ".sword-area",
+            start: "top 90%",
+            end: "bottom 50%",
             scrub: 1,
             markers: false,
         },
     });
 
+    gsap.to(".sword-area", {
+        rotate: "90deg",
+        ease: "none",
+        scrollTrigger: {
+            trigger: ".sword-area",
+            start: "bottom 25%",
+            end: "bottom top",
+            scrub: 1,
+            duration: 1,
+        },
+    });
+
+    gsap.to(".sword-area", {
+        rotate: "180deg",
+        ease: "none",
+        scrollTrigger: {
+            trigger: ".sword-area",
+            start: "bottom 80%",
+            end: "bottom 30%",
+            scrub: 1,
+
+        },
+    });
+}
+
+
+
+function about() {
+    gsap.registerPlugin(ScrollTrigger);
+    const aboutTitle = document.querySelectorAll('#about-title');
+    aboutTitle.forEach((title) => {
+
+
+        gsap.to(title, {
+            color: "#ffffffff",
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: title,
+                start: "top center",
+                end: "bottom center",
+                scrub: 1,
+                markers: false
+            },
+        });
+
+        gsap.to(title, {
+            scale: 1.1,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: title,
+                start: "top center",
+                end: "bottom center",
+                scrub: 1,
+                markers: false,
+            },
+        });
+    });
+}
+
+function title() {
+    if ($(".title-anim").length > 0) {
+        let char_come = gsap.utils.toArray(".title-anim");
+        char_come.forEach((char_come) => {
+            let split_char = new SplitText(char_come, {
+                type: "chars, words",
+                lineThreshold: 0.5,
+            });
+            const tl2 = gsap.timeline({
+                scrollTrigger: {
+                    trigger: char_come,
+                    start: "top bottom",
+                    end: "bottom 10%",
+                    scrub: false,
+                    markers: false,
+                    // pin:true,
+                    toggleActions: "play none none none",
+                },
+            });
+
+            tl2.from(split_char.chars, {
+                duration: 1,
+                x: -70,
+                autoAlpha: 0,
+                stagger: 0.03,
+            });
+        });
+    }
+}
+
+function what() {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.to(".roboclass", {
+        x: 0,
+        scale:1.1,
+        scrollTrigger: {
+            trigger: ".roboclass",
+            start: "top bottom",
+            end: "bottom center",
+            markers:false,
+            scrub:true,
+        }
+
+    })
+}
+
+function careerLine() {
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.to(".my_careeor", {
+    "--line-height": "100%", 
+    ease: "none",
+    scrollTrigger: {
+      trigger: ".my_careeor",
+      start: "top center",
+      end: "bottom center",
+      scrub: true,
+      markers: false,
+    },
+  });
 }

@@ -6,8 +6,10 @@ declare function timer(): any
 declare function heroheading(): any
 declare function parallax(): any
 declare function sward(): any
-declare function sward1(): any
 declare function about(): any
+declare function title(): any
+declare function what(): any
+declare function careerLine(): any
 
 @Component({
   selector: 'app-home',
@@ -75,8 +77,10 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     heroheading();
     parallax();
     sward();
-    sward1();
     about();
+    title();
+    what();
+    careerLine();
     this.initThreeJS();
     this.animate(0);
   }
