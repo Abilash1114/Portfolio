@@ -232,31 +232,49 @@ function what() {
 function careerLine() {
   gsap.registerPlugin(ScrollTrigger);
 
-  // Animate line height (from bottom to top)
+  // Animate the line height smoothly as you scroll
   gsap.to(".my_careeor", {
     "--line-height": "100%",
     ease: "none",
     scrollTrigger: {
       trigger: ".my_careeor",
-      start: "top center",
+      start: "top 100%",
       end: "bottom center",
       scrub: true,
       markers: false,
     },
   });
 
-  // Move star along the line from bottom (0%) to top (100%)
+  // Move the star along the line
   gsap.to("#star", {
-    bottom: "0%",
+    bottom: "-2%",
     ease: "none",
     scrollTrigger: {
       trigger: ".my_careeor",
-      start: "top center",
+      start: "top 100%",
       end: "bottom center",
       scrub: true,
       markers: false,
     },
   });
-}
 
+  // Fade-in effect for each section (.myes)
+  gsap.utils.toArray(".myes").forEach((section) => {
+    gsap.fromTo(
+      section,
+      { opacity: 0.0 },
+      {
+        opacity: 1,
+        ease: "power1.out",
+        scrollTrigger: {
+          trigger: section,
+          start: "top 100%",
+          end: "bottom 60%",
+          scrub: true,
+          markers: false,
+        },
+      }
+    );
+  });
+}
 

@@ -1,40 +1,49 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import * as THREE from 'three';
 
-declare function text(): any
-declare function timer(): any
-declare function heroheading(): any
-declare function parallax(): any
-declare function sward(): any
-declare function about(): any
-declare function title(): any
-declare function what(): any
-declare function careerLine(): any
+declare function text(): any;
+declare function timer(): any;
+declare function heroheading(): any;
+declare function parallax(): any;
+declare function sward(): any;
+declare function about(): any;
+declare function title(): any;
+declare function what(): any;
+declare function careerLine(): any;
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
-  
   @ViewChild('sliderContainer', { static: true }) sliderContainer!: ElementRef;
-  
+
   // Configuration - Mixed content (GIFs and videos)
-  private mediaItems = [
-    // { type: 'video', url: 'assets/images/1.mp4' },
-    { type: 'image', url: 'assets/images/robo.png' },
-    // { type: 'video', url: 'assets/images/2.mp4' },
-    { type: 'image', url: 'assets/images/robo.png' },
-    // { type: 'video', url: 'assets/images/3.mp4' },
-    { type: 'image', url: 'assets/images/robo.png' },
-    // { type: 'video', url: 'assets/images/4.mp4' },
-    { type: 'image', url: 'assets/images/robo.png' },
-    // { type: 'video', url: 'assets/images/5.mp4' },
+  private mediaItems = [  
+    { type: 'image', url: 'assets/images/1.png' },
+    { type: 'image', url: 'assets/images/2.png' },
+    { type: 'image', url: 'assets/images/3.png' },
+    { type: 'image', url: 'assets/images/4.png' },
+    { type: 'image', url: 'assets/images/5.png' },
+    { type: 'image', url: 'assets/images/6.png' },
+    { type: 'image', url: 'assets/images/7.png' },
+    { type: 'image', url: 'assets/images/8.png' },
+    { type: 'image', url: 'assets/images/9.png' },
+    { type: 'image', url: 'assets/images/10.png' },
+    { type: 'image', url: 'assets/images/11.png' },
+    { type: 'image', url: 'assets/images/12.png' },
   ];
-  
+
   // Three.js variables
   private scene!: THREE.Scene;
   private renderer!: THREE.WebGLRenderer;

@@ -371,9 +371,9 @@ p {
   transform: translateX(-50%);
   width: 2px;
   height: var(--line-height);
-  background: linear-gradient(to bottom, #47ceff, #00ddff);
+  background: linear-gradient(to bottom, #4772ff, #00ddff);
   border-radius: 4px;
-  box-shadow: 0 0 10px #47e6ff, 0 0 25px #00ffff;
+  box-shadow: 0 0 10px #4772ff, 0 0 25px #00ffff;
   
 }
 
@@ -403,4 +403,8 @@ p {
 
 .myes{
     padding-top: 100px !important;
+}
+.myes {
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
 }
