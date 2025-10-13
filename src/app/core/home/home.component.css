@@ -156,3 +156,82 @@ p{
 }
 
 
+
+
+@media screen and (min-width:380px) and (max-width:768px) {
+.mail{
+  display: none;
+}
+
+.nav_item{
+  flex-direction: column;
+  align-items: end;
+}
+
+.nav_item p{
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+.hero_nav{
+  display: flex;
+  align-items: start;
+  justify-content: start
+}
+
+.postion #hero_heading{
+  font-size: 30px;
+  position: absolute;
+  top: -70px;
+  left: 5%;
+}
+
+.postion{
+  position: relative;
+}
+
+.hero_name{
+  margin-top: 20px;
+}
+
+.hero_smtit{
+  margin-top: 20px;
+}
+
+.about_section h2{
+  font-size: 60px !important;
+  margin-top: 70px;
+}
+
+.starimage{
+top: 0px !important;
+}
+
+.sword-area img{
+  width: 30%;
+}
+
+.about_me{
+  margin-top: 20px;
+font-size: 14px;
+line-height: 30px;
+}
+
+.what_i .postion h6{
+ font-size: 75px;
+}
+
+
+.career h2{
+  font-size: 60px;
+}
+
+.career{
+  margin-top: 100px;
+  overflow: visible;
+}
+
+.career .starimage{
+  display: none;
+}
+
+}

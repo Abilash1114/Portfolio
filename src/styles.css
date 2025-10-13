@@ -408,3 +408,16 @@ p {
   opacity: 0;
   transition: opacity 0.3s ease-out;
 }
+
+@media screen and (min-width:380px) and (max-width:768px) {
+ .about-title {
+    font-size: 4rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0);
+    -webkit-text-stroke: 1px rgb(103, 99, 99);
+    text-stroke: 1px rgb(255, 255, 255);
+    margin: 0;
+    transition: all 0.5s ease;
+}
+
+}

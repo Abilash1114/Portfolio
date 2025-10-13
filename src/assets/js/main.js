@@ -203,7 +203,6 @@ function title() {
                     toggleActions: "play none none none",
                 },
             });
-
             tl2.from(split_char.chars, {
                 duration: 1,
                 x: -70,
@@ -226,13 +225,12 @@ function what() {
             markers:false,
             scrub:true,
         }
-
     })
 }
+
 function careerLine() {
   gsap.registerPlugin(ScrollTrigger);
 
-  // Animate the line height smoothly as you scroll
   gsap.to(".my_careeor", {
     "--line-height": "100%",
     ease: "none",
@@ -245,7 +243,6 @@ function careerLine() {
     },
   });
 
-  // Move the star along the line
   gsap.to("#star", {
     bottom: "-2%",
     ease: "none",
@@ -258,7 +255,6 @@ function careerLine() {
     },
   });
 
-  // Fade-in effect for each section (.myes)
   gsap.utils.toArray(".myes").forEach((section) => {
     gsap.fromTo(
       section,
@@ -277,4 +273,3 @@ function careerLine() {
     );
   });
 }
-
