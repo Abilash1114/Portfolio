@@ -234,6 +234,74 @@ line-height: 30px;
   display: none;
 }
 
+
+  .bach_name h6 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 45px;
+    letter-spacing: 0.2px;
+    color: #f8f5f5;
+    font-family: "Roboto", sans-serif;
+}
+
+.bach_name p {
+    color: #0ABB9C;
+    font-size: 20px;
+}
+.my_careeor::before {
+  content: "";
+  position: absolute;
+  left: 5%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: var(--line-height);
+  background: linear-gradient(to bottom, #4772ff, #00ddff);
+  border-radius: 4px;
+  box-shadow: 0 0 10px #4772ff, 0 0 25px #00ffff;
+  
+}
+
+
+.my_careeor::after {
+  content: "";
+  position: absolute;
+  left: 5%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, #e2e2e20c, #e1e1e10c);
+  border-radius: 4px;
+}
+
+.year {
+    font-size: 26px;
+    font-weight: 600;
+    font-family: "Roboto", sans-serif;
+    padding-right: 50px !important;
+}
+
+.myes{
+  flex-direction: column;
+  padding-left: 40px;
+}
+
+.ex_detailss{
+  text-align: justify;
+  margin-top: 20px;
+} 
+
+#star {
+  display: flex;
+  background: transparent;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  left: 0%;
+  justify-content: center;
+  animation: starRotation 6.5s linear infinite;
+  z-index: 999;
+}
+
 }
 
 
@@ -241,3 +309,60 @@ line-height: 30px;
 .tools{
   width: 80px;
 }
+
+
+.cards {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  margin-bottom: 90px;
+}
+.custom-card {
+  position: absolute;
+  width: 100%;
+  top: 0px;
+  height: 70vh;
+  background: -webkit-linear-gradient(
+    130deg,
+    #d754ad 0%,
+    #f96785 67%,
+    #fe7333 100%
+  );
+  background: linear-gradient(-40deg, #d754ad 0%, #f96785 67%, #fe7333 100%);
+  color: #fff;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.2);
+}
+.card1 {
+}
+.card2 {
+  top: 30px;
+}
+.card3 {
+  top: 60px;
+}
+.card4 {
+  top: 90px;
+}
+.opacity {
+  -moz-transition: 0.4s ease;
+  -ms-transition: 0.4s ease;
+  -o-transition: 0.4s ease;
+  transition: 0.4s ease;
+  -webkit-transition: 0.4s ease;
+  opacity: 0.6;
+}
+.scale {
+  moz-transition: 0.4s ease;
+  -ms-transition: 0.4s ease;
+  -o-transition: 0.4s ease;
+  transition: 0.4s ease;
+  -webkit-transition: 0.4s ease;
+  width: 95%;
+} 

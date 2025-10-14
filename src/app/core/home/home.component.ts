@@ -17,6 +17,7 @@ declare function about(): any;
 declare function title(): any;
 declare function what(): any;
 declare function careerLine(): any;
+declare function cardsAnimation(): any;
 
 @Component({
   selector: 'app-home',
@@ -90,6 +91,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     title();
     what();
     careerLine();
+    cardsAnimation()
     // this.initThreeJS();
     // this.animate(0);
   }
