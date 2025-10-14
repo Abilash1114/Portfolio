@@ -171,6 +171,15 @@ p {
 
 .about_section {
     height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.tools_height{
+    min-height: 300px;
+    overflow: hidden;
 }
 
 .about_me {
@@ -178,6 +187,12 @@ p {
     line-height: 40px;
     text-align: justify;
 }
+
+
+/* .tools_height{
+  height: 500px;
+  overflow:hidden ;
+} */
 
 .me_tooles {
     /* border: 2px dashed #c0b7b767; */
@@ -275,7 +290,7 @@ p {
 
 /* Tag boxes */
 .details .bx p {
-    padding: 6px 12px;
+    padding: 6px 8px;
     font-size: 12px;
     color: #f8f5f5;
     border: 1px solid #6F8D87;
@@ -299,6 +314,11 @@ p {
 .roboclass {
     scale: 1.3;
 }
+
+/* changes time section */
+
+
+
 
 .bach_name h6 {
     font-size: 30px;
@@ -328,6 +348,9 @@ p {
 .what_i {
     position: relative;
     height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .year {
@@ -359,34 +382,34 @@ p {
 
 
 .my_careeor {
-  position: relative;
-  margin: 0 auto;
-  --line-height: 0%;
+    position: relative;
+    margin: 0 auto;
+    --line-height: 0%;
 }
 
 .my_careeor::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2px;
-  height: var(--line-height);
-  background: linear-gradient(to bottom, #4772ff, #00ddff);
-  border-radius: 4px;
-  box-shadow: 0 0 10px #4772ff, 0 0 25px #00ffff;
-  
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: var(--line-height);
+    background: linear-gradient(to bottom, #4772ff, #00ddff);
+    border-radius: 4px;
+    box-shadow: 0 0 10px #4772ff, 0 0 25px #00ffff;
+
 }
 
 
 .my_careeor::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(to bottom, #e2e2e20c, #e1e1e10c);
-  border-radius: 4px;
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, #e2e2e20c, #e1e1e10c);
+    border-radius: 4px;
 }
 
 
@@ -401,23 +424,36 @@ p {
 
 }
 
-.myes{
+.myes {
     padding-top: 100px !important;
 }
+
 .myes {
-  opacity: 0;
-  transition: opacity 0.3s ease-out;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
 }
 
 @media screen and (min-width:380px) and (max-width:768px) {
- .about-title {
-    font-size: 4rem;
-    font-weight: 900;
-    color: rgba(255, 255, 255, 0);
-    -webkit-text-stroke: 1px rgb(103, 99, 99);
-    text-stroke: 1px rgb(255, 255, 255);
-    margin: 0;
-    transition: all 0.5s ease;
+    .about-title {
+        font-size: 4rem;
+        font-weight: 900;
+        color: rgba(255, 255, 255, 0);
+        -webkit-text-stroke: 1px rgb(103, 99, 99);
+        text-stroke: 1px rgb(255, 255, 255);
+        margin: 0;
+        transition: all 0.5s ease;
+    }
+
 }
 
+.gradients {
+    background: #010F0C;
+    background: linear-gradient(180deg, rgba(1, 15, 12, 0) 0%, rgba(1, 15, 12, 0.48) 31%, rgba(1, 15, 12, 1) 100%);
+    width: 100vw;
+    height: 200px;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    z-index: 999;
+    opacity: 0;
 }

@@ -101,6 +101,17 @@ function parallax() {
             markers: false,
         },
     })
+
+    gsap.to(".gradients", {
+        opacity:1,
+        scrollTrigger: {
+            trigger: ".about_section",
+            start: "top 85%",
+            end: "top 50%",
+            scrub: true,
+            markers: false,
+        },
+    })
 }
 
 
@@ -217,59 +228,59 @@ function what() {
     gsap.registerPlugin(ScrollTrigger);
     gsap.to(".roboclass", {
         x: 0,
-        scale:1.1,
+        scale: 1.1,
         scrollTrigger: {
             trigger: ".roboclass",
             start: "top bottom",
             end: "bottom center",
-            markers:false,
-            scrub:true,
+            markers: false,
+            scrub: true,
         }
     })
 }
 
 function careerLine() {
-  gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger);
 
-  gsap.to(".my_careeor", {
-    "--line-height": "100%",
-    ease: "none",
-    scrollTrigger: {
-      trigger: ".my_careeor",
-      start: "top 100%",
-      end: "bottom center",
-      scrub: true,
-      markers: false,
-    },
-  });
-
-  gsap.to("#star", {
-    bottom: "-2%",
-    ease: "none",
-    scrollTrigger: {
-      trigger: ".my_careeor",
-      start: "top 100%",
-      end: "bottom center",
-      scrub: true,
-      markers: false,
-    },
-  });
-
-  gsap.utils.toArray(".myes").forEach((section) => {
-    gsap.fromTo(
-      section,
-      { opacity: 0.0 },
-      {
-        opacity: 1,
-        ease: "power1.out",
+    gsap.to(".my_careeor", {
+        "--line-height": "100%",
+        ease: "none",
         scrollTrigger: {
-          trigger: section,
-          start: "top 100%",
-          end: "bottom 60%",
-          scrub: true,
-          markers: false,
+            trigger: ".my_careeor",
+            start: "top 100%",
+            end: "bottom center",
+            scrub: true,
+            markers: false,
         },
-      }
-    );
-  });
+    });
+
+    gsap.to("#star", {
+        bottom: "-2%",
+        ease: "none",
+        scrollTrigger: {
+            trigger: ".my_careeor",
+            start: "top 100%",
+            end: "bottom center",
+            scrub: true,
+            markers: false,
+        },
+    });
+
+    gsap.utils.toArray(".myes").forEach((section) => {
+        gsap.fromTo(
+            section,
+            { opacity: 0.0 },
+            {
+                opacity: 1,
+                ease: "power1.out",
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 100%",
+                    end: "bottom 60%",
+                    scrub: true,
+                    markers: false,
+                },
+            }
+        );
+    });
 }
