@@ -177,18 +177,30 @@ p {
     flex-direction: column;
 }
 
-.tools_height{
+.tools_height {
     min-height: 300px;
     overflow: hidden;
 }
 
 .about_me {
-    font-size: 20px;
-    line-height: 40px;
-    text-align: justify;
+  margin-left: 50px;
+  font-size: 20px;
+  line-height: 40px;
+  text-align: justify;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
-
+/* ✅ Apply gradient to each split line */
+.about_me div {
+  background: linear-gradient(to right, rgb(255, 255, 255) 50%, rgb(37, 37, 37) 50%);
+  background-size: 200% 100%;
+  background-position-x: 100%;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
 /* .tools_height{
   height: 500px;
   overflow:hidden ;
