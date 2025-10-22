@@ -35,8 +35,6 @@
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
               "src/assets/js/gsap.min.js",
               "src/assets/js/ScrollTrigger.min.js",
-              "src/assets/js/ScrollSmoother.min.js",
-              "src/assets/js/ScrollSmoother.min.js",
               "src/assets/js/SplitText.min.js",
               "src/assets/js/MotionPathPlugin.min.js",
               "src/assets/js/main.js"

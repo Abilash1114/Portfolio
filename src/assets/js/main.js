@@ -211,10 +211,13 @@ function title() {
     if ($(".title-anim").length > 0) {
         let char_come = gsap.utils.toArray(".title-anim");
         char_come.forEach((char_come) => {
+            // SplitText with char class
             let split_char = new SplitText(char_come, {
                 type: "chars, words",
+                charsClass: "char",
                 lineThreshold: 0.5,
             });
+
             const tl2 = gsap.timeline({
                 scrollTrigger: {
                     trigger: char_come,
@@ -222,10 +225,11 @@ function title() {
                     end: "bottom 10%",
                     scrub: false,
                     markers: false,
-                    // pin:true,
                     toggleActions: "play none none none",
                 },
             });
+
+            // Animate each character
             tl2.from(split_char.chars, {
                 duration: 1,
                 x: -70,
@@ -235,6 +239,7 @@ function title() {
         });
     }
 }
+
 
 function what() {
     gsap.registerPlugin(ScrollTrigger);

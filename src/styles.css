@@ -78,7 +78,7 @@ p {
     justify-content: center;
 }
 
-/* .postion h6 {
+.postion h6 {
   font-size: 140px;
   font-family: "Roboto", sans-serif;
   font-weight: bold;
@@ -93,7 +93,7 @@ p {
   
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-} */
+}
 
 .postion h6,
 .postion h6 .char {
