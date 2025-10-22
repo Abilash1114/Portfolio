@@ -32,7 +32,7 @@
     <div class="gradients">
     </div>
     <div class="postion">
-      <h6 id="hero_heading">UI/UX DESIGNER</h6>
+      <h6 id="hero_heading" class="he">UI/UX DESIGNER</h6>
     </div>
     <div class="row hero_next">
       <div class="col-lg-4 order-1 ">
@@ -40,9 +40,9 @@
           <div class="hero_name">
             <h6>Abilash Ravi</h6>
             <p>
-              UI UX designer based out of Chennai with 3 years of
+              UI UX designer based out of Kanyakumari with 3 years of
               experience, currently working in junior UI UX Designer in JRK
-              Consultancy
+              Consultancy in Chennai
             </p>
           </div>
           <div class="d-flex align-items-center justify-content-start">
@@ -63,7 +63,7 @@
           <div class="hero_smtit">
             <p>A Creative</p>
             <h6 id="heading">DEVELOPER</h6>
-            <h5 id="hero_heading">DESIGNER</h5>
+            <h5 id="">DESIGNER</h5>
           </div>
         </div>
       </div>
@@ -72,24 +72,24 @@
 </div>
 <!-- hero section end-->
 
+<div class="d-none d-lg-block">
+  <div class="social_icons">
+    <a href="https://github.com/Abilash1114" target="_blank">
+      <img src="assets/images/git.svg" class="img-fluid">
+    </a>
+    <a href="https://www.linkedin.com/in/abilash-r/" target="_blank">
+      <img src="assets/images/lin.svg" class="img-fluid">
+    </a>
 
-<div class="social_icons">
-  <a href="https://github.com/Abilash1114" target="_blank">
-    <img src="assets/images/git.svg" class="img-fluid">
-  </a>
-  <a href="https://www.linkedin.com/in/abilash-r/" target="_blank">
-    <img src="assets/images/lin.svg" class="img-fluid">
-  </a>
+    <a href="">
+      <img src="assets/images/in.svg" class="img-fluid">
 
-  <a href="">
-    <img src="assets/images/in.svg" class="img-fluid">
-
-  </a>
-  <a href="tel:+916383891982">
-    <img src="assets/images/wh.svg" class="img-fluid">
-  </a>
+    </a>
+    <a href="tel:+916383891982">
+      <img src="assets/images/wh.svg" class="img-fluid">
+    </a>
+  </div>
 </div>
-
 
 <div class="top_left">
   <img src="assets/images/top.svg" class="img-fluid">
@@ -333,10 +333,10 @@
 
             <div class="bach_name">
               <h6>Bachelor Of <br />Engineering</h6>
-              <p>Loyola Institute</p>
+              <p>Loyola Institute of Technology</p>
             </div>
 
-            <p class="year">2018-2022</p>
+            <p class="year" style="padding-left: 20px !important;">2018-2022</p>
           </div>
         </div>
         <div class="col-lg-5">
@@ -377,7 +377,7 @@
           <div class="d-flex align-items-start justify-content-between">
 
             <div class="bach_name">
-              <h6>JRK Consulting <br />Services, Chennai</h6>
+              <h6 style="white-space: nowrap;">JRK Consulting <br />Services, Chennai</h6>
               <p>Junior UI/UX Designer </p>
             </div>
 
@@ -399,7 +399,7 @@
 
 </section>
 
-<section class="resent" id="Portfolio">
+<section class="resent" id="Portfolio" style="overflow: hidden;">
   <div class="container">
     <div class="row">
       <h2 class="about-title" id="about-title" style="text-align: center">
@@ -415,20 +415,48 @@
         <div class="cards">
           <div class="custom-card card1" id="1" style=" z-index: 2;">
             <a href="https://www.behance.net/gallery/233455293/ForkPay-The-Smarter-Way-to-Dine-Pay" target="_blank">
+              <picture>
+                <!-- For desktop (992px and above) -->
+                <source media="(min-width: 992px)" srcset="assets/images/pro-1.png">
 
-              <img src="assets/images/pro-1.png" class="img-fluid">
+                <!-- For mobile/tablet (380px–991px) -->
+                <source media="(min-width: 380px) and (max-width: 991px)" srcset="assets/images/pro-1.1.png">
+
+                <!-- Fallback for very small screens -->
+                <img src="assets/images/pro-1-mobile.png" class="img-fluid" alt="Product image">
+              </picture>
+
             </a>
           </div>
           <div class="custom-card card2" id="2" style=" z-index: 3;">
-            <img src="assets/images/pro-3.png" class="img-fluid">
+                 <picture>
+                <!-- For desktop (992px and above) -->
+                <source media="(min-width: 992px)" srcset="assets/images/pro-3.png">
+
+                <!-- For mobile/tablet (380px–991px) -->
+                <source media="(min-width: 380px) and (max-width: 991px)" srcset="assets/images/pro-3.3.png">
+
+                <!-- Fallback for very small screens -->
+                <img src="assets/images/pro-3-mobile.png" class="img-fluid" alt="Product image">
+              </picture>
 
           </div>
           <div class="custom-card card3" id="3" style="z-index: 4;">
-            <a href="https://www.behance.net/gallery/235183431/Secure-Digital-Wallet-Buy-Gold-App-(UIUX-Case-Study)" target="_blank">
+            <a href="https://www.behance.net/gallery/235183431/Secure-Digital-Wallet-Buy-Gold-App-(UIUX-Case-Study)"
+              target="_blank">
 
-              <img src="assets/images/pro-2.png" class="img-fluid">
- </a>
-            </div>
+               <picture>
+                <!-- For desktop (992px and above) -->
+                <source media="(min-width: 992px)" srcset="assets/images/pro-2.png">
+
+                <!-- For mobile/tablet (380px–991px) -->
+                <source media="(min-width: 380px) and (max-width: 991px)" srcset="assets/images/pro-2.2.png">
+
+                <!-- Fallback for very small screens -->
+                <img src="assets/images/pro-2-mobile.png" class="img-fluid" alt="Product image">
+              </picture>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -453,13 +481,14 @@
             <p>HTML,CSS,JavaScript,Type Script,gsap</p>
           </div>
         </div>
+        <a href="https://intellivo.netlify.app/" target="_blank">
         <div class="sample_img">
           <img src="assets/images/01.png" class="img-fluid">
           <div class="arr">
             <img src="assets/images/arr.svg" class="img-fluid">
           </div>
         </div>
-
+</a>
       </div>
 
 
@@ -560,7 +589,7 @@
 
       </div>
 
-      <div class="occasion" style="width: 200px;"></div>
+      <div class="occasion" style="width: 200px !important;"></div>
 
     </div>
 
@@ -701,6 +730,3 @@
   </div>
 
 </section>
-
-
-

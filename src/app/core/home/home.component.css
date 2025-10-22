@@ -238,7 +238,7 @@ p {
 
 
   .bach_name h6 {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 600;
     line-height: 45px;
     letter-spacing: 0.2px;
@@ -248,7 +248,7 @@ p {
 
   .bach_name p {
     color: #0ABB9C;
-    font-size: 20px;
+    font-size: 16px;
   }
 
   .my_careeor::before {
@@ -277,10 +277,11 @@ p {
   }
 
   .year {
-    font-size: 26px;
+    font-size: 14px;
     font-weight: 600;
     font-family: "Roboto", sans-serif;
-    padding-right: 50px !important;
+    padding-left: 50px !important;
+    padding-top: 10px;
   }
 
   .myes {
@@ -304,6 +305,28 @@ p {
     animation: starRotation 6.5s linear infinite;
     z-index: 999;
   }
+
+  .bach_name p{
+    white-space: nowrap;
+  }
+
+  #Portfolio .about-title{
+    font-size: 60px;
+  }
+
+.occasion {
+  border-right: 1px solid #8294942d;
+  height: 100vh;
+  width: 450px !important;
+  padding: 40px;
+}
+
+.info_get{
+  padding: 20px !important;
+}
+.right_con_tit h6{
+  margin-top: 40px !important;
+}
 
 }
 

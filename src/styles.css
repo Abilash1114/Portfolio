@@ -78,21 +78,39 @@ p {
     justify-content: center;
 }
 
-.postion h6 {
-    font-size: 140px;
-    font-family: "Roboto", sans-serif;
-    font-weight: bold;
-    letter-spacing: 0.2px;
-    text-align: center;
-    margin: 0 !important;
-    padding: 20px 0px !important;
-    background: linear-gradient(180deg,
-            rgba(244, 255, 254, 1) 0%,
-            rgba(1, 32, 26, 0) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
+/* .postion h6 {
+  font-size: 140px;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  letter-spacing: 0.2px;
+  text-align: center;
+  margin: 0 !important;
+  padding: 20px 0 !important;
+
+  background: linear-gradient(180deg, rgba(244, 255, 254, 1) 0%, rgba(1, 32, 26, 0.9) 100%);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+} */
+
+.postion h6,
+.postion h6 .char {
+  font-size: 140px;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  letter-spacing: 0.2px;
+  text-align: center;
+  margin: 0 !important;
+  padding: 20px 0 !important;
+
+  background: linear-gradient(180deg, rgba(244, 255, 254, 1) 0%, rgba(1, 32, 26, 0.9) 100%);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero_name {
@@ -127,21 +145,25 @@ p {
     color: #FFFFFF;
 }
 
-.hero_smtit h6 {
-    font-size: 60px;
-    letter-spacing: 0.6px;
-    font-weight: 600;
-    font-family: "Roboto", sans-serif;
-    background: linear-gradient(180deg, rgba(132, 255, 231, 1) 0%, rgba(1, 32, 26, 0) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-    margin: 0px !important;
-    padding: 0px !important;
-    display: inline-block;
-    height: 50px;
-    overflow: hidden;
+/* Gradient heading */
+.hero_smtit h6,
+.hero_smtit h6 .char {
+  font-size: 60px;
+  letter-spacing: 0.6px;
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+
+  /* Gradient */
+background: linear-gradient(180deg, rgba(132, 255, 231, 1) 0%, rgba(132, 255, 230, 0.116) 31%, rgba(1, 32, 26, 0) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  margin: 0 !important;
+  padding: 0 !important;
+  display: inline-block;
+  height: 55px;
+  overflow: hidden;
 }
 
 .hero_smtit {

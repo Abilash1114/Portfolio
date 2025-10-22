@@ -12,18 +12,20 @@
 
 
 function text() {
-    gsap.registerPlugin(SplitText);
-    gsap.set("h1", { opacity: 1 });
-    let split = SplitText.create("#heading", { type: "chars" });
-    gsap.from(split.chars, {
-        y: 20,
-        autoAlpha: 0,
-        stagger: 0.09,
-        opacity: 0,
-        duration: 1,
-        ease: "power2.out",
+  gsap.registerPlugin(SplitText);
 
-    });
+  // Split the heading into characters with class 'char'
+  let split = SplitText.create("#heading", { type: "chars", charsClass: "char" });
+
+  // Animate each character
+  gsap.from(split.chars, {
+    y: 20,
+    autoAlpha: 0,
+    opacity: 0,
+    stagger: 0.09,
+    duration: 1,
+    ease: "power2.out"
+  });
 }
 
 
@@ -43,8 +45,8 @@ function timer() {
 function heroheading() {
     gsap.registerPlugin(SplitText, ScrollTrigger);
 
-    let split = SplitText.create("#hero_heading", { type: "chars" });
-
+    // let split = SplitText.create("#hero_heading", { type: "chars" });
+let split = SplitText.create("#hero_heading", { type: "chars", charsClass: "char" });
     // Animate each character with a small delay
     split.chars.forEach((char, i) => {
         gsap.from(char, {
@@ -56,6 +58,16 @@ function heroheading() {
             ease: "power2.out"
         });
     });
+
+      if (window.innerWidth >= 380 && window.innerWidth <= 991) {
+    document.querySelectorAll("#hero_heading, #hero_heading .char").forEach((el) => {
+      el.style.fontSize = "30px";
+    });
+  } else {
+    document.querySelectorAll("#hero_heading, #hero_heading .char").forEach((el) => {
+      el.style.fontSize = "140px";
+    });
+  }
 
     // Animate .robo element
     gsap.to(".robo", {
