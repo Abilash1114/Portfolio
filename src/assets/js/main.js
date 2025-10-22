@@ -218,6 +218,17 @@ function title() {
                 lineThreshold: 0.5,
             });
 
+            
+      if (window.innerWidth >= 380 && window.innerWidth <= 991) {
+    document.querySelectorAll(".title-anim, .title-anim .char").forEach((el) => {
+      el.style.fontSize = "60px";
+    });
+  } else {
+    document.querySelectorAll(".title-anim, .title-anim .char").forEach((el) => {
+      el.style.fontSize = "140px";
+    });
+  }
+
             const tl2 = gsap.timeline({
                 scrollTrigger: {
                     trigger: char_come,
