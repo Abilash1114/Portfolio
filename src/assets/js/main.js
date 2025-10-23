@@ -149,7 +149,7 @@ function sward() {
     });
 
     gsap.to(".sword-area", {
-        rotate: "90deg",
+        rotate: "60deg",
         ease: "none",
         scrollTrigger: {
             trigger: ".sword-area",

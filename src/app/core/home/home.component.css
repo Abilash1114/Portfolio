@@ -96,7 +96,7 @@ p {
   font-size: 8rem;
   font-weight: 900;
   color: rgba(255, 255, 255, 0);
-  -webkit-text-stroke: 1px rgb(103, 99, 99);
+  -webkit-text-stroke: 1px rgb(202, 228, 219);
   text-stroke: 1px rgb(255, 255, 255);
   margin: 0;
   transition: all 0.5s ease;
@@ -104,6 +104,7 @@ p {
 
 .about_me {
   margin-top: 60px;
+  text-align: justify;
 }
 
 /* html {
@@ -124,7 +125,7 @@ p {
   flex-direction: column;
   align-items: center;
   position: absolute;
-  left: 48.5%;
+  left: 48.45%;
   justify-content: center;
   animation: starRotation 6.5s linear infinite;
   z-index: 999;
@@ -160,6 +161,10 @@ p {
 
 
 @media screen and (min-width:380px) and (max-width:768px) {
+
+  .postion h6{
+    padding-top: 0px !important;
+  }
   .mail {
     display: none;
   }
@@ -184,7 +189,7 @@ p {
     font-size: 30px;
     position: absolute;
     top: -70px;
-    left: 5%;
+    left: 0;
   }
 
   .postion {
@@ -216,6 +221,7 @@ p {
     margin-top: 20px;
     font-size: 14px;
     line-height: 30px;
+    text-align: justify !important;
   }
 
   .what_i .postion h6 {
@@ -626,7 +632,7 @@ textarea {
 }
 
 .resent {
-  margin: 100px 0px;
+  margin: 50px 0px;
 }
 
 .social_icons {
@@ -654,4 +660,8 @@ textarea {
 
 .resume img{
   padding-left: 10px;
+}
+
+.career{
+margin: 50px 0px;
 }
