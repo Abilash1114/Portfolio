@@ -665,3 +665,58 @@ textarea {
 .career{
 margin: 50px 0px;
 }
+
+.swiper-container {
+  width: 100%;
+  height: auto;
+}
+
+.swiper-slide {
+  overflow: hidden;
+}
+.swiper-slide img {
+  /* aspect-ratio: 16/9; */
+  /* width: 100%; */
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.swiper-free-mode > .swiper-wrapper {
+  transition-timing-function: linear;
+  margin: 0 auto;
+}
+
+.out_card{
+  width: 100%;
+  /* border: 1px solid #131313; */
+  display: flex;
+  align-items: center;
+}
+
+.card_imge{
+  border: 1px solid #3e4b4b1f;
+
+  padding: 44px;
+  cursor: pointer;
+}
+.card_imge img{
+  opacity: 0.5;
+}
+
+.card_imge:hover img{
+  opacity: 1;
+}
+.card_imge:hover{
+    /* box-shadow:
+    inset 0 0 60px whitesmoke,
+    inset 20px 0 80px rgb(0, 255, 179),
+    inset -20px 0 80px #0ff,
+    inset 20px 0 300px rgb(0, 255, 179),
+    inset -20px 0 300px #0ff,
+    0 0 0px #fff,-0px 0 0px rgb(0, 255, 179),
+    0px 0 0px #0ff; */
+
+background: #189C6B;
+background: radial-gradient(circle, rgba(24, 156, 108, 0.308) 0%, rgba(5, 62, 43, 0) 100%);
+}

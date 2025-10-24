@@ -28,7 +28,8 @@
               "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/remixicon/fonts/remixicon.css",
-              "src/assets/css/style.css"
+              "src/assets/css/style.css",
+              "src/assets/css/swiper-bundle.min.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
@@ -37,6 +38,7 @@
               "src/assets/js/ScrollTrigger.min.js",
               "src/assets/js/SplitText.min.js",
               "src/assets/js/MotionPathPlugin.min.js",
+              "src/assets/js/swiper-bundle.min.js",
               "src/assets/js/main.js"
             ]
           },

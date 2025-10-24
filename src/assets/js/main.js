@@ -397,3 +397,38 @@ function horizontals() {
     },
   });
 }
+function swipe() {
+  const swiper = new Swiper(".swiper", {
+    speed:2000,
+    direction: "horizontal",
+    loop: true,
+    slidesPerView: 6,
+    freeMode: true,
+    zoom: true,
+    keyboard: true,
+    pagination: false,
+    navigation: false,
+    autoplay: {
+      delay: 10,
+      disableOnInteraction: false,
+    },
+    breakpoints: {
+      765: { slidesPerView: 1 },
+      1000: { slidesPerView: 3 },
+      1200: { slidesPerView: 8 },
+    },
+  });
+
+  // ensure the element is available — use swiper.el (Swipers container)
+  if (swiper && swiper.el) {
+    // stop on pointer enter
+    swiper.el.addEventListener("mouseenter", () => {
+      if (swiper.autoplay && swiper.autoplay.running) swiper.autoplay.stop();
+    });
+
+    // start when pointer leaves
+    swiper.el.addEventListener("mouseleave", () => {
+      if (swiper.autoplay && !swiper.autoplay.running) swiper.autoplay.start();
+    });
+  }
+}
