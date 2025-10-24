@@ -7,7 +7,7 @@ p {
 .containers {
   max-width: 100vw;
   width: 100%;
-  padding: 20px;
+  padding: 20px; 
   margin: 0 auto;
   /* height: 100vh; */
   overflow: hidden;
@@ -695,13 +695,14 @@ margin: 50px 0px;
 }
 
 .card_imge{
-  border: 1px solid #3e4b4b1f;
-
+  border: 1px solid #3e4b4b52;
+  
   padding: 44px;
   cursor: pointer;
 }
 .card_imge img{
   opacity: 0.5;
+scale: 2;
 }
 
 .card_imge:hover img{
@@ -720,3 +721,25 @@ margin: 50px 0px;
 background: #189C6B;
 background: radial-gradient(circle, rgba(24, 156, 108, 0.308) 0%, rgba(5, 62, 43, 0) 100%);
 }
+
+.secound_cardwhat{
+margin: 0px 10px;
+  border: 1px solid #3e4b4b52;
+  height: 220px;
+  padding: 20px;
+    border-radius: 10px;
+}
+
+.secound_cardwhat h6{
+  font-size: 24px;
+  font-weight: 600;
+  color: white !important;
+}
+
+.secound_cardwhat p{
+font-size: 12px;
+}
+
+/* .out_card{
+  margin: 0px 20px;
+} */

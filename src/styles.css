@@ -11,7 +11,7 @@ body {
     background: linear-gradient(180deg, rgba(1, 12, 10, 1) 0%, rgba(1, 28, 23, 1) 100%) !important;
 }
 
-p {
+p { 
     margin: 0px;
     padding: 0px;
     font-family: "Roboto", sans-serif !important;
