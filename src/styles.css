@@ -8,6 +8,7 @@ body {
     overflow-x: hidden !important;
     height: auto;
     background: #010C0A;
+     overscroll-behavior: none;
     background: linear-gradient(180deg, rgba(1, 12, 10, 1) 0%, rgba(1, 28, 23, 1) 100%) !important;
 }
 

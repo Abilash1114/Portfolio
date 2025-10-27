@@ -41,7 +41,7 @@
               "src/assets/js/swiper-bundle.min.js",
               "src/assets/js/main.js"
             ]
-          },
+          }, 
           "configurations": {
             "production": {
               "budgets": [

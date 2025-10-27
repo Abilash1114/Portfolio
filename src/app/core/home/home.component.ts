@@ -1,3 +1,4 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
   AfterViewInit,
   Component,
@@ -28,6 +29,7 @@ declare function swipe(): any;
   imports: [],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
+    schemas: [CUSTOM_ELEMENTS_SCHEMA], // ✅ Add this line
 })
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   // @ViewChild('sliderContainer', { static: true }) sliderContainer!: ElementRef;
