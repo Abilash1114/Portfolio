@@ -355,7 +355,11 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 70vh;
+  position: relative;
+  width: 100%;
+  height: 100dvh; /* ✅ modern fix: dynamic viewport height */
+  min-height: 100vh;
+  overflow: hidden;
   margin-bottom: 90px;
 }
 
@@ -640,6 +644,10 @@ textarea {
 
 .resent {
   margin: 50px 0px;
+}
+
+.know{
+    margin: 50px 0px;
 }
 
 .social_icons {
@@ -1065,6 +1073,15 @@ background: linear-gradient(72deg, rgb(25, 25, 25) 0%, rgba(22, 27, 21, 0.459) 1
   color: rgba(241, 241, 241, 0.979) !important;
 }
 
+.about-title {
+  font-size: 8rem;
+  font-weight: 900;
+  color: rgb(255, 255, 255) !important;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0) !important;
+  text-stroke: 1px rgba(255, 255, 255, 0) !important;
+  margin: 0;
+  transition: all 0.5s ease;
+} 
 
 
 .back_grid{
@@ -1075,5 +1092,12 @@ background: linear-gradient(72deg, rgb(25, 25, 25) 0%, rgba(22, 27, 21, 0.459) 1
     border-top-right-radius: 10px;
     padding: 10px 10px;
 }
+
+
+.mobile_work img{
+margin-top: 30px;
+}
+
+
 
 }

@@ -286,7 +286,7 @@ function careerLine() {
             start: "top 100%",
             end: "bottom center",
             scrub: true,
-            markers: false,
+            markers: true,
         },
     });
 
@@ -334,7 +334,6 @@ function cardsAnimation() {
             markers: false,
         },
     });
-
     tl
         // Card 1
         .addLabel("card1")
@@ -357,7 +356,6 @@ function cardsAnimation() {
         .to(".card1", { scale: 0.925, yPercent: -1.5, opacity: 0.9 }, "-=0.3")
         .to(".card2", { scale: 0.95, yPercent: -1.125, opacity: 0.9 }, "-=0.3")
 }
-
 
 function about_text() {
     gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -486,6 +484,7 @@ function gradientes() {
 
   setInterval(updateGradient, 10); // slower and smoother transition
 }
+
 
 
 
