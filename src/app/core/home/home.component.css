@@ -817,14 +817,24 @@ textarea {
 }
 
 .spline-container {
-  width: 100%;
-  height: 100vh;
+  width: 400px;
+  height: 500px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+
+
 spline-viewer {
+  position: absolute;
   width: 100%;
   height: 100%;
   display: block;
+  bottom: 150px;
+  left: 0px;
+  right: 0px;
 }
 
 .borders_grid{
