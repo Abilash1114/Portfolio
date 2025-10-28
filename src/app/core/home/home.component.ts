@@ -93,7 +93,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
    // ✅ New Lenis options (v1.0+)
     this.lenis = new Lenis({
-      duration: 1.4,         
+      duration: 1.2,         
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
       orientation: 'vertical', 
       gestureOrientation: 'vertical',
