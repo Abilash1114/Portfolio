@@ -7,12 +7,12 @@ body {
     width: 100vw;
     overflow-x: hidden !important;
     height: auto;
-    background: #010C0A; 
-     overscroll-behavior: none;
+    background: #010C0A;
+    overscroll-behavior: none;
     background: linear-gradient(180deg, rgba(1, 12, 10, 1) 0%, rgba(1, 28, 23, 1) 100%) !important;
 }
 
-p { 
+p {
     margin: 0px;
     padding: 0px;
     font-family: "Roboto", sans-serif !important;
@@ -81,38 +81,38 @@ p {
 }
 
 .postion h6 {
-  font-size: 140px;
-  font-family: "Roboto", sans-serif;
-  font-weight: bold;
-  letter-spacing: 0.2px;
-  text-align: center;
-  margin: 0 !important;
-  padding: 20px 0 !important;
+    font-size: 140px;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    letter-spacing: 0.2px;
+    text-align: center;
+    margin: 0 !important;
+    padding: 20px 0 !important;
 
-  background: linear-gradient(180deg, rgba(244, 255, 254, 1) 0%, rgba(1, 32, 26, 0.9) 100%);
-  background-repeat: no-repeat;
-  background-size: 100%;
-  
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+    background: linear-gradient(180deg, rgba(244, 255, 254, 1) 0%, rgba(1, 32, 26, 0.9) 100%);
+    background-repeat: no-repeat;
+    background-size: 100%;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .postion h6,
 .postion h6 .char {
-  font-size: 140px;
-  font-family: "Roboto", sans-serif;
-  font-weight: bold;
-  letter-spacing: 0.2px;
-  text-align: center;
-  margin: 0 !important;
-  padding: 20px 0 !important;
+    font-size: 140px;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    letter-spacing: 0.2px;
+    text-align: center;
+    margin: 0 !important;
+    padding: 20px 0 !important;
 
-  background: linear-gradient(180deg, rgba(244, 255, 254, 1) 0%, rgba(1, 32, 26, 0.9) 100%);
-  background-repeat: no-repeat;
-  background-size: 100%;
-  
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+    background: linear-gradient(180deg, rgba(244, 255, 254, 1) 0%, rgba(1, 32, 26, 0.9) 100%);
+    background-repeat: no-repeat;
+    background-size: 100%;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .hero_name {
@@ -150,22 +150,22 @@ p {
 /* Gradient heading */
 .hero_smtit h6,
 .hero_smtit h6 .char {
-  font-size: 60px;
-  letter-spacing: 0.6px;
-  font-weight: 600;
-  font-family: "Roboto", sans-serif;
+    font-size: 60px;
+    letter-spacing: 0.6px;
+    font-weight: 600;
+    font-family: "Roboto", sans-serif;
 
-  /* Gradient */
-background: linear-gradient(180deg, rgba(132, 255, 231, 1) 0%, rgba(132, 255, 230, 0.116) 31%, rgba(1, 32, 26, 0) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+    /* Gradient */
+    background: linear-gradient(180deg, rgba(132, 255, 231, 1) 0%, rgba(132, 255, 230, 0.116) 31%, rgba(1, 32, 26, 0) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
 
-  margin: 0 !important;
-  padding: 0 !important;
-  display: inline-block;
-  height: 55px;
-  overflow: hidden;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: inline-block;
+    height: 55px;
+    overflow: hidden;
 }
 
 .hero_smtit {
@@ -210,24 +210,25 @@ background: linear-gradient(180deg, rgba(132, 255, 231, 1) 0%, rgba(132, 255, 23
 }
 
 .about_me {
-  margin-left: 50px;
-  font-size: 20px;
-  line-height: 40px;
-  text-align: justify;
-  color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
+    margin-left: 50px;
+    font-size: 20px;
+    line-height: 40px;
+    text-align: justify;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
 }
 
 /* ✅ Apply gradient to each split line */
 .about_me div {
-  background: linear-gradient(to right, rgb(255, 255, 255) 50%, rgb(37, 37, 37) 50%);
-  background-size: 200% 100%;
-  background-position-x: 100%;
-  color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
+    background: linear-gradient(to right, rgb(255, 255, 255) 50%, rgb(37, 37, 37) 50%);
+    background-size: 200% 100%;
+    background-position-x: 100%;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
 }
+
 /* .tools_height{
   height: 500px;
   overflow:hidden ;
@@ -492,6 +493,6 @@ background: linear-gradient(180deg, rgba(132, 255, 231, 1) 0%, rgba(132, 255, 23
     opacity: 0;
 }
 
-a{
+a {
     text-decoration: none !important;
 }

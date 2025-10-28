@@ -8,7 +8,15 @@
 //     smoothTouch: 0.1,
 // })
 
+// gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
+// let smoother = ScrollSmoother.create({
+//   wrapper: "#smooth-wrapper",
+//   content: "#smooth-content",
+//   smooth: 2,
+//   effects: true,
+//   normalizeScroll: true
+// });
 
 
 function text() {

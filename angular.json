@@ -34,6 +34,7 @@
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "src/assets/js/lenis.min.js",
               "src/assets/js/gsap.min.js",
               "src/assets/js/ScrollTrigger.min.js",
               "src/assets/js/SplitText.min.js",
