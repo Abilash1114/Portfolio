@@ -286,7 +286,7 @@ function careerLine() {
             start: "top 100%",
             end: "bottom center",
             scrub: true,
-            markers: true,
+            markers: false,
         },
     });
 
