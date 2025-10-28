@@ -384,13 +384,7 @@ background: linear-gradient(180deg, rgba(132, 255, 231, 1) 0%, rgba(132, 255, 23
     scale: 0.5;
 }
 
-.what_i {
-    position: relative;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+
 
 .year {
     font-size: 36px;
