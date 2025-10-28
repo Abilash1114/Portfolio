@@ -7,7 +7,6 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import Lenis from '@studio-freight/lenis';
 import * as THREE from 'three';
 
 declare function text(): any;
@@ -87,28 +86,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     //   this.containerVisible=false;
     // }, 6000);
   }
-   private lenis!: Lenis;
-  private animationFrameId: number = 0;
 
   ngAfterViewInit(): void {
-   // ✅ New Lenis options (v1.0+)
-    this.lenis = new Lenis({
-      duration: 1.2,         
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
-      orientation: 'vertical', 
-      gestureOrientation: 'vertical',
-      // smoothTouch: false,
-      touchMultiplier: 1.5
-    });
-
-    const raf = (time: number) => {
-      this.lenis.raf(time);
-      this.animationFrameId = requestAnimationFrame(raf);
-    };
-
-    this.animationFrameId = requestAnimationFrame(raf)
-
-
     text();
     timer();
     heroheading();
@@ -128,8 +107,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-     cancelAnimationFrame(this.animationFrameId);
-    this.lenis.destroy();
     // if (this.animationId) {
     //   cancelAnimationFrame(this.animationId);
     // }
