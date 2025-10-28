@@ -22,6 +22,7 @@ declare function cardsAnimation(): any;
 declare function about_text(): any;
 declare function horizontals(): any;
 declare function swipe(): any;
+declare function gradientes(): any;
 
 @Component({
   selector: 'app-home',
@@ -100,6 +101,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     about_text();
     horizontals();
     swipe();
+    gradientes();
     // this.initThreeJS();
     // this.animate(0);
   }
