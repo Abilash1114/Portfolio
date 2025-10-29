@@ -156,7 +156,7 @@ p {
     font-family: "Roboto", sans-serif;
 
     /* Gradient */
-    background: linear-gradient(180deg, rgba(132, 255, 231, 1) 0%, rgba(132, 255, 230, 0.116) 31%, rgba(1, 32, 26, 0) 100%);
+    background: linear-gradient(180deg, rgba(132, 255, 231, 1) 0%, rgba(132, 255, 230, 0.495) 31%, rgba(1, 32, 26, 0) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
@@ -469,6 +469,29 @@ p {
 }
 
 @media screen and (min-width:380px) and (max-width:768px) {
+
+    .hero_smtit h5 {
+    position: absolute;
+    bottom: -38px;
+    left: 0px;
+    right: 0px;
+    font-size: 50px;
+    letter-spacing: 0.2px;
+    font-weight: 600;
+    font-family: "Roboto", sans-serif;
+    margin: 0px !important;
+    padding: 0px !important;
+    color: white;
+    text-align: center;
+}
+
+
+    .hero_smtit h6,
+    .hero_smtit h6 .char {
+        height: 60px !important;
+    }
+    
+
     .about-title {
         font-size: 4rem;
         font-weight: 900;

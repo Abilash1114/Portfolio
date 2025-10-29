@@ -38,16 +38,22 @@ function text() {
 
 
 function timer() {
-    gsap.registerPlugin(SplitText);
-    var ptag = document.querySelector('.hero_smtit h6')
-    var htag = document.querySelector('.hero_smtit h5')
+  gsap.registerPlugin(SplitText);
+
+  // ✅ Corrected 'document' spelling
+  document.querySelectorAll('.hero_smtit').forEach((item) => {
+    const ptag = item.querySelector('h6');
+    const htag = item.querySelector('h5');
+
     gsap.set(ptag, { opacity: 1 });
+
     setInterval(() => {
-        const temp = ptag.textContent
-        ptag.textContent = htag.textContent
-        htag.textContent = temp
-        text()
+      const temp = ptag.textContent;
+      ptag.textContent = htag.textContent;
+      htag.textContent = temp;
+      text(item); // call animation for each section
     }, 5000);
+  });
 }
 
 function heroheading() {

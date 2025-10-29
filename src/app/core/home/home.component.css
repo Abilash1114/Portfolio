@@ -210,6 +210,9 @@ p {
     margin-top: 20px;
   }
 
+  .hero_smtit h5{
+    font-size: 28px;
+  }
   .about_section h2 {
     font-size: 60px !important;
     margin-top: 70px;
