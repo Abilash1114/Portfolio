@@ -383,11 +383,34 @@ function about_text() {
     });
 }
 
+// function horizontals() {
+//   gsap.registerPlugin(ScrollTrigger);
+
+//   const horizontalSection = document.querySelector(".horizontal");
+
+//   gsap.to(horizontalSection, {
+//     x: () => -(horizontalSection.scrollWidth - window.innerWidth),
+//     ease: "none",
+//     scrollTrigger: {
+//       trigger: "#horizontal-scoll",
+//       start: "top 80px",
+//       end: () => "+=" + (horizontalSection.scrollWidth - window.innerWidth),
+//       scrub: true,
+//       pin: true,           
+//       pinSpacing: true,     
+//       anticipatePin: 1,
+//       markers: false,
+//     },
+//   });
+// }
+
+
 function horizontals() {
   gsap.registerPlugin(ScrollTrigger);
 
   const horizontalSection = document.querySelector(".horizontal");
-
+  ScrollTrigger.matchMedia({
+"(min-width:768px)":function(){
   gsap.to(horizontalSection, {
     x: () => -(horizontalSection.scrollWidth - window.innerWidth),
     ease: "none",
@@ -402,7 +425,11 @@ function horizontals() {
       markers: false,
     },
   });
+},
+  });
 }
+
+
 function swipe() {
   const swiper = new Swiper(".swiper", {
     speed:2000,
