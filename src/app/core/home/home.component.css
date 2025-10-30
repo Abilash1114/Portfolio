@@ -241,7 +241,6 @@ p {
   }
 
   .career {
-    margin-top: 100px;
     overflow: visible;
   }
 
@@ -653,13 +652,7 @@ textarea {
   z-index: -1;
 }
 
-.resent {
-  margin: 50px 0px;
-}
 
-.know {
-  margin: 50px 0px;
-}
 
 .social_icons {
   position: fixed;
@@ -688,9 +681,7 @@ textarea {
   padding-left: 10px;
 }
 
-.career {
-  margin: 50px 0px;
-}
+
 
 .swiper-container {
   width: 100%;
@@ -1148,6 +1139,10 @@ spline-viewer {
   white-space: nowrap;
 }
 
+#about-title{
+  margin-top: 40px !important;
+}
+
 }
 
 .main_title {
@@ -1167,7 +1162,6 @@ spline-viewer {
 
 }
 
-
 .main_title h6 {
   padding: 0px !important;
   margin-top: 20px !important;
@@ -1181,4 +1175,8 @@ spline-viewer {
   background: linear-gradient(180deg, rgba(24, 156, 107, 1) 0%, rgb(4, 97, 66) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+#about-title{
+  margin-top: 80px;
 }
