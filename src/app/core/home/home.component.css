@@ -347,6 +347,9 @@ p {
   .right_con_tit h6 {
     margin-top: 40px !important;
   }
+.secound_it{
+  height: 250px; overflow: hidden
+}
 
 }
 
@@ -922,7 +925,7 @@ spline-viewer {
 }
 
 .bx p {
-  padding: 5px 0px;
+  padding-top: 6px !important;
   cursor: pointer;
   transition: all 0.5s ease-in-out;
 }
