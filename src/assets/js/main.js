@@ -208,7 +208,7 @@ function about() {
         });
 
         gsap.to(title, {
-            scale: 1.1,
+            scale: 1.4,
             ease: "power2.out",
             scrollTrigger: {
                 trigger: title,
@@ -386,22 +386,22 @@ function about_text() {
 function horizontals() {
   gsap.registerPlugin(ScrollTrigger);
 
-  const horizontalSection = document.querySelector(".horizontal");
+  // const horizontalSection = document.querySelector(".horizontal");
 
-  gsap.to(horizontalSection, {
-    x: () => -(horizontalSection.scrollWidth - window.innerWidth),
-    ease: "none",
-    scrollTrigger: {
-      trigger: "#horizontal-scoll",
-      start: "top 80px",
-      end: () => "+=" + (horizontalSection.scrollWidth - window.innerWidth),
-      scrub: true,
-      pin: true,           
-      pinSpacing: true,     
-      anticipatePin: 1,
-      markers: false,
-    },
-  });
+  // gsap.to(horizontalSection, {
+  //   X: () => -(horizontalSection.scrollWidth - window.innerWidth),
+  //   ease: "none",
+  //   scrollTrigger: {
+  //     trigger: "#horizontal-scoll",
+  //     start: "top 80px",
+  //     end: () => "+=" + (horizontalSection.scrollWidth - window.innerWidth),
+  //     scrub: true,
+  //     pin: true,           
+  //     pinSpacing: true,     
+  //     anticipatePin: 1,
+  //     markers: false,
+  //   },
+  // });
 }
 function swipe() {
   const swiper = new Swiper(".swiper", {

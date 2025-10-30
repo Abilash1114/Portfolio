@@ -15,7 +15,7 @@ body {
 p {
     margin: 0px;
     padding: 0px;
-    font-family: "Roboto", sans-serif !important;
+    font-family: "Roboto", sans-serif !important; 
     font-weight: 400;
     color: #FFFFFF;
 }
@@ -156,7 +156,7 @@ p {
     font-family: "Roboto", sans-serif;
 
     /* Gradient */
-    background: linear-gradient(180deg, rgba(132, 255, 231, 1) 0%, rgba(132, 255, 230, 0.495) 31%, rgba(1, 32, 26, 0) 100%);
+    background: linear-gradient(180deg, rgba(132, 255, 230, 0.39) 0%, rgba(132, 255, 230, 0.13) 31%, rgba(1, 32, 26, 0) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
@@ -164,7 +164,7 @@ p {
     margin: 0 !important;
     padding: 0 !important;
     display: inline-block;
-    height: 55px;
+    height: 60px;
     overflow: hidden;
 }
 
@@ -174,10 +174,10 @@ p {
 
 .hero_smtit h5 {
     position: absolute;
-    bottom: -55px;
+    bottom: -50px;
     left: 0px;
     right: 0px;
-    font-size: 50px;
+    font-size: 40px;
     letter-spacing: 0.2px;
     font-weight: 600;
     font-family: "Roboto", sans-serif;
@@ -519,3 +519,5 @@ p {
 a {
     text-decoration: none !important;
 }
+
+
