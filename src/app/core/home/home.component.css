@@ -780,8 +780,6 @@ textarea {
 
 .sec_imag {
   position: relative;
-  width: 500px;
-  height: 500px;
 }
 
 .chat1 {
@@ -794,8 +792,8 @@ textarea {
 
 .chat2 {
   position: absolute;
-  right: 0px;
-  top: 0px;
+  right: -30px;
+  top: 70px;
   opacity: 0.5;
   scale: 0.7;
 }
@@ -1069,6 +1067,7 @@ spline-viewer {
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
   }
 
   .card_imge {
