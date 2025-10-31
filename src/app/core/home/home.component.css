@@ -139,19 +139,19 @@ p {
 }
 
 #topLeft {
-  background: radial-gradient(ellipse at top left, transparent 70%, rgb(180, 254, 255) 100%);
+  background: radial-gradient(ellipse at top left, transparent 70%, rgb(226, 255, 229) 100%);
 }
 
 #topRight {
-  background: radial-gradient(ellipse at top right, transparent 70%, rgb(157, 226, 255) 100%);
+  background: radial-gradient(ellipse at top right, transparent 70%,  rgb(226, 255, 229) 100%);
 }
 
 #bottomLeft {
-  background: radial-gradient(ellipse at bottom left, transparent 70%, rgb(173, 254, 253) 100%);
+  background: radial-gradient(ellipse at bottom left, transparent 70%,  rgb(226, 255, 229)100%);
 }
 
 #bottomRight {
-  background: radial-gradient(ellipse at bottom right, transparent 70%, rgb(174, 241, 254) 100%);
+  background: radial-gradient(ellipse at bottom right, transparent 70%,  rgb(226, 255, 229) 100%);
 }
 
 
@@ -333,10 +333,11 @@ p {
     padding: 20px !important;
   }
 
-    .occasion img{
-      width: auto !important;
-    }
-  #horizontal-scoll{
+  .occasion img {
+    width: auto !important;
+  }
+
+  #horizontal-scoll {
     overflow-x: hidden;
   }
 
@@ -347,18 +348,17 @@ p {
   .right_con_tit h6 {
     margin-top: 40px !important;
   }
-.secound_it{
-  height: 250px; overflow: hidden
-}
+
+  .secound_it {
+    height: 250px !important;
+    overflow: hidden
+  }
 
 }
-
-
 
 .tools {
   width: 60px;
 }
-
 
 .cards {
   position: relative;
@@ -368,7 +368,6 @@ p {
   position: relative;
   width: 100%;
   height: 100dvh;
-  /* ✅ modern fix: dynamic viewport height */
   min-height: 100vh;
   overflow: hidden;
   margin-bottom: 90px;
@@ -980,17 +979,17 @@ spline-viewer {
 @media screen and (min-width:380px) and (max-width:768px) {
 
   .horizontal {
-  display: flex;
-  flex-wrap: nowrap;
-  width: max-content;
-  flex-direction: column;
-}
+    display: flex;
+    flex-wrap: nowrap;
+    width: max-content;
+    flex-direction: column;
+  }
 
 
-.horizontal-scoll-wrapper {
-  height: auto !important;
-  overflow: visible;
-}
+  .horizontal-scoll-wrapper {
+    height: auto !important;
+    overflow: visible;
+  }
 
   .first_grid {
     display: grid;
@@ -1076,13 +1075,13 @@ spline-viewer {
     scale: 1;
   }
 
-.sample_img {
-  width: 100%;
-  height: auto !important;
-  margin-top: 20px;
-  cursor: pointer;
-  position: relative;
-}
+  .sample_img {
+    width: 100%;
+    height: auto !important;
+    margin-top: 20px;
+    cursor: pointer;
+    position: relative;
+  }
 
   .grid_tites p {
     color: rgba(255, 255, 255, 0.932) !important;
@@ -1129,22 +1128,22 @@ spline-viewer {
     margin-top: 30px;
   }
 
-.first{
-  margin-top: 20px;
-}
+  .first {
+    margin-top: 20px;
+  }
 
-.main_title h6 {
-  padding: 0px !important;
-  margin-top: 20px !important;
-  font-size: 28px !important;
-  color: white;
-  font-family: "Roboto", sans-serif !important;
-  white-space: nowrap;
-}
+  .main_title h6 {
+    padding: 0px !important;
+    margin-top: 20px !important;
+    font-size: 28px !important;
+    color: white;
+    font-family: "Roboto", sans-serif !important;
+    white-space: nowrap;
+  }
 
-#about-title{
-  margin-top: 40px !important;
-}
+  #about-title {
+    margin-top: 40px !important;
+  }
 
 }
 
@@ -1180,6 +1179,14 @@ spline-viewer {
   -webkit-text-fill-color: transparent;
 }
 
-#about-title{
+#about-title {
   margin-top: 80px;
+}
+
+.about_me div {
+  display: inline;
+}
+
+.about_me {
+  text-align: justify;
 }
