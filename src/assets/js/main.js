@@ -333,13 +333,14 @@ function cardsAnimation() {
     scrollTrigger: {
       trigger: ".cards",
       start: "top-=50px top",
-      end: "+=2000",
+      end: "+=2600",
       pin: true,
       pinSpacing: true,
       scrub: 1,
       markers: false,
     },
   });
+
   tl
     // Card 1
     .addLabel("card1")
@@ -357,11 +358,19 @@ function cardsAnimation() {
     .to(".card2", { scale: 0.95, yPercent: -0.5, opacity: 1 }, "-=0.3")
     .to(".card3", { yPercent: 0, opacity: 1 })
 
+    // Card 4
+    .from(".card4", { yPercent: 75, opacity: 0 })
+    .addLabel("card4")
+    .to(".card3", { scale: 0.96, yPercent: -0.35, opacity: 1 }, "-=0.3")
+    .to(".card4", { yPercent: 0, opacity: 1 })
 
 
+    // Exit animations for previous cards (optional)
     .to(".card1", { scale: 0.925, yPercent: -1.5, opacity: 0.9 }, "-=0.3")
     .to(".card2", { scale: 0.95, yPercent: -1.125, opacity: 0.9 }, "-=0.3")
+    .to(".card3", { scale: 0.96, yPercent: -0.8, opacity: 0.9 }, "-=0.3");
 }
+
 
 function about_text() {
   // gsap.registerPlugin(ScrollTrigger, SplitText);
