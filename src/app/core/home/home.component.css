@@ -143,15 +143,15 @@ p {
 }
 
 #topRight {
-  background: radial-gradient(ellipse at top right, transparent 70%,  rgb(226, 255, 229) 100%);
+  background: radial-gradient(ellipse at top right, transparent 70%, rgb(226, 255, 229) 100%);
 }
 
 #bottomLeft {
-  background: radial-gradient(ellipse at bottom left, transparent 70%,  rgb(226, 255, 229)100%);
+  background: radial-gradient(ellipse at bottom left, transparent 70%, rgb(226, 255, 229)100%);
 }
 
 #bottomRight {
-  background: radial-gradient(ellipse at bottom right, transparent 70%,  rgb(226, 255, 229) 100%);
+  background: radial-gradient(ellipse at bottom right, transparent 70%, rgb(226, 255, 229) 100%);
 }
 
 
@@ -681,6 +681,13 @@ textarea {
 
 .resume img {
   padding-left: 10px;
+}
+
+.resume_outsaid {
+  border: 1px solid white;
+  padding: 5px 20px;
+  border-radius: 20px;
+  background: radial-gradient(circle, rgba(24, 156, 108, 0.308) 70%, rgba(5, 62, 43, 0) 100%);
 }
 
 
