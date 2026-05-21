@@ -21,6 +21,7 @@
     "@angular/router": "^17.3.0",
     "@studio-freight/lenis": "^1.0.42",
     "bootstrap": "^5.3.8",
+    "f": "^1.4.0",
     "jquery": "^3.7.1",
     "remixicon": "^4.6.0",
     "rxjs": "~7.8.0",

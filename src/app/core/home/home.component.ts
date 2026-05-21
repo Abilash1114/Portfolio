@@ -58,25 +58,20 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   /* ── 1. Lenis smooth scroll ───────────────────────────────── */
   private initLenis(): void {
     this.lenis = new Lenis({
-      duration: 1.5,
-      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
+      lerp: 0.08, // Lower = smoother/slower (0.05–0.15 is the sweet spot)
       smoothWheel: true,
+      smoothTouch: false, // Disable on touch — native touch scroll feels better
       wheelMultiplier: 1,
-      touchMultiplier: 2,
+      touchMultiplier: 1.5,
       infinite: false,
     });
 
-    // Sync Lenis scroll position → ScrollTrigger
     this.lenis.on('scroll', ScrollTrigger.update);
 
-    // Store the ticker fn so we can remove it on destroy
     this.lenisTickerFn = (time: number) => this.lenis.raf(time * 1000);
     gsap.ticker.add(this.lenisTickerFn);
     gsap.ticker.lagSmoothing(0);
   }
-
   /* ── 2. Wait for Spline, then reveal site ─────────────────── */
   private waitForSplineThenReveal(): void {
     const overlay = document.getElementById('site-loader');
