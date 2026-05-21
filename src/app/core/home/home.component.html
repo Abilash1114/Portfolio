@@ -370,13 +370,13 @@
               <p>Developing 3D web interfaces through Spline and interactive coding.</p>
 
               <!-- Mobile fallback image -->
-              <!-- <div class="d-block d-lg-none">
+              <div class="d-block d-lg-none">
                 <img src="assets/images/spline.png" class="img-fluid spline-fallback" alt="Spline 3D preview" />
-              </div> -->
+              </div>
 
               <!-- Desktop Spline viewer -->
               <div class="spline-container">
-                <div class="">
+                <div class="d-none d-lg-block">
                   <!--
                     opacity: 0 by default — GSAP fades it in once the global
                     loader has finished. This prevents a flash of the 3D scene
@@ -554,25 +554,41 @@
           <div class="custom-card card1" id="proj-1">
             <a href="https://www.behance.net/gallery/233455293/ForkPay-The-Smarter-Way-to-Dine-Pay" target="_blank"
               rel="noopener">
-              <img src="assets/images/pro-1.png" class="img-fluid" alt="ForkPay – Dine & Pay project" />
+              <picture>
+                <source media="(min-width: 992px)" srcset="assets/images/pro-1.png" />
+                <source media="(max-width: 991px)" srcset="assets/images/pro-1.1.png" />
+                <img src="assets/images/pro-1-desktop.png" class="img-fluid" alt="ForkPay – Dine & Pay project" />
+              </picture>
             </a>
           </div>
           <div class="custom-card card2" id="proj-2">
             <a href="https://www.behance.net/gallery/238251613/Corporate-Website-Redesign-InfoPlus-Homepage-UXUI"
               target="_blank" rel="noopener">
-              <img src="assets/images/pro-3.png" class="img-fluid" alt="InfoPlus corporate website redesign" />
+              <picture>
+                <source media="(min-width: 992px)" srcset="assets/images/pro-3.png" />
+                <source media="(max-width: 991px)" srcset="assets/images/pro-3.3.png" />
+                <img src="assets/images/pro-3-desktop.png" class="img-fluid" alt="ForkPay – Dine & Pay project" />
+              </picture>
             </a>
           </div>
           <div class="custom-card card3" id="proj-3">
             <a href="https://www.behance.net/gallery/235183431/Secure-Digital-Wallet-Buy-Gold-App-(UIUX-Case-Study)"
               target="_blank" rel="noopener">
-              <img src="assets/images/pro-2.png" class="img-fluid" alt="Digital wallet app case study" />
+              <picture>
+                <source media="(min-width: 992px)" srcset="assets/images/pro-2.png" />
+                <source media="(max-width: 991px)" srcset="assets/images/pro-2.2.png" />
+                <img src="assets/images/pro-2-desktop.png" class="img-fluid" alt="ForkPay – Dine & Pay project" />
+              </picture>
             </a>
           </div>
           <div class="custom-card card4" id="proj-4">
             <a href="https://www.behance.net/gallery/238250743/Paisa-Pop-Loan-App-Redesign-UXUI-Case-Study"
               target="_blank" rel="noopener">
-              <img src="assets/images/pro-4.png" class="img-fluid" alt="Paisa Pop loan app redesign" />
+              <picture>
+                <source media="(min-width: 992px)" srcset="assets/images/pro-4.png" />
+                <source media="(max-width: 991px)" srcset="assets/images/pro-4.4.png" />
+                <img src="assets/images/pro-4-desktop.png" class="img-fluid" alt="ForkPay – Dine & Pay project" />
+              </picture>
             </a>
           </div>
         </div>
