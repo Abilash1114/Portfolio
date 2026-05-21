@@ -58,9 +58,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   /* ── 1. Lenis smooth scroll ───────────────────────────────── */
   private initLenis(): void {
     this.lenis = new Lenis({
-      lerp: 0.08, // Lower = smoother/slower (0.05–0.15 is the sweet spot)
+      lerp: 0.08,
       smoothWheel: true,
-      smoothTouch: false, // Disable on touch — native touch scroll feels better
+      smoothTouch: false, 
       wheelMultiplier: 1,
       touchMultiplier: 1.5,
       infinite: false,
