@@ -1,67 +1,71 @@
+/* ============================================================
+   main.js — GSAP Animation Functions
+   Portfolio: Abilash Ravi | UI/UX Designer & Frontend Developer
 
+   All functions are called from HomeComponent.ngAfterViewInit().
+   Requires: gsap, ScrollTrigger, SplitText, jQuery ($)
+   ============================================================ */
 
-// gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-// const smooth = ScrollSmoother.create({
-//     smooth: 2,
-//     speed: 2,
-//     effect: true,
-//     smoothTouch: 0.1,
-// })
-
-// gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-
-// let smoother = ScrollSmoother.create({
-//   wrapper: "#smooth-wrapper",
-//   content: "#smooth-content",
-//   smooth: 2,
-//   effects: true,
-//   normalizeScroll: true
-// });
-
-
-function text() {
+/* ── 1. Hero Subtitle Character Animation ───────────────── */
+/**
+ * Animates the #heading element by splitting it into characters
+ * and staggering them in with a fade + slide.
+ * @param {Element} [container] - Optional scoped container element.
+ */
+function text(container) {
   gsap.registerPlugin(SplitText);
 
-  // Split the heading into characters with class 'char'
-  let split = SplitText.create("#heading", { type: "chars", charsClass: "char" });
+  const target = container
+    ? container.querySelector('#heading')
+    : document.querySelector('#heading');
 
-  // Animate each character
+  if (!target) return;
+
+  const split = SplitText.create(target, { type: 'chars', charsClass: 'char' });
+
   gsap.from(split.chars, {
     y: 20,
     autoAlpha: 0,
     opacity: 0,
     stagger: 0.09,
     duration: 1,
-    ease: "power2.out"
+    ease: 'power2.out',
   });
 }
 
-
+/* ── 2. Hero Subtitle Cycling Timer ─────────────────────── */
+/**
+ * Every 5 seconds, swaps the h6 (large gradient) and h5 (solid)
+ * text inside each .hero_smtit, then re-runs the character animation.
+ */
 function timer() {
   gsap.registerPlugin(SplitText);
 
-  // ✅ Corrected 'document' spelling
   document.querySelectorAll('.hero_smtit').forEach((item) => {
-    const ptag = item.querySelector('h6');
-    const htag = item.querySelector('h5');
+    const h6 = item.querySelector('h6');
+    const h5 = item.querySelector('h5');
 
-    gsap.set(ptag, { opacity: 1 });
+    gsap.set(h6, { opacity: 1 });
 
     setInterval(() => {
-      const temp = ptag.textContent;
-      ptag.textContent = htag.textContent;
-      htag.textContent = temp;
-      text(item); // call animation for each section
+      const temp = h6.textContent;
+      h6.textContent = h5.textContent;
+      h5.textContent = temp;
+      text(item); // re-run char animation scoped to this block
     }, 5000);
   });
 }
 
+/* ── 3. Hero Heading Animation ───────────────────────────── */
+/**
+ * Animates the large #hero_heading with per-character stagger,
+ * adjusts font size for mobile, and triggers the robot + details slide-in.
+ */
 function heroheading() {
   gsap.registerPlugin(SplitText, ScrollTrigger);
 
-  // let split = SplitText.create("#hero_heading", { type: "chars" });
-  let split = SplitText.create("#hero_heading", { type: "chars", charsClass: "char" });
-  // Animate each character with a small delay
+  const split = SplitText.create('#hero_heading', { type: 'chars', charsClass: 'char' });
+
   split.chars.forEach((char, i) => {
     gsap.from(char, {
       y: 20,
@@ -69,405 +73,428 @@ function heroheading() {
       opacity: 0,
       duration: 1,
       delay: i * 0.05,
-      ease: "power2.out"
+      ease: 'power2.out',
     });
   });
 
-  if (window.innerWidth >= 380 && window.innerWidth <= 991) {
-    document.querySelectorAll("#hero_heading, #hero_heading .char").forEach((el) => {
-      el.style.fontSize = "30px";
-    });
-  } else {
-    document.querySelectorAll("#hero_heading, #hero_heading .char").forEach((el) => {
-      el.style.fontSize = "140px";
-    });
-  }
+  // Responsive font size
+  const isMobile = window.innerWidth >= 380 && window.innerWidth <= 991;
+  document.querySelectorAll('#hero_heading, #hero_heading .char').forEach((el) => {
+    el.style.fontSize = isMobile ? '30px' : '140px';
+  });
 
-  // Animate .robo element
-  gsap.to(".robo", {
+  // Robot scale-in
+  gsap.to('.robo', {
     scale: 1,
     duration: 1,
-    ease: "power2.out"
+    ease: 'power2.out',
   });
 
-  // Animate .hero_details element
-  gsap.from(".hero_details", {
+  // Details panel slide-in from right
+  gsap.from('.hero_details', {
     x: 100,
     opacity: 0,
     duration: 2,
-    ease: "power2.out"
+    ease: 'power2.out',
   });
 }
 
-
+/* ── 4. Parallax & Section Fade-in ──────────────────────── */
+/**
+ * Creates a parallax effect on the hero background image,
+ * and fades/slides the about section into view on scroll.
+ */
 function parallax() {
-  gsap.registerPlugin(ScrollTrigger)
-  gsap.to(".hero_back", {
-    backgroundPosition: "center 10%",
-    ease: "none",
-    scrollTrigger: {
-      trigger: ".hero_back",
-      start: "top top",
-      end: "bottom top",
-      scrub: true,
-      markers: false,
-      pin: false,
-    }
-  })
+  gsap.registerPlugin(ScrollTrigger);
 
-  gsap.from(".about_section", {
-    y: "30%",
-    opacity: 0,
-    ease: "power2.out",
+  // Hero background parallax
+  gsap.to('.hero_back', {
+    backgroundPosition: 'center 10%',
+    ease: 'none',
     scrollTrigger: {
-      trigger: ".about_section",
-      start: "top 85%",
-      end: "top 50%",
+      trigger: '.hero_back',
+      start: 'top top',
+      end: 'bottom top',
       scrub: true,
-      markers: false,
     },
-  })
+  });
 
-  gsap.to(".gradients", {
+  // About section fade + rise
+  gsap.from('.about_section', {
+    y: '30%',
+    opacity: 0,
+    ease: 'power2.out',
+    scrollTrigger: {
+      trigger: '.about_section',
+      start: 'top 85%',
+      end: 'top 50%',
+      scrub: true,
+    },
+  });
+
+  // Hero bottom gradient reveal
+  gsap.to('.gradients', {
     opacity: 1,
     scrollTrigger: {
-      trigger: ".about_section",
-      start: "top 85%",
-      end: "top 50%",
+      trigger: '.about_section',
+      start: 'top 85%',
+      end: 'top 50%',
       scrub: true,
-      markers: false,
     },
-  })
+  });
 }
 
-
+/* ── 5. Sword / Decorative Element Animation ─────────────── */
+/**
+ * Rotates the .sword-area decorative element as the user scrolls
+ * through the career section.
+ */
 function sward() {
   gsap.registerPlugin(ScrollTrigger);
 
-  gsap.to(".sword-area", {
-    // right: "unset",
-    // left: "0%",
-    // bottom: "0%",
-    // top: "10%",
-    // opacity: 1,
-    // scale: 1.2,
-    // rotate: "180deg",
-    ease: "power1.inOut",
+  gsap.to('.sword-area', {
+    ease: 'power1.inOut',
     scrollTrigger: {
-      trigger: ".sword-area",
-      start: "top 90%",
-      end: "bottom 50%",
+      trigger: '.sword-area',
+      start: 'top 90%',
+      end: 'bottom 50%',
       scrub: 1,
-      markers: false,
     },
   });
 
-  gsap.to(".sword-area", {
-    rotate: "60deg",
-    ease: "none",
+  gsap.to('.sword-area', {
+    rotate: '60deg',
+    ease: 'none',
     scrollTrigger: {
-      trigger: ".sword-area",
-      start: "bottom 25%",
-      end: "bottom top",
+      trigger: '.sword-area',
+      start: 'bottom 25%',
+      end: 'bottom top',
       scrub: 1,
-      duration: 1,
     },
   });
 
-  gsap.to(".sword-area", {
-    rotate: "180deg",
-    ease: "none",
+  gsap.to('.sword-area', {
+    rotate: '180deg',
+    ease: 'none',
     scrollTrigger: {
-      trigger: ".sword-area",
-      start: "bottom 80%",
-      end: "bottom 30%",
+      trigger: '.sword-area',
+      start: 'bottom 80%',
+      end: 'bottom 30%',
       scrub: 1,
-
     },
   });
 }
 
-
-
+/* ── 6. About Title Colour & Scale Animation ─────────────── */
+/**
+ * As the user scrolls, animates each #about-title element
+ * from transparent-stroke to solid white, and scales it up.
+ */
 function about() {
   gsap.registerPlugin(ScrollTrigger);
-  const aboutTitle = document.querySelectorAll('#about-title');
-  aboutTitle.forEach((title) => {
 
-
-    gsap.to(title, {
-      color: "#ffffffff",
-      ease: "power2.out",
+  document.querySelectorAll('#about-title').forEach((titleEl) => {
+    gsap.to(titleEl, {
+      color: '#ffffffff',
+      ease: 'power2.out',
       scrollTrigger: {
-        trigger: title,
-        start: "top center",
-        end: "bottom center",
+        trigger: titleEl,
+        start: 'top center',
+        end: 'bottom center',
         scrub: 1,
-        markers: false
       },
     });
 
-    gsap.to(title, {
+    gsap.to(titleEl, {
       scale: 1.4,
-      ease: "power2.out",
+      ease: 'power2.out',
       scrollTrigger: {
-        trigger: title,
-        start: "top center",
-        end: "bottom center",
+        trigger: titleEl,
+        start: 'top center',
+        end: 'bottom center',
         scrub: 1,
-        markers: false,
       },
     });
   });
 }
 
+/* ── 7. Section Title Character Animation ────────────────── */
+/**
+ * Splits each .title-anim element into characters and slides
+ * them in from the left as they enter the viewport.
+ */
 function title() {
-  if ($(".title-anim").length > 0) {
-    let char_come = gsap.utils.toArray(".title-anim");
-    char_come.forEach((char_come) => {
-      // SplitText with char class
-      let split_char = new SplitText(char_come, {
-        type: "chars, words",
-        charsClass: "char",
-        lineThreshold: 0.5,
-      });
+  if (document.querySelectorAll('.title-anim').length === 0) return;
 
+  const isMobile = window.innerWidth >= 380 && window.innerWidth <= 991;
 
-      if (window.innerWidth >= 380 && window.innerWidth <= 991) {
-        document.querySelectorAll(".title-anim, .title-anim .char").forEach((el) => {
-          el.style.fontSize = "60px";
-        });
-      } else {
-        document.querySelectorAll(".title-anim, .title-anim .char").forEach((el) => {
-          el.style.fontSize = "140px";
-        });
-      }
-
-      const tl2 = gsap.timeline({
-        scrollTrigger: {
-          trigger: char_come,
-          start: "top bottom",
-          end: "bottom 10%",
-          scrub: false,
-          markers: false,
-          toggleActions: "play none none none",
-        },
-      });
-
-      // Animate each character
-      tl2.from(split_char.chars, {
-        duration: 1,
-        x: -70,
-        autoAlpha: 0,
-        stagger: 0.03,
-      });
+  gsap.utils.toArray('.title-anim').forEach((el) => {
+    const split = new SplitText(el, {
+      type: 'chars, words',
+      charsClass: 'char',
+      lineThreshold: 0.5,
     });
-  }
+
+    document.querySelectorAll('.title-anim, .title-anim .char').forEach((node) => {
+      node.style.fontSize = isMobile ? '60px' : '140px';
+    });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: el,
+        start: 'top bottom',
+        end: 'bottom 10%',
+        scrub: false,
+        toggleActions: 'play none none none',
+      },
+    });
+
+    tl.from(split.chars, {
+      duration: 1,
+      x: -70,
+      autoAlpha: 0,
+      stagger: 0.03,
+    });
+  });
 }
 
-
+/* ── 8. Robot Parallax (Knowledge Section) ───────────────── */
+/**
+ * Gently scales and moves the .roboclass element as it scrolls
+ * into view.
+ */
 function what() {
   gsap.registerPlugin(ScrollTrigger);
-  gsap.to(".roboclass", {
+
+  gsap.to('.roboclass', {
     x: 0,
     scale: 1.1,
     scrollTrigger: {
-      trigger: ".roboclass",
-      start: "top bottom",
-      end: "bottom center",
-      markers: false,
+      trigger: '.roboclass',
+      start: 'top bottom',
+      end: 'bottom center',
       scrub: true,
-    }
-  })
+    },
+  });
 }
 
+/* ── 9. Career Timeline Line Animation ───────────────────── */
+/**
+ * Grows the glowing career line from 0% to 100% as the user
+ * scrolls through .my_careeor. Also moves the star indicator
+ * and fades in each .myes career entry.
+ */
 function careerLine() {
   gsap.registerPlugin(ScrollTrigger);
 
-  gsap.to(".my_careeor", {
-    "--line-height": "100%",
-    ease: "none",
+  // Grow the timeline line
+  gsap.to('.my_careeor', {
+    '--line-height': '100%',
+    ease: 'none',
     scrollTrigger: {
-      trigger: ".my_careeor",
-      start: "top 85%",
-      end: "bottom center",
+      trigger: '.my_careeor',
+      start: 'top 85%',
+      end: 'bottom center',
       scrub: true,
-      markers: false,
     },
   });
 
-  gsap.to("#star", {
-    bottom: "-2%",
-    ease: "none",
+  // Move the star down the line
+  gsap.to('#star', {
+    bottom: '-2%',
+    ease: 'none',
     scrollTrigger: {
-      trigger: ".my_careeor",
-      start: "top 85%",
-      end: "bottom center",
+      trigger: '.my_careeor',
+      start: 'top 85%',
+      end: 'bottom center',
       scrub: true,
-      markers: false,
     },
   });
 
-  gsap.utils.toArray(".myes").forEach((section) => {
+  // Fade in each career entry
+  gsap.utils.toArray('.myes').forEach((section) => {
     gsap.fromTo(
       section,
-      { opacity: 0.0 },
+      { opacity: 0 },
       {
         opacity: 1,
-        ease: "power1.out",
+        ease: 'power1.out',
         scrollTrigger: {
           trigger: section,
-          start: "top 100%",
-          end: "bottom 60%",
+          start: 'top 100%',
+          end: 'bottom 60%',
           scrub: true,
-          markers: false,
         },
       }
     );
   });
 }
+
+/* ── 10. Portfolio Stacked Card Animation ────────────────── */
+/**
+ * Pins the .cards section and animates four portfolio cards
+ * stacking on top of each other as the user scrolls.
+ */
 function cardsAnimation() {
   gsap.registerPlugin(ScrollTrigger);
 
   const tl = gsap.timeline({
     scrollTrigger: {
-      trigger: ".cards",
-      start: "top-=50px top",
-      end: "+=2600",
+      trigger: '.cards',
+      start: 'top-=50px top',
+      end: '+=2600',
       pin: true,
       pinSpacing: true,
       scrub: 1,
-      markers: false,
     },
   });
 
   tl
-    // Card 1
-    .addLabel("card1")
-    .to(".card1", { yPercent: 0, opacity: 1 })
+    // Card 1 — initial state
+    .addLabel('card1')
+    .to('.card1', { yPercent: 0, opacity: 1 })
 
-    // Card 2
-    .from(".card2", { yPercent: 75, opacity: 0 })
-    .addLabel("card2")
-    .to(".card1", { scale: 0.925, yPercent: -0.75, opacity: 1 }, "-=0.3")
-    .to(".card2", { yPercent: 0, opacity: 1 })
+    // Card 2 slides up; card 1 shrinks behind it
+    .from('.card2', { yPercent: 75, opacity: 0 })
+    .addLabel('card2')
+    .to('.card1', { scale: 0.925, yPercent: -0.75, opacity: 1 }, '-=0.3')
+    .to('.card2', { yPercent: 0, opacity: 1 })
 
-    // Card 3
-    .from(".card3", { yPercent: 75, opacity: 0 })
-    .addLabel("card3")
-    .to(".card2", { scale: 0.95, yPercent: -0.5, opacity: 1 }, "-=0.3")
-    .to(".card3", { yPercent: 0, opacity: 1 })
+    // Card 3 slides up; card 2 shrinks
+    .from('.card3', { yPercent: 75, opacity: 0 })
+    .addLabel('card3')
+    .to('.card2', { scale: 0.95, yPercent: -0.5, opacity: 1 }, '-=0.3')
+    .to('.card3', { yPercent: 0, opacity: 1 })
 
-    // Card 4
-    .from(".card4", { yPercent: 75, opacity: 0 })
-    .addLabel("card4")
-    .to(".card3", { scale: 0.96, yPercent: -0.35, opacity: 1 }, "-=0.3")
-    .to(".card4", { yPercent: 0, opacity: 1 })
+    // Card 4 slides up; card 3 shrinks
+    .from('.card4', { yPercent: 75, opacity: 0 })
+    .addLabel('card4')
+    .to('.card3', { scale: 0.96, yPercent: -0.35, opacity: 1 }, '-=0.3')
+    .to('.card4', { yPercent: 0, opacity: 1 })
 
-
-    // Exit animations for previous cards (optional)
-    .to(".card1", { scale: 0.925, yPercent: -1.5, opacity: 0.9 }, "-=0.3")
-    .to(".card2", { scale: 0.95, yPercent: -1.125, opacity: 0.9 }, "-=0.3")
-    .to(".card3", { scale: 0.96, yPercent: -0.8, opacity: 0.9 }, "-=0.3");
+    // Exit: fade previous cards slightly
+    .to('.card1', { scale: 0.925, yPercent: -1.5, opacity: 0.9 }, '-=0.3')
+    .to('.card2', { scale: 0.95, yPercent: -1.125, opacity: 0.9 }, '-=0.3')
+    .to('.card3', { scale: 0.96, yPercent: -0.8, opacity: 0.9 }, '-=0.3');
 }
 
-
+/* ── 11. About Me Word Animation ─────────────────────────── */
+/**
+ * Splits the .about_me paragraph into words, sets them invisible,
+ * then fades + slides them in as the paragraph scrolls into view.
+ */
 function about_text() {
-  // gsap.registerPlugin(ScrollTrigger, SplitText);
+  const split = new SplitText('.about_me', { type: 'words' });
 
-  // const split = new SplitText(".about_me", { type: "lines" });
-
-  // split.lines.forEach((target) => {
-  //     gsap.to(target, {
-  //         backgroundPositionX: 0,
-  //         ease: "none",
-  //         scrollTrigger: {
-  //             trigger: target,
-  //             scrub: 1,
-  //             start: "top 100%",
-  //             end: "bottom bottom",
-  //             markers: false
-  //         }
-  //     });
-  // });
-
-  const split = new SplitText(".about_me", { type: "words" });
-
-  // initial state
   gsap.set(split.words, { y: 20, opacity: 0 });
 
-  // animate words into place as the paragraph scrolls into view
   gsap.to(split.words, {
     y: 0,
     opacity: 1,
     duration: 0.6,
     stagger: 0.02,
-    ease: "power2.out",
+    ease: 'power2.out',
     scrollTrigger: {
-      trigger: ".about_me",
-      start: "top 100%",
-      end: "bottom bottom",
+      trigger: '.about_me',
+      start: 'top 100%',
+      end: 'bottom bottom',
       scrub: 1,
-      markers: false
-    }
+    },
   });
-
 }
 
-
-
-
-// function horizontals() {
-//   gsap.registerPlugin(ScrollTrigger);
-
-//   const horizontalSection = document.querySelector(".horizontal");
-
-//   gsap.to(horizontalSection, {
-//     x: () => -(horizontalSection.scrollWidth - window.innerWidth),
-//     ease: "none",
-//     scrollTrigger: {
-//       trigger: "#horizontal-scoll",
-//       start: "top 80px",
-//       end: () => "+=" + (horizontalSection.scrollWidth - window.innerWidth),
-//       scrub: true,
-//       pin: true,           
-//       pinSpacing: true,     
-//       anticipatePin: 1,
-//       markers: false,
-//     },
-//   });
-// }
-
-
+/* ── 12. Horizontal Scroll Section ───────────────────────── */
+/**
+ * On desktop (≥ 768px), pins the #horizontal-scoll section and
+ * scrolls .horizontal sideways as the user scrolls vertically.
+ * On mobile the section stacks normally (no horizontal scroll).
+ */
 function horizontals() {
   gsap.registerPlugin(ScrollTrigger);
 
-  const horizontalSection = document.querySelector(".horizontal");
+  const horizontalSection = document.querySelector('.horizontal');
+  if (!horizontalSection) return;
+
   ScrollTrigger.matchMedia({
-    "(min-width:768px)": function () {
+    '(min-width: 768px)': function () {
       gsap.to(horizontalSection, {
         x: () => -(horizontalSection.scrollWidth - window.innerWidth),
-        ease: "none",
+        ease: 'none',
         scrollTrigger: {
-          trigger: "#horizontal-scoll",
-          start: "top 80px",
-          end: () => "+=" + (horizontalSection.scrollWidth - window.innerWidth),
+          trigger: '#horizontal-scoll',
+          start: 'top 80px',
+          end: () => '+=' + (horizontalSection.scrollWidth - window.innerWidth),
           scrub: true,
           pin: true,
           pinSpacing: true,
           anticipatePin: 1,
-          markers: false,
         },
       });
     },
   });
 }
 
+/* ── 13. Animated Gradient Background ────────────────────── */
+/**
+ * Smoothly transitions the background of #gradient between
+ * green shades using linear interpolation.
+ * Requires jQuery ($).
+ */
+function gradientes() {
+  const colors = [
+    [144, 238, 144], // light green
+    [0, 128, 0], // dark green
+    [50, 205, 50], // lime green
+    [0, 255, 127], // spring green
+    [34, 139, 34], // forest green
+  ];
 
+  let step = 0;
+  let colorIndices = [0, 1, 2, 3];
+  const speed = 0.02;
+
+  function updateGradient() {
+    if (typeof $ === 'undefined') return;
+
+    const [c00, c01, c10, c11] = colorIndices.map((i) => colors[i]);
+    const t = 1 - step;
+
+    const r1 = Math.round(t * c00[0] + step * c01[0]);
+    const g1 = Math.round(t * c00[1] + step * c01[1]);
+    const b1 = Math.round(t * c00[2] + step * c01[2]);
+
+    const r2 = Math.round(t * c10[0] + step * c11[0]);
+    const g2 = Math.round(t * c10[1] + step * c11[1]);
+    const b2 = Math.round(t * c10[2] + step * c11[2]);
+
+    $('#gradient').css({
+      background: `linear-gradient(to right, rgb(${r1},${g1},${b1}), rgb(${r2},${g2},${b2}))`,
+    });
+
+    step += speed;
+
+    if (step >= 1) {
+      step %= 1;
+      colorIndices[0] = colorIndices[1];
+      colorIndices[2] = colorIndices[3];
+      colorIndices[1] = (colorIndices[1] + Math.floor(1 + Math.random() * (colors.length - 1))) % colors.length;
+      colorIndices[3] = (colorIndices[3] + Math.floor(1 + Math.random() * (colors.length - 1))) % colors.length;
+    }
+  }
+
+  setInterval(updateGradient, 10);
+}
+
+/* ── (Optional) Swiper Carousel ──────────────────────────── */
+/**
+ * Initialises a Swiper auto-play carousel.
+ * Pauses on hover, resumes on mouse leave.
+ * Uncomment the call in home.component.ts if needed.
+ */
 function swipe() {
-  const swiper = new Swiper(".swiper", {
+  const swiper = new Swiper('.swiper', {
     speed: 2000,
-    direction: "horizontal",
+    direction: 'horizontal',
     loop: true,
     slidesPerView: 6,
     freeMode: true,
@@ -486,78 +513,12 @@ function swipe() {
     },
   });
 
-  // ensure the element is available — use swiper.el (Swipers container)
-  if (swiper && swiper.el) {
-    // stop on pointer enter
-    swiper.el.addEventListener("mouseenter", () => {
-      if (swiper.autoplay && swiper.autoplay.running) swiper.autoplay.stop();
+  if (swiper?.el) {
+    swiper.el.addEventListener('mouseenter', () => {
+      if (swiper.autoplay?.running) swiper.autoplay.stop();
     });
-
-    // start when pointer leaves
-    swiper.el.addEventListener("mouseleave", () => {
-      if (swiper.autoplay && !swiper.autoplay.running) swiper.autoplay.start();
+    swiper.el.addEventListener('mouseleave', () => {
+      if (!swiper.autoplay?.running) swiper.autoplay.start();
     });
   }
 }
-
-
-function gradientes() {
-  // 🎨 Green shades — from light to dark variations
-  var colors = [
-    [144, 238, 144], // Light green
-    [0, 128, 0],     // Dark green
-    [50, 205, 50],   // Lime green
-    [0, 255, 127],   // Spring green
-    [34, 139, 34],   // Forest green
-  ];
-
-  var step = 0;
-  var colorIndices = [0, 1, 2, 3];
-  var gradientSpeed = 0.02;
-
-  function updateGradient() {
-    if (typeof $ === 'undefined') return;
-
-    var c0_0 = colors[colorIndices[0]];
-    var c0_1 = colors[colorIndices[1]];
-    var c1_0 = colors[colorIndices[2]];
-    var c1_1 = colors[colorIndices[3]];
-
-    var istep = 1 - step;
-    var r1 = Math.round(istep * c0_0[0] + step * c0_1[0]);
-    var g1 = Math.round(istep * c0_0[1] + step * c0_1[1]);
-    var b1 = Math.round(istep * c0_0[2] + step * c0_1[2]);
-    var color1 = "rgb(" + r1 + "," + g1 + "," + b1 + ")";
-
-    var r2 = Math.round(istep * c1_0[0] + step * c1_1[0]);
-    var g2 = Math.round(istep * c1_0[1] + step * c1_1[1]);
-    var b2 = Math.round(istep * c1_0[2] + step * c1_1[2]);
-    var color2 = "rgb(" + r2 + "," + g2 + "," + b2 + ")";
-
-    $('#gradient').css({
-      background: `linear-gradient(to right, ${color1}, ${color2})`
-    });
-
-    step += gradientSpeed;
-    if (step >= 1) {
-      step %= 1;
-      colorIndices[0] = colorIndices[1];
-      colorIndices[2] = colorIndices[3];
-
-      colorIndices[1] = (colorIndices[1] + Math.floor(1 + Math.random() * (colors.length - 1))) % colors.length;
-      colorIndices[3] = (colorIndices[3] + Math.floor(1 + Math.random() * (colors.length - 1))) % colors.length;
-    }
-  }
-
-  setInterval(updateGradient, 10); // slower and smoother transition
-}
-
-
-
-
-// // Card 4
-// .from(".card4", { yPercent: 75, opacity: 0 })
-// .addLabel("card4")
-// .to(".card3", { scale: 0.98, yPercent: -0.4, opacity: 1 }, "-=0.3")
-// .to(".card4", { yPercent: 0, opacity: 1 })
-// .to(".card3", { scale: 0.98, yPercent: -0.85, opacity: 0.9 }, "-=0.3");

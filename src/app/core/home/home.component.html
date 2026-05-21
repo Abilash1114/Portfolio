@@ -1,16 +1,58 @@
-<div class="hero_back">
+<!-- ============================================================
+     SITE LOADER OVERLAY
+     Remains visible until spline-viewer fires its 'load' event
+     (or SPLINE_TIMEOUT_MS elapses). GSAP fades it out then removes
+     it from the DOM so it never blocks scroll / clicks.
+     ============================================================ -->
+<div id="site-loader" aria-hidden="true" aria-label="Loading portfolio">
+
+  <!-- Animated logo mark -->
+  <div class="loader-logo">
+    <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="30" cy="30" r="28" stroke="url(#lg)" stroke-width="2" stroke-linecap="round" stroke-dasharray="176"
+        stroke-dashoffset="176">
+        <animate attributeName="stroke-dashoffset" from="176" to="0" dur="1.4s" fill="freeze" calcMode="spline"
+          keySplines="0.4 0 0.2 1" />
+      </circle>
+      <defs>
+        <linearGradient id="lg" x1="0" y1="0" x2="60" y2="60" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#0BDFBB" />
+          <stop offset="100%" stop-color="#067965" />
+        </linearGradient>
+      </defs>
+    </svg>
+    <!-- Initials inside the ring -->
+    <span class="loader-initials">AR</span>
+  </div>
+
+  <!-- Shimmer bar -->
+  <div class="loader-bar">
+    <div class="loader-bar__fill"></div>
+  </div>
+
+  <!-- Label -->
+  <p class="loader-label">Crafting your experience…</p>
+
+</div>
+<!-- ── /SITE LOADER ── -->
+
+
+<!-- ============================================================
+     NAVBAR / HEADER
+     ============================================================ -->
+<header class="hero_back">
   <div class="container">
-    <div class="row hero_nav">
+
+    <nav class="row hero_nav" aria-label="Main navigation">
+      <!-- Logo -->
       <div class="col-md-3 col-4">
-        <img src="assets/images/logo.svg" class="img-fluid" />
+        <img src="assets/images/logo.svg" class="img-fluid" alt="Abilash logo" />
       </div>
-      <div class="col-lg-5 d-none d-lg-block">
-        <!-- <div class="mail">
-          <a href="mailto:abilashravi09@gmail.com">
-            <p>abilashravi09&#64;gmail.com</p>
-          </a>
-        </div> -->
-      </div>
+
+      <!-- Spacer (desktop) -->
+      <div class="col-lg-5 d-none d-lg-block"></div>
+
+      <!-- Nav links -->
       <div class="col-lg-4 col-8">
         <div class="nav_item">
           <a href="#about_section">
@@ -24,343 +66,393 @@
           </a>
         </div>
       </div>
-    </div>
-    <div class="gradients"></div>
+    </nav>
+
+    <!-- Hero bottom gradient overlay -->
+    <div class="gradients" aria-hidden="true"></div>
+
+    <!-- ── Hero big heading ── -->
     <div class="postion">
-      <h6 id="hero_heading" class="he">UI/UX DESIGNER</h6>
+      <h6 id="hero_heading">UI/UX DESIGNER</h6>
     </div>
+
+    <!-- ── Hero content row ── -->
     <div class="row hero_next">
+
+      <!-- Left: name + CTA -->
       <div class="col-lg-4 order-1">
         <div class="hero_details">
           <div class="hero_name">
-            <!-- <div class="names">
-              <p>I am</p>
-            </div> -->
             <h6>Abilash Ravi</h6>
             <p>
-              UI/UX Designer and Frontend Developer with 3 years of Experience,
-              currently working as a junior UI/UX Designer in JRK Consultancy at
-              Chennai
-              <!-- UI/UX designer based out of Kanyakumari with 3 years of
-              experience, currently working in junior UI UX Designer in JRK
-              Consultancy in Chennai -->
+              UI/UX Designer and Frontend Developer with 3 years of experience,
+              currently working as a Junior UI/UX Designer at JRK Consultancy, Chennai.
             </p>
           </div>
           <div class="d-flex align-items-center justify-content-start">
             <div class="pro_butn">
-              <a href="https://www.linkedin.com/in/abilash-r/" target="_blank">
-                <p style="cursor: pointer">Hire Me</p>
+              <a href="https://www.linkedin.com/in/abilash-r/" target="_blank" rel="noopener">
+                <p>Hire Me</p>
               </a>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- Centre: robot image -->
       <div class="col-lg-4 order-3 order-lg-2">
-        <img src="assets/images/robo.png" class="img-fluid robo" />
+        <img src="assets/images/robo.png" class="img-fluid robo" alt="3D robot illustration" />
       </div>
 
+      <!-- Right: animated role switcher (desktop only) -->
       <div class="col-lg-4 order-2 order-lg-3 d-none d-lg-block">
         <div class="d-flex align-items-center justify-content-center">
           <div class="hero_smtit">
             <p>A Creative</p>
             <h6 id="heading">DEVELOPER</h6>
-            <h5 id="">DESIGNER</h5>
+            <h5>DESIGNER</h5>
           </div>
         </div>
       </div>
+
     </div>
   </div>
-</div>
-<!-- hero section end-->
+</header>
+<!-- ── /HEADER ── -->
 
-<div class="d-none d-lg-block">
+
+<!-- ============================================================
+     FIXED UI ELEMENTS  (social sidebar · bg decoration · resume)
+     ============================================================ -->
+
+<!-- Social icons sidebar — desktop only -->
+<aside class="d-none d-lg-block" aria-label="Social links">
   <div class="social_icons">
-    <a href="https://github.com/Abilash1114" target="_blank">
-      <img src="assets/images/git.svg" class="img-fluid" />
+    <a href="https://github.com/Abilash1114" target="_blank" rel="noopener" aria-label="GitHub">
+      <img src="assets/images/git.svg" class="img-fluid" alt="GitHub" />
     </a>
-    <a href="https://www.linkedin.com/in/abilash-r/" target="_blank">
-      <img src="assets/images/lin.svg" class="img-fluid" />
+    <a href="https://www.linkedin.com/in/abilash-r/" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <img src="assets/images/lin.svg" class="img-fluid" alt="LinkedIn" />
     </a>
-
-    <a href="https://www.behance.net/abilashravi4702" target="_blank">
-      <img src="assets/images/lin1.svg" class="img-fluid" />
+    <a href="https://www.behance.net/abilashravi4702" target="_blank" rel="noopener" aria-label="Behance">
+      <img src="assets/images/lin1.svg" class="img-fluid" alt="Behance" />
     </a>
-    <a href="tel:+916383891982">
-      <img src="assets/images/wh.svg" class="img-fluid" />
+    <a href="tel:+916383891982" aria-label="WhatsApp">
+      <img src="assets/images/wh.svg" class="img-fluid" alt="Phone" />
     </a>
   </div>
+</aside>
+
+<!-- Background corner decorations -->
+<div class="top_left" aria-hidden="true">
+  <img src="assets/images/top.svg" class="img-fluid" alt="" />
+</div>
+<div class="top_right" aria-hidden="true">
+  <img src="assets/images/top.svg" class="img-fluid" alt="" />
 </div>
 
-<div class="top_left">
-  <img src="assets/images/top.svg" class="img-fluid" />
-</div>
-
-<div class="top_right">
-  <img src="assets/images/top.svg" class="img-fluid" />
-</div>
+<!-- Resume download button -->
 <div class="resume">
   <div class="resume_outsaid">
-  <a href="assets/images/resume-1.pdf" download="MyFile.pdf">
-    <p>Resume <img src="assets/images/resume.svg" class="img-fluid" /></p>
-  </a>
+    <a href="assets/images/resume-1.pdf" download="Abilash_Resume.pdf">
+      <p style="margin: 0px;">Resume <img src="assets/images/resume.svg" class="img-fluid" alt="download" /></p>
+    </a>
   </div>
 </div>
 
-<section id="about_section" class="about_section" style="position: relative">
+
+<!-- ============================================================
+     ABOUT SECTION
+     ============================================================ -->
+<section id="about_section" class="about_section">
   <div class="container">
+
+    <!-- Mobile role switcher (shown only on mobile) -->
     <div class="col-lg-4 d-block d-lg-none">
       <div class="d-flex align-items-center justify-content-center">
         <div class="hero_smtit mb-5">
           <p>A Creative</p>
-          <h6 id="heading">DEVELOPER</h6>
-          <h5 id="">DESIGNER</h5>
+          <h6 id="heading-mobile">DEVELOPER</h6>
+          <h5>DESIGNER</h5>
         </div>
       </div>
     </div>
 
+    <!-- Section title -->
     <div class="main_title">
-      <p id="about-title">About Me</p>
+      <p class="section-eyebrow">About Me</p>
       <h6>My Creative<span> Identity</span></h6>
     </div>
 
+    <!-- Bio text + CTA -->
     <div class="row d-flex align-items-center justify-content-center">
       <div class="col-lg-10">
         <p class="about_me">
-          I’m Abilash, A Passionate UI/UX Designer and Frontend Developer with 3
-          years of experience crafting intuitive and visually engaging digital
-          experiences. My work centers on User Centered Design principle (UCD),
-          focusing on creating seamless, accessible, and engaging interfaces
-          that enhance user satisfaction. I specialize in Figma, Adobe Photoshop
-          and Illustrator to design clean, modern and user friendly interfaces.
-          Alongside design, I bring ideas to life through Angular for web and
-          Flutter for App, ensuring a perfect balance between design and
-          functionality. I’ve contributed to several projects, including
-          e-Commerce platforms and innovative web applications, delivering
-          experiences that align with business goals and user needs. I stay
-          Latest with new design system practices and interface design trends
-          to build meaningful and effective digital products.
+          I'm Abilash, a passionate UI/UX Designer and Frontend Developer with 3 years of experience
+          crafting intuitive and visually engaging digital experiences. My work centres on User-Centred
+          Design (UCD) principles — creating seamless, accessible, and engaging interfaces that enhance
+          user satisfaction. I specialise in Figma, Adobe Photoshop, and Illustrator to design clean,
+          modern, and user-friendly interfaces. Alongside design, I bring ideas to life through Angular
+          for web and Flutter for mobile, ensuring a perfect balance between design and functionality.
+          I've contributed to several projects including e-commerce platforms and innovative web
+          applications, delivering experiences that align with business goals and user needs.
         </p>
 
         <div class="d-flex align-items-center justify-content-center">
           <div class="pro_butn">
-            <a href="https://www.linkedin.com/in/abilash-r/" target="_blank">
+            <a href="https://www.linkedin.com/in/abilash-r/" target="_blank" rel="noopener">
               <p>Hire Me</p>
             </a>
           </div>
         </div>
       </div>
     </div>
+
   </div>
 </section>
+<!-- ── /ABOUT ── -->
 
-<section class="know" style="overflow: hidden">
+
+<!-- ============================================================
+     SKILLS / KNOWLEDGE SECTION
+     ============================================================ -->
+<section class="know" aria-label="Skills and knowledge">
   <div class="container">
-    <!-- <h2 class="about-title" id="about-title" style="text-align: center">
-        What I Know
-      </h2> -->
 
     <div class="main_title">
-      <p id="about-title">Why Choose Me</p>
+      <p class="section-eyebrow">Why Choose Me</p>
       <h6>My professional<span> knowledge</span></h6>
     </div>
 
     <div class="row">
       <div class="total_column">
         <div class="first_grid">
-          <div class="what_grid">
-            <div class="out_card">
-              <div class="card_imge" style="border-top-left-radius: 10px">
-                <img src="assets/images/logo1.svg" class="img-fluid" />
-              </div>
-              <div class="card_imge">
-                <img src="assets/images/logo2.svg" class="img-fluid" />
-              </div>
-              <div class="card_imge">
-                <img src="assets/images/logo3.svg" class="img-fluid" />
-              </div>
-              <div class="card_imge">
-                <img src="assets/images/logo4.svg" class="img-fluid" />
-              </div>
-              <div class="card_imge" style="border-top-right-radius: 10px">
-                <img src="assets/images/logo9.svg" class="img-fluid" />
-              </div>
-            </div>
-            <div class="out_card">
-              <div class="card_imge" style="border-bottom-left-radius: 10px">
-                <img src="assets/images/logo10.svg" class="img-fluid" />
-              </div>
-              <div class="card_imge">
-                <img src="assets/images/logo11.svg" class="img-fluid" />
-              </div>
-              <div class="card_imge">
-                <img src="assets/images/logo12.svg" class="img-fluid" />
-              </div>
-              <div class="card_imge">
-                <img src="assets/images/logo13.svg" class="img-fluid" />
-              </div>
-              <div class="card_imge" style="border-bottom-right-radius: 10px">
-                <img src="assets/images/logo14.svg" class="img-fluid" />
-              </div>
-            </div>
-          </div>
 
+          <!-- ── Tool logo grid ── -->
+          <div class="what_grid">
+
+            <!-- Row 1: Design tools -->
+            <div class="out_card">
+              <div class="card_imge card_imge--tl">
+                <img src="assets/images/logo1.svg" class="img-fluid" alt="Tool logo" />
+              </div>
+              <div class="card_imge">
+                <img src="assets/images/logo2.svg" class="img-fluid" alt="Tool logo" />
+              </div>
+              <div class="card_imge">
+                <img src="assets/images/logo3.svg" class="img-fluid" alt="Tool logo" />
+              </div>
+              <div class="card_imge">
+                <img src="assets/images/logo4.svg" class="img-fluid" alt="Tool logo" />
+              </div>
+              <div class="card_imge card_imge--tr">
+                <img src="assets/images/logo9.svg" class="img-fluid" alt="Tool logo" />
+              </div>
+            </div>
+
+            <!-- Row 2: Dev tools -->
+            <div class="out_card">
+              <div class="card_imge card_imge--bl">
+                <img src="assets/images/logo10.svg" class="img-fluid" alt="Tool logo" />
+              </div>
+              <div class="card_imge">
+                <img src="assets/images/logo11.svg" class="img-fluid" alt="Tool logo" />
+              </div>
+              <div class="card_imge">
+                <img src="assets/images/logo12.svg" class="img-fluid" alt="Tool logo" />
+              </div>
+              <div class="card_imge">
+                <img src="assets/images/logo13.svg" class="img-fluid" alt="Tool logo" />
+              </div>
+              <div class="card_imge card_imge--br">
+                <img src="assets/images/logo14.svg" class="img-fluid" alt="Tool logo" />
+              </div>
+            </div>
+
+          </div>
+          <!-- ── /Tool logo grid ── -->
+
+          <!-- ── AI Tools card ── -->
           <div class="what_grid1">
-            <div class="secound_cardwhat secound_it" style="">
+            <div class="secound_cardwhat secound_it" style="height: 250px;">
               <div class="grid_tites">
                 <p class="mb-2">AI Tools</p>
               </div>
-              <p>
-                I use AI tools to enhance design workflows, generate visuals,
-                and improve UX decisions.
-              </p>
+              <p>I use AI tools to enhance design workflows, generate visuals, and improve UX decisions.</p>
               <div class="d-flex align-items-center justify-content-center sec_imag">
-                <img src="assets/images/chat.png" class="img-fluid chat" />
+                <img src="assets/images/chat.png" class="img-fluid chat" alt="AI tool" />
                 <div class="sec_sub">
-                  <img src="assets/images/chat1.png" class="img-fluid chat1" />
-                  <img src="assets/images/chat2.png" class="img-fluid chat2" />
+                  <img src="assets/images/chat1.png" class="img-fluid chat1" alt="AI tool" />
+                  <img src="assets/images/chat2.png" class="img-fluid chat2" alt="AI tool" />
                 </div>
               </div>
             </div>
           </div>
+          <!-- ── /AI Tools card ── -->
+
+          <!-- ── What I Do card ── -->
           <div class="what_grid3">
-            <div class="secound_cardwhat" style="padding: 0px">
-              <div class="grid_3_border" style="padding: 10px">
+            <div class="secound_cardwhat secound_cardwhat--no-pad">
+
+              <div class="grid_3_border grid_3_border--padded">
                 <div class="grid_tites">
                   <p class="mb-2">What I Do</p>
                 </div>
-                <p>
-                  I will design and develop user focused digital experiences that are
-                  visually engaging and easy to use.
-                </p>
+                <p>I design and develop user-focused digital experiences that are visually engaging and easy to use.</p>
               </div>
+
               <div class="grid_cols">
                 <div id="gradient">
                   <div class="grides">
                     <div class="back_grid">
-                      <div class="">
-                        <div class="grid_tites">
-                          <p>UI UX Design</p>
+
+                      <!-- UI/UX skills -->
+                      <div class="grid_tites">
+                        <p>UI UX Design</p>
+                      </div>
+                      <div>
+                        <div class="bx mt-2">
+                          <p>UI Design</p>
                         </div>
-                        <div class="">
-                          <div class="bx mt-2">
-                            <p>UI Design</p>
-                          </div>
-                          <div class="bx">
-                            <p>UX Strategy</p>
-                          </div>
-                          <div class="bx">
-                            <p>Prototyping</p>
-                          </div>
-                          <div class="bx">
-                            <p>Responsive Design</p>
-                          </div>
-                          <div class="bx">
-                            <p>User Research</p>
-                          </div>
-                          <div class="bx">
-                            <p>wireframe</p>
-                          </div>
+                        <div class="bx">
+                          <p>UX Strategy</p>
                         </div>
-                        <hr />
+                        <div class="bx">
+                          <p>Prototyping</p>
+                        </div>
+                        <div class="bx">
+                          <p>Responsive Design</p>
+                        </div>
+                        <div class="bx">
+                          <p>User Research</p>
+                        </div>
+                        <div class="bx">
+                          <p>Wireframe</p>
+                        </div>
                       </div>
 
+                      <hr />
+
+                      <!-- Dev skills -->
                       <div class="grid_tites">
                         <p>Development</p>
                       </div>
-                      <div class="">
+                      <div>
                         <div class="bx mt-2">
                           <p>Websites</p>
                         </div>
-
                         <div class="bx">
                           <p>Apps</p>
                         </div>
-
                         <div class="bx">
                           <p>API Integration</p>
                         </div>
-
                         <div class="bx">
                           <p>Dashboard</p>
                         </div>
                       </div>
+
                     </div>
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
+          <!-- ── /What I Do card ── -->
 
+          <!-- ── Spline 3D card ── -->
           <div class="what_grid5">
-            <div class="secound_cardwhat" style="height: 250px; overflow: hidden">
+            <div class="secound_cardwhat secound_cardwhat--spline">
               <div class="grid_tites">
-                <p class="mb-2">Spline Viewer(3d)</p>
+                <p class="mb-2">Spline Viewer (3D)</p>
               </div>
-              <p>
-                Developing 3D web interfaces through Spline and interactive coding.
-              </p>
-              <div class="d-block d-lg-none">
-                <img src="assets/images/spline.png" class="img-fluid chat" width="200px" />
-              </div>
+              <p>Developing 3D web interfaces through Spline and interactive coding.</p>
+
+              <!-- Mobile fallback image -->
+              <!-- <div class="d-block d-lg-none">
+                <img src="assets/images/spline.png" class="img-fluid spline-fallback" alt="Spline 3D preview" />
+              </div> -->
+
+              <!-- Desktop Spline viewer -->
               <div class="spline-container">
-                <div class="d-none d-lg-block">
-                  <spline-viewer url="https://prod.spline.design/KZlvIB1X24d6edCd/scene.splinecode"></spline-viewer>
+                <div class="">
+                  <!--
+                    opacity: 0 by default — GSAP fades it in once the global
+                    loader has finished. This prevents a flash of the 3D scene
+                    behind the loader overlay.
+                  -->
+                  <spline-viewer url="https://prod.spline.design/KZlvIB1X24d6edCd/scene.splinecode" loading="lazy"
+                    style="opacity: 0;">
+                  </spline-viewer>
                 </div>
               </div>
             </div>
           </div>
+          <!-- ── /Spline 3D card ── -->
 
+          <!-- ── Animation Library card ── -->
           <div class="what_grid4">
             <div class="secound_cardwhat">
               <div class="grid_tites">
                 <p class="mb-2">Animation Library</p>
               </div>
-
               <div class="animactions">
                 <div class="ani_boxs">
-                  <img src="assets/images/logo15.svg" class="img-fluid" />
-                  <p>Jquery</p>
+                  <img src="assets/images/logo15.svg" class="img-fluid" alt="jQuery" />
+                  <p>jQuery</p>
                 </div>
-
                 <div class="ani_boxs">
-                  <img src="assets/images/logo16.svg" class="img-fluid" />
+                  <img src="assets/images/logo16.svg" class="img-fluid" alt="GSAP" />
                   <p>GSAP</p>
                 </div>
-
                 <div class="ani_boxs">
-                  <img src="assets/images/logo17.svg" class="img-fluid" />
+                  <img src="assets/images/logo17.svg" class="img-fluid" alt="Bootstrap" />
                   <p>Bootstrap</p>
                 </div>
-
                 <div class="ani_boxs">
-                  <img src="assets/images/logo18.svg" class="img-fluid" />
+                  <img src="assets/images/logo18.svg" class="img-fluid" alt="Anime.js" />
                   <p>Anime.js</p>
                 </div>
               </div>
             </div>
           </div>
+          <!-- ── /Animation Library card ── -->
+
         </div>
       </div>
     </div>
+
   </div>
 </section>
+<!-- ── /SKILLS ── -->
 
-<section class="career" style="position: relative; overflow: hidden">
+
+<!-- ============================================================
+     CAREER SECTION
+     ============================================================ -->
+<section class="career">
   <div class="container">
+
     <div class="main_title">
-      <p id="about-title">Career Path</p>
-      <h6>My Education &<span> Experience</span></h6>
+      <p class="section-eyebrow">Career Path</p>
+      <h6>My Education &amp;<span> Experience</span></h6>
     </div>
 
+    <!-- Decorative sword / star illustration -->
     <div class="row d-flex align-items-center justify-content-center">
-      <div class="starimage sword-area" style="position: absolute; left: 0px; top: 10px">
-        <div class="sword-area">
-          <img src="assets/images/bu.png" class="img-fluid" />
+      <div class="starimage sword-area">
+        <div class="sword-area__inner">
+          <img src="assets/images/bu.png" class="img-fluid" alt="" aria-hidden="true" />
         </div>
       </div>
     </div>
+
+    <!-- Timeline -->
     <div class="row my_careeor">
-      <div id="starContainer">
+
+      <!-- Animated star marker -->
+      <div id="starContainer" aria-hidden="true">
         <div id="star">
           <div class="half">
             <div id="topLeft" class="starQuarter"></div>
@@ -373,29 +465,29 @@
         </div>
       </div>
 
+      <!-- Entry 1: Bachelor's -->
       <div class="col-lg-12 d-flex align-items-start justify-content-between myes">
         <div class="col-lg-6">
           <div class="d-flex align-items-start justify-content-between">
             <div class="bach_name">
-              <h6>Bachelor Of <br />Engineering</h6>
+              <h6>Bachelor Of<br />Engineering</h6>
               <p>Loyola Institute of Technology</p>
             </div>
-
-            <p class="year" style="padding-left: 20px !important">2018-2022</p>
+            <p class="year year--indent">2018–2022</p>
           </div>
         </div>
         <div class="col-lg-5">
           <div class="ex_detailss">
             <p>
-              Gained analytical and problem-solving skills through mechanical
-              design and project-based learning. This engineering base helped me
-              move into tech and design, applying logic and creativity in UI/UX
-              and frontend development.
+              Gained analytical and problem-solving skills through mechanical design and project-based
+              learning. This engineering base helped me transition into tech and design, applying logic
+              and creativity in UI/UX and frontend development.
             </p>
           </div>
         </div>
       </div>
 
+      <!-- Entry 2: C-Tech certification -->
       <div class="col-lg-12 d-flex align-items-start justify-content-between myes">
         <div class="col-lg-6">
           <div class="d-flex align-items-start justify-content-between">
@@ -403,381 +495,379 @@
               <h6>C-Tech in<br />UI/UX Design</h6>
               <p>IMAGE Creative Education</p>
             </div>
-
-            <p class="year">2022-2023</p>
+            <p class="year">2022–2023</p>
           </div>
         </div>
         <div class="col-lg-5">
           <div class="ex_detailss">
             <p>
-              Earned a C-Tech certification in UI/UX Design from IMAGE Creative
-              Education, where I learned the fundamentals of user-centered
-              design, wireframing, and prototyping, along with industry tools
-              and design best practices.
+              Earned a C-Tech certification in UI/UX Design, learning the fundamentals of user-centred
+              design, wireframing, and prototyping, along with industry tools and best practices.
             </p>
           </div>
         </div>
       </div>
 
+      <!-- Entry 3: Current role -->
       <div class="col-lg-12 d-flex align-items-start justify-content-between myes">
         <div class="col-lg-6">
           <div class="d-flex align-items-start justify-content-between">
             <div class="bach_name">
-              <h6 style="white-space: nowrap">
-                JRK Consulting <br />Services, Chennai
-              </h6>
+              <h6 class="bach_name__nowrap">JRK Consulting<br />Services, Chennai</h6>
               <p>Junior UI/UX Designer</p>
             </div>
-
             <p class="year">NOW</p>
           </div>
         </div>
         <div class="col-lg-5">
           <div class="ex_detailss">
             <p>
-              Focused primarily on UI/UX design, creating engaging and user-friendly interfaces for web and mobile
-              applications. Collaborated closely with developers and clients to design intuitive, visually appealing,
-              and functional digital experiences that enhance user satisfaction and business goals.
+              Focused primarily on UI/UX design, creating engaging and user-friendly interfaces for web
+              and mobile applications. Collaborating closely with developers and clients to deliver
+              intuitive, visually appealing, and functional digital experiences.
             </p>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
+<!-- ── /CAREER ── -->
 
-<section class="resent" id="Portfolio" style="overflow: hidden">
+
+<!-- ============================================================
+     PORTFOLIO / PROJECTS SECTION
+     ============================================================ -->
+<section class="resent" id="Portfolio">
   <div class="container">
+
     <div class="main_title">
-      <p id="about-title">Portfolio</p>
+      <p class="section-eyebrow">Portfolio</p>
       <h6>My Creative <span>Works</span></h6>
     </div>
 
-    <div class="row mt-5 d-none d-lg-block">
+    <!-- Desktop: stacked card animation -->
+    <div class="row mt-5 ">
       <div class="col-12">
         <div class="cards">
-          <div class="custom-card card1" id="1" style="z-index: 2">
-            <a href="https://www.behance.net/gallery/233455293/ForkPay-The-Smarter-Way-to-Dine-Pay" target="_blank">
-              <img src="assets/images/pro-1.png" class="img-fluid" alt="Product image" />
+          <div class="custom-card card1" id="proj-1">
+            <a href="https://www.behance.net/gallery/233455293/ForkPay-The-Smarter-Way-to-Dine-Pay" target="_blank"
+              rel="noopener">
+              <img src="assets/images/pro-1.png" class="img-fluid" alt="ForkPay – Dine & Pay project" />
             </a>
           </div>
-          <div class="custom-card card2" id="2" style="z-index: 3">
-            <a href="https://www.behance.net/gallery/238251613/Corporate-Website-Redesign-InfoPlus-Homepage-UXUI" target="_blank">
-            <img src="assets/images/pro-3.png" class="img-fluid" alt="Product image" />
+          <div class="custom-card card2" id="proj-2">
+            <a href="https://www.behance.net/gallery/238251613/Corporate-Website-Redesign-InfoPlus-Homepage-UXUI"
+              target="_blank" rel="noopener">
+              <img src="assets/images/pro-3.png" class="img-fluid" alt="InfoPlus corporate website redesign" />
             </a>
           </div>
-          <div class="custom-card card3" id="3" style="z-index: 4">
+          <div class="custom-card card3" id="proj-3">
             <a href="https://www.behance.net/gallery/235183431/Secure-Digital-Wallet-Buy-Gold-App-(UIUX-Case-Study)"
-              target="_blank">
-              <img src="assets/images/pro-2.png" class="img-fluid" alt="Product image" />
+              target="_blank" rel="noopener">
+              <img src="assets/images/pro-2.png" class="img-fluid" alt="Digital wallet app case study" />
             </a>
           </div>
-             <div class="custom-card card4" id="3" style="z-index: 5">
+          <div class="custom-card card4" id="proj-4">
             <a href="https://www.behance.net/gallery/238250743/Paisa-Pop-Loan-App-Redesign-UXUI-Case-Study"
-              target="_blank">
-              <img src="assets/images/pro-4.png" class="img-fluid" alt="Product image" />
+              target="_blank" rel="noopener">
+              <img src="assets/images/pro-4.png" class="img-fluid" alt="Paisa Pop loan app redesign" />
             </a>
           </div>
         </div>
       </div>
     </div>
-    <div class="row d-block d-lg-none mobile_work">
+
+    <!-- Mobile: stacked images -->
+    <!-- <div class="row d-block d-lg-none mobile_work">
       <div class="col-12">
-        <a href="https://www.behance.net/gallery/233455293/ForkPay-The-Smarter-Way-to-Dine-Pay" target="_blank">
-          <img src="assets/images/pro-1.1.png" class="img-fluid" alt="" />
+        <a href="https://www.behance.net/gallery/233455293/ForkPay-The-Smarter-Way-to-Dine-Pay" target="_blank"
+          rel="noopener">
+          <img src="assets/images/pro-1.1.png" class="img-fluid" alt="ForkPay" />
         </a>
       </div>
       <div class="col-12">
-           <a href="https://www.behance.net/gallery/238251613/Corporate-Website-Redesign-InfoPlus-Homepage-UXUI" target="_blank">
-        <img src="assets/images/pro-3.3.png" class="img-fluid" alt="" />
+        <a href="https://www.behance.net/gallery/238251613/Corporate-Website-Redesign-InfoPlus-Homepage-UXUI"
+          target="_blank" rel="noopener">
+          <img src="assets/images/pro-3.3.png" class="img-fluid" alt="InfoPlus redesign" />
         </a>
       </div>
       <div class="col-12">
         <a href="https://www.behance.net/gallery/235183431/Secure-Digital-Wallet-Buy-Gold-App-(UIUX-Case-Study)"
-          target="_blank">
-          <img src="assets/images/pro-2.2.png" class="img-fluid mb-4" alt="" />
+          target="_blank" rel="noopener">
+          <img src="assets/images/pro-2.2.png" class="img-fluid mb-4" alt="Digital Wallet" />
         </a>
       </div>
-
-         <div class="col-12">
-        <a href="https://www.behance.net/gallery/238250743/Paisa-Pop-Loan-App-Redesign-UXUI-Case-Study"
-          target="_blank">
-          <img src="assets/images/pro-4.4.png" class="img-fluid mb-4" alt="" />
+      <div class="col-12">
+        <a href="https://www.behance.net/gallery/238250743/Paisa-Pop-Loan-App-Redesign-UXUI-Case-Study" target="_blank"
+          rel="noopener">
+          <img src="assets/images/pro-4.4.png" class="img-fluid mb-4" alt="Paisa Pop" />
         </a>
       </div>
+    </div> -->
 
-    </div>
   </div>
 </section>
+<!-- ── /PORTFOLIO ── -->
 
-<section id="horizontal-scoll">
+
+<!-- ============================================================
+     WEB WORKS — HORIZONTAL SCROLL SECTION
+     ============================================================ -->
+<section id="horizontal-scoll" aria-label="Web works showcase">
   <div class="horizontal-scoll-wrapper">
     <div class="horizontal">
+
+      <!-- 01 Digital Innovation -->
       <div class="occasion d-flex flex-column">
         <div class="order-2 order-lg-1">
           <div class="first">
             <p class="webnum">01</p>
             <div class="we">
               <p class="webname">Digital Innovation</p>
-              <p class="wende">Web design & Development</p>
+              <p class="wende">Web Design &amp; Development</p>
             </div>
           </div>
           <div class="details_of">
-            <p class="detaof">Tools & Features</p>
+            <p class="detaof">Tools &amp; Features</p>
             <div class="tools_listes">
-              <p>HTML,CSS,JavaScript,Type Script,gsap</p>
+              <p>HTML, CSS, JavaScript, TypeScript, GSAP</p>
             </div>
           </div>
         </div>
         <div class="order-1 order-lg-2">
-          <a class="" href="https://businesstransform.vercel.app/" target="_blank">
+          <a href="https://businesstransform.vercel.app/" target="_blank" rel="noopener">
             <div class="sample_img">
-              <img src="assets/images/01.png" class="img-fluid" />
-              <div class="arr">
-                <img src="assets/images/arr.svg" class="img-fluid" />
-              </div>
+              <img src="assets/images/01.png" class="img-fluid" alt="Digital Innovation project" />
+              <div class="arr"><img src="assets/images/arr.svg" class="img-fluid" alt="View" /></div>
             </div>
           </a>
         </div>
       </div>
 
+      <!-- 02 Portfolio -->
       <div class="occasion">
-        <a href="https://abilashportfolio.vercel.app/" target="_blank">
-        <div class="sample_img">
-          <img src="assets/images/02.png" class="img-fluid" />
-          <div class="arr">
-            <img src="assets/images/arr.svg" class="img-fluid" />
+        <a href="https://abilashportfolio.vercel.app/" target="_blank" rel="noopener">
+          <div class="sample_img">
+            <img src="assets/images/02.png" class="img-fluid" alt="Portfolio project" />
+            <div class="arr"><img src="assets/images/arr.svg" class="img-fluid" alt="View" /></div>
           </div>
-        </div>
         </a>
         <div class="first mt-3">
           <p class="webnum">02</p>
           <div class="we">
             <p class="webname">Portfolio</p>
-            <p class="wende">Web design & Development</p>
+            <p class="wende">Web Design &amp; Development</p>
           </div>
         </div>
-
         <div class="details_of">
-          <p class="detaof">Tools & Features</p>
+          <p class="detaof">Tools &amp; Features</p>
           <div class="tools_listes">
-            <p>HTML,CSS,JavaScript,Type Script,gsap</p>
+            <p>HTML, CSS, JavaScript, TypeScript, GSAP</p>
           </div>
         </div>
       </div>
 
+      <!-- 03 Car Booking -->
       <div class="occasion d-flex flex-column">
         <div class="order-2 order-lg-1">
           <div class="first">
             <p class="webnum">03</p>
             <div class="we">
               <p class="webname">Car Booking</p>
-              <p class="wende">Web design & Development</p>
+              <p class="wende">Web Design &amp; Development</p>
             </div>
           </div>
-
           <div class="details_of">
-            <p class="detaof">Tools & Features</p>
+            <p class="detaof">Tools &amp; Features</p>
             <div class="tools_listes">
-              <p>HTML,CSS,JavaScript,Type Script</p>
+              <p>HTML, CSS, JavaScript, TypeScript</p>
             </div>
           </div>
         </div>
         <div class="order-1 order-lg-2">
           <div class="sample_img">
-            <img src="assets/images/03.png" class="img-fluid" />
-            <div class="arr">
-              <img src="assets/images/arr.svg" class="img-fluid" />
-            </div>
+            <img src="assets/images/03.png" class="img-fluid" alt="Car Booking project" />
+            <div class="arr"><img src="assets/images/arr.svg" class="img-fluid" alt="View" /></div>
           </div>
         </div>
       </div>
 
+      <!-- 04 Weather Dashboard -->
       <div class="occasion">
         <div class="sample_img">
-          <img src="assets/images/04.png" class="img-fluid" />
-          <div class="arr">
-            <img src="assets/images/arr.svg" class="img-fluid" />
-          </div>
+          <img src="assets/images/04.png" class="img-fluid" alt="Weather Dashboard" />
+          <div class="arr"><img src="assets/images/arr.svg" class="img-fluid" alt="View" /></div>
         </div>
         <div class="first mt-3">
           <p class="webnum">04</p>
           <div class="we">
             <p class="webname">Weather Dashboard</p>
-            <p class="wende">Coming Zoon</p>
+            <p class="wende">Coming Soon</p>
           </div>
         </div>
-
         <div class="details_of">
-          <p class="detaof">Tools & Features</p>
+          <p class="detaof">Tools &amp; Features</p>
           <div class="tools_listes">
-            <p></p>
+            <p>&nbsp;</p>
           </div>
         </div>
       </div>
 
+      <!-- 05 ECommerce -->
       <div class="occasion d-flex flex-column">
         <div class="order-2 order-lg-1">
           <div class="first">
             <p class="webnum">05</p>
             <div class="we">
               <p class="webname">ECommerce</p>
-              <p class="wende">Coming Zoon</p>
+              <p class="wende">Coming Soon</p>
             </div>
           </div>
-
           <div class="details_of">
-            <p class="detaof">Tools & Features</p>
+            <p class="detaof">Tools &amp; Features</p>
             <div class="tools_listes">
-              <p></p>
+              <p>&nbsp;</p>
             </div>
           </div>
         </div>
         <div class="order-1 order-lg-2">
           <div class="sample_img">
-            <img src="assets/images/05.png" class="img-fluid" />
-            <div class="arr">
-              <img src="assets/images/arr.svg" class="img-fluid" />
-            </div>
+            <img src="assets/images/05.png" class="img-fluid" alt="ECommerce project" />
+            <div class="arr"><img src="assets/images/arr.svg" class="img-fluid" alt="View" /></div>
           </div>
         </div>
       </div>
 
-      <div class="occasion d-none d-lg-block" style="width: 200px !important"></div>
+      <!-- Trailing spacer — desktop only -->
+      <div class="occasion occasion--spacer d-none d-lg-block" aria-hidden="true"></div>
+
     </div>
   </div>
 </section>
+<!-- ── /WEB WORKS ── -->
 
-<section class="get" id="contact">
+
+<!-- ============================================================
+     CONTACT SECTION
+     ============================================================ -->
+<section class="get" id="contact" aria-label="Contact">
   <div class="container-lg container-fluid">
     <div class="row d-flex align-items-center justify-content-center">
+
+      <!-- Left: Contact form -->
       <div class="col-md-6">
         <div class="info_get">
           <div class="info_tit">
             <h6>Connect with me</h6>
           </div>
           <div class="info_sub">
-            <p>
+            <p>Let's collaborate and bring innovative ideas to life. Reach out anytime — I'm just a message away!</p>
+          </div>
 
-              Let’s collaborate and bring innovative ideas to life. Reach out anytime — I’m just a message away!
-            </p>
-          </div>
           <div class="row">
             <div class="col-lg-6">
-              <input placeholder="Name" />
+              <input type="text" placeholder="Name" aria-label="Name" />
             </div>
             <div class="col-lg-6">
-              <input placeholder="Mobile Number" />
+              <input type="tel" placeholder="Mobile Number" aria-label="Mobile Number" />
             </div>
           </div>
           <div class="row">
             <div class="col-lg-6">
-              <input placeholder="Email Id" />
+              <input type="email" placeholder="Email Id" aria-label="Email" />
             </div>
             <div class="col-lg-6">
-              <input placeholder="Your Requirement" />
+              <input type="text" placeholder="Your Requirement" aria-label="Requirement" />
             </div>
           </div>
-          <textarea placeholder="How can I help?"></textarea>
+          <textarea placeholder="How can I help?" aria-label="Message"></textarea>
 
           <div class="web_button d-flex align-items-start justify-content-start">
-            <p style="padding: 10px 50px">Submit</p>
+            <p class="web_button__label">Submit</p>
           </div>
         </div>
       </div>
+
+      <!-- Right: Contact details -->
       <div class="col-md-6">
         <div class="right_con">
           <div class="right_con_tit">
             <h6>Contact Details</h6>
           </div>
-
           <div class="right_con_sub">
             <p>
-              Have an idea or project in mind? I’d love to hear from you! Let’s connect, share ideas, and create
-              something truly impactful together.
+              Have an idea or project in mind? I'd love to hear from you!
+              Let's connect, share ideas, and create something truly impactful together.
             </p>
           </div>
 
           <div class="row">
             <div class="col-lg-6">
               <div class="con d-flex align-items-start justify-content-start">
-                <div class="">
-                  <img src="assets/images/add.svg" />
-                </div>
-                <div class="">
-                  <div class="fe">
-                    <p>Location</p>
-
-                    <h6>Chennai, India</h6>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-6">
-              <div class="con d-flex align-items-start justify-content-start">
-                <div class="">
-                  <img src="assets/images/mobile.svg" />
-                </div>
-                <div class="">
-                  <div class="fe">
-                    <p>Mobile</p>
-                    <h6>6383891982</h6>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-6">
-              <div class="con d-flex align-items-start justify-content-start">
-                <div class="">
-                  <img src="assets/images/avi.svg" />
-                </div>
-                <div class="">
-                  <div class="fe">
-                    <p>Availability</p>
-                    <h6>Daily 09 am - 09pm</h6>
-                  </div>
+                <img src="assets/images/add.svg" alt="" aria-hidden="true" />
+                <div class="fe">
+                  <p>Location</p>
+                  <h6>Chennai, India</h6>
                 </div>
               </div>
             </div>
             <div class="col-lg-6">
               <div class="con d-flex align-items-start justify-content-start">
-                <div class="">
-                  <img src="assets/images/email.svg" />
+                <img src="assets/images/mobile.svg" alt="" aria-hidden="true" />
+                <div class="fe">
+                  <p>Mobile</p>
+                  <h6>6383891982</h6>
                 </div>
-                <div class="">
-                  <div class="fe">
-                    <p>Email</p>
-                    <a href="mailto:abilashravi09@gmail.com">
-                      <h6>abilashravi09&#64;gmail.com</h6>
-                    </a>
-                  </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="con d-flex align-items-start justify-content-start">
+                <img src="assets/images/avi.svg" alt="" aria-hidden="true" />
+                <div class="fe">
+                  <p>Availability</p>
+                  <h6>Daily 09 am – 09 pm</h6>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="con d-flex align-items-start justify-content-start">
+                <img src="assets/images/email.svg" alt="" aria-hidden="true" />
+                <div class="fe">
+                  <p>Email</p>
+                  <a href="mailto:abilashravi09@gmail.com">
+                    <h6>abilashravi09&#64;gmail.com</h6>
+                  </a>
                 </div>
               </div>
             </div>
           </div>
+
           <hr />
+
           <div class="d-flex align-items-center justify-content-between social">
             <p>Social media</p>
             <div class="icones">
-                 <a href="https://github.com/Abilash1114" target="_blank">
-      <img src="assets/images/git.svg" class="img-fluid" />
-    </a>
-    <a href="https://www.linkedin.com/in/abilash-r/" target="_blank">
-      <img src="assets/images/lin.svg" class="img-fluid" />
-    </a>
-
-    <a href="https://www.behance.net/abilashravi4702" target="_blank">
-      <img src="assets/images/lin1.svg" class="img-fluid" />
-    </a>
-    <a href="tel:+916383891982">
-      <img src="assets/images/wh.svg" class="img-fluid" />
-    </a>
+              <a href="https://github.com/Abilash1114" target="_blank" rel="noopener" aria-label="GitHub">
+                <img src="assets/images/git.svg" class="img-fluid" alt="GitHub" />
+              </a>
+              <a href="https://www.linkedin.com/in/abilash-r/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <img src="assets/images/lin.svg" class="img-fluid" alt="LinkedIn" />
+              </a>
+              <a href="https://www.behance.net/abilashravi4702" target="_blank" rel="noopener" aria-label="Behance">
+                <img src="assets/images/lin1.svg" class="img-fluid" alt="Behance" />
+              </a>
+              <a href="tel:+916383891982" aria-label="Phone">
+                <img src="assets/images/wh.svg" class="img-fluid" alt="Phone" />
+              </a>
             </div>
           </div>
+
         </div>
       </div>
+
     </div>
   </div>
 </section>
+<!-- ── /CONTACT ── -->

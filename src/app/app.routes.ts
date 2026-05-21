@@ -5,3 +5,4 @@ export const routes: Routes = [
         path:'',loadComponent:()=>import('./core/home/home.component').then((t)=>t.HomeComponent)
     }
 ];
+ 
