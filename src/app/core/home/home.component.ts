@@ -50,28 +50,28 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.ngZone.runOutsideAngular(() => {
-      this.initLenis();
+      // this.initLenis();
       this.waitForSplineThenReveal();
     });
   }
 
   /* ── 1. Lenis smooth scroll ───────────────────────────────── */
-  private initLenis(): void {
-    this.lenis = new Lenis({
-      lerp: 0.08,
-      smoothWheel: true,
-      smoothTouch: false, 
-      wheelMultiplier: 1,
-      touchMultiplier: 1.5,
-      infinite: false,
-    });
+  // private initLenis(): void {
+  //   this.lenis = new Lenis({
+  //     lerp: 0.08,
+  //     smoothWheel: true,
+  //     smoothTouch: false,
+  //     wheelMultiplier: 1,
+  //     touchMultiplier: 1.5,
+  //     infinite: false,
+  //   });
 
-    this.lenis.on('scroll', ScrollTrigger.update);
+  //   this.lenis.on('scroll', ScrollTrigger.update);
 
-    this.lenisTickerFn = (time: number) => this.lenis.raf(time * 1000);
-    gsap.ticker.add(this.lenisTickerFn);
-    gsap.ticker.lagSmoothing(0);
-  }
+  //   this.lenisTickerFn = (time: number) => this.lenis.raf(time * 1000);
+  //   gsap.ticker.add(this.lenisTickerFn);
+  //   gsap.ticker.lagSmoothing(0);
+  // }
   /* ── 2. Wait for Spline, then reveal site ─────────────────── */
   private waitForSplineThenReveal(): void {
     const overlay = document.getElementById('site-loader');
