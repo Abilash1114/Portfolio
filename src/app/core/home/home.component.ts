@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   AfterViewInit,
   Component,
@@ -7,12 +8,19 @@ import {
   OnInit,
 } from '@angular/core';
 
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+
 /* ─── Globals loaded via index.html <script> tags ─── */
 declare const gsap: any;
 declare const ScrollTrigger: any;
 declare const Lenis: any;
 
-/* ─── Portfolio animation functions (main.js) ─── */
+/* ─── Portfolio animation functions ─── */
 declare function text(): void;
 declare function timer(): void;
 declare function heroheading(): void;
@@ -30,19 +38,29 @@ declare function gradientes(): void;
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
+  styleUrls: ['./home.component.css'],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
-  /* ── Private state ────────────────────────────────────────── */
+  /* ───────────────────────────────────────────── */
+  /* Private State                                */
+  /* ───────────────────────────────────────────── */
+
   private lenis: any;
+
   private lenisTickerFn: ((time: number) => void) | null = null;
+
   private readonly SPLINE_TIMEOUT_MS = 8000;
+
   private splineTimeoutId: ReturnType<typeof setTimeout> | null = null;
 
   constructor(private ngZone: NgZone) {}
+
+  /* ───────────────────────────────────────────── */
+  /* Angular Lifecycle                            */
+  /* ───────────────────────────────────────────── */
 
   ngOnInit(): void {
     gsap.registerPlugin(ScrollTrigger);
@@ -55,7 +73,86 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  /* ── 1. Lenis smooth scroll ───────────────────────────────── */
+  ngOnDestroy(): void {
+    if (this.splineTimeoutId) {
+      clearTimeout(this.splineTimeoutId);
+    }
+
+    if (this.lenis) {
+      this.lenis.destroy();
+    }
+
+    if (this.lenisTickerFn) {
+      gsap.ticker.remove(this.lenisTickerFn);
+      this.lenisTickerFn = null;
+    }
+
+    ScrollTrigger.getAll().forEach((t: any) => t.kill());
+  }
+
+  /* ───────────────────────────────────────────── */
+  /* Reactive Form                                */
+  /* ───────────────────────────────────────────── */
+
+  contactform = new FormGroup({
+    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+
+    mobile: new FormControl('', [
+      Validators.required,
+      Validators.pattern('^[0-9]{10}$'),
+    ]),
+
+    email: new FormControl('', [
+      Validators.required,
+      Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$'),
+    ]),
+
+    requirement: new FormControl('', [Validators.required]),
+
+    comment: new FormControl('', [Validators.required]),
+  });
+
+  /* ───────────────────────────────────────────── */
+  /* Submit Form                                  */
+  /* ───────────────────────────────────────────── */
+
+  submitform(): void {
+    if (this.contactform.valid) {
+      const formvalue = this.contactform.value;
+
+      const companyemail = 'radhajewelcrafterode@gmail.com';
+
+      const subject = 'Contact Form Message';
+
+      const body = `
+Name: ${formvalue.name}
+
+Mobile: ${formvalue.mobile}
+
+Email: ${formvalue.email}
+
+Requirement: ${formvalue.requirement}
+
+Comment:
+${formvalue.comment}
+      `;
+
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${encodeURIComponent(
+        companyemail,
+      )}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+      window.open(gmailUrl, '_blank');
+
+      this.contactform.reset();
+    } else {
+      this.contactform.markAllAsTouched();
+    }
+  }
+
+  /* ───────────────────────────────────────────── */
+  /* Lenis Smooth Scroll                          */
+  /* ───────────────────────────────────────────── */
+
   // private initLenis(): void {
   //   this.lenis = new Lenis({
   //     lerp: 0.08,
@@ -68,13 +165,22 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   //   this.lenis.on('scroll', ScrollTrigger.update);
 
-  //   this.lenisTickerFn = (time: number) => this.lenis.raf(time * 1000);
+  //   this.lenisTickerFn = (time: number) => {
+  //     this.lenis.raf(time * 1000);
+  //   };
+
   //   gsap.ticker.add(this.lenisTickerFn);
+
   //   gsap.ticker.lagSmoothing(0);
   // }
-  /* ── 2. Wait for Spline, then reveal site ─────────────────── */
+
+  /* ───────────────────────────────────────────── */
+  /* Wait for Spline                              */
+  /* ───────────────────────────────────────────── */
+
   private waitForSplineThenReveal(): void {
     const overlay = document.getElementById('site-loader');
+
     const splineEl = document.querySelector(
       'spline-viewer',
     ) as HTMLElement | null;
@@ -89,8 +195,12 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         opacity: 0,
         duration: 0.8,
         ease: 'power2.inOut',
+
         onComplete: () => {
-          if (overlay) overlay.style.display = 'none';
+          if (overlay) {
+            overlay.style.display = 'none';
+          }
+
           document.body.classList.remove('loading');
         },
       });
@@ -104,46 +214,51 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         });
       }
 
-      setTimeout(() => this.initAllAnimations(), 400);
+      setTimeout(() => {
+        this.initAllAnimations();
+      }, 400);
     };
 
     if (splineEl) {
-      splineEl.addEventListener('load', revealSite, { once: true });
+      splineEl.addEventListener('load', revealSite, {
+        once: true,
+      });
     }
 
     this.splineTimeoutId = setTimeout(revealSite, this.SPLINE_TIMEOUT_MS);
   }
 
-  /* ── 3. Fire all GSAP animations after loader fades ──────── */
+  /* ───────────────────────────────────────────── */
+  /* Initialize Animations                        */
+  /* ───────────────────────────────────────────── */
+
   private initAllAnimations(): void {
     ScrollTrigger.refresh();
+
     text();
+
     timer();
+
     heroheading();
+
     parallax();
+
     sward();
+
     about();
+
     title();
+
     what();
+
     about_text();
+
     careerLine();
+
     cardsAnimation();
+
     horizontals();
+
     gradientes();
-  }
-
-  /* ── 4. Cleanup on route change ───────────────────────────── */
-  ngOnDestroy(): void {
-    if (this.splineTimeoutId) clearTimeout(this.splineTimeoutId);
-
-    if (this.lenis) this.lenis.destroy();
-
-    // Remove the exact same fn reference we added — safe remove
-    if (this.lenisTickerFn) {
-      gsap.ticker.remove(this.lenisTickerFn);
-      this.lenisTickerFn = null;
-    }
-
-    ScrollTrigger.getAll().forEach((t: any) => t.kill());
   }
 }

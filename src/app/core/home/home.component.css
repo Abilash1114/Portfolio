@@ -868,6 +868,10 @@ textarea {
   border-color: #295a50;
 }
 
+.web_button__label {
+  color: white;
+}
+
 .right_con_tit h6 {
   font-size: 36px;
   font-weight: 600;
@@ -1159,4 +1163,14 @@ textarea {
 p {
   margin: 0px;
   padding: 0px;
+}
+
+
+.text-danger {
+  position: relative;
+}
+
+.text-danger small {
+  position: absolute;
+  bottom: 0px;
 }

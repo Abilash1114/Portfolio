@@ -782,28 +782,167 @@
           <div class="info_sub">
             <p>Let's collaborate and bring innovative ideas to life. Reach out anytime — I'm just a message away!</p>
           </div>
+          <form [formGroup]="contactform" (ngSubmit)="submitform()">
 
-          <div class="row">
-            <div class="col-lg-6">
-              <input type="text" placeholder="Name" aria-label="Name" />
-            </div>
-            <div class="col-lg-6">
-              <input type="tel" placeholder="Mobile Number" aria-label="Mobile Number" />
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-6">
-              <input type="email" placeholder="Email Id" aria-label="Email" />
-            </div>
-            <div class="col-lg-6">
-              <input type="text" placeholder="Your Requirement" aria-label="Requirement" />
-            </div>
-          </div>
-          <textarea placeholder="How can I help?" aria-label="Message"></textarea>
+            <!-- NAME -->
 
-          <div class="web_button d-flex align-items-start justify-content-start">
-            <p class="web_button__label">Submit</p>
-          </div>
+            <div class="row">
+
+              <div class="col-lg-6">
+
+                <input type="text" name="name" placeholder="Name" aria-label="Name" formControlName="name" />
+
+                @if (
+                contactform.get('name')?.invalid &&
+                contactform.get('name')?.touched
+                ) {
+
+                <div class="text-danger mt-1">
+
+                  @if (
+                  contactform.get('name')?.errors?.['required']
+                  ) {
+                  <small>Name is required</small>
+                  }
+
+                  @if (
+                  contactform.get('name')?.errors?.['minlength']
+                  ) {
+                  <small>Minimum 3 characters required</small>
+                  }
+
+                </div>
+
+                }
+
+              </div>
+
+              <!-- MOBILE -->
+
+              <div class="col-lg-6">
+
+                <input type="tel" name="mobile" placeholder="Mobile Number" aria-label="Mobile Number"
+                  formControlName="mobile" />
+
+                @if (
+                contactform.get('mobile')?.invalid &&
+                contactform.get('mobile')?.touched
+                ) {
+
+                <div class="text-danger mt-1">
+
+                  @if (
+                  contactform.get('mobile')?.errors?.['required']
+                  ) {
+                  <small>Mobile number is required</small>
+                  }
+
+                  @if (
+                  contactform.get('mobile')?.errors?.['pattern']
+                  ) {
+                  <small>Enter valid 10 digit mobile number</small>
+                  }
+
+                </div>
+
+                }
+
+              </div>
+
+            </div>
+
+            <div class="row">
+
+              <!-- EMAIL -->
+
+              <div class="col-lg-6">
+
+                <input type="email" name="email" placeholder="Email Id" aria-label="Email" formControlName="email" />
+
+                @if (
+                contactform.get('email')?.invalid &&
+                contactform.get('email')?.touched
+                ) {
+
+                <div class="text-danger mt-1">
+
+                  @if (
+                  contactform.get('email')?.errors?.['required']
+                  ) {
+                  <small>Email is required</small>
+                  }
+
+                  @if (
+                  contactform.get('email')?.errors?.['pattern']
+                  ) {
+                  <small>Enter valid email</small>
+                  }
+
+                </div>
+
+                }
+
+              </div>
+
+              <!-- REQUIREMENT -->
+
+              <div class="col-lg-6">
+
+                <input type="text" name="requirement" placeholder="Your Requirement" aria-label="Requirement"
+                  formControlName="requirement" />
+
+                @if (
+                contactform.get('requirement')?.invalid &&
+                contactform.get('requirement')?.touched
+                ) {
+
+                <div class="text-danger mt-1">
+
+                  @if (
+                  contactform.get('requirement')?.errors?.['required']
+                  ) {
+                  <small>Requirement field is required</small>
+                  }
+
+                </div>
+
+                }
+
+              </div>
+
+            </div>
+
+            <!-- COMMENT -->
+
+            <textarea name="comment" placeholder="How can I help?" aria-label="Message"
+              formControlName="comment"></textarea>
+
+            @if (
+            contactform.get('comment')?.invalid &&
+            contactform.get('comment')?.touched
+            ) {
+
+            <div class="text-danger mt-1">
+
+              @if (
+              contactform.get('comment')?.errors?.['required']
+              ) {
+              <small>Message is required</small>
+              }
+
+            </div>
+
+            }
+
+            <!-- BUTTON -->
+            <div class="d-flex align-items-staer justify-content-start">
+              <div type="submit" class="web_button d-flex align-items-start justify-content-start">
+                <span class="web_button__label">
+                  Submit
+                </span>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
 
