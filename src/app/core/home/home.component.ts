@@ -120,7 +120,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.contactform.valid) {
       const formvalue = this.contactform.value;
 
-      const companyemail = 'radhajewelcrafterode@gmail.com';
+      const companyemail = 'abilashravi09@gmail.com';
 
       const subject = 'Contact Form Message';
 

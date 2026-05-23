@@ -1174,3 +1174,8 @@ p {
   position: absolute;
   bottom: 0px;
 }
+
+button {
+  background-color: transparent;
+  border: none;
+}

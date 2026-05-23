@@ -784,9 +784,11 @@
           </div>
           <form [formGroup]="contactform" (ngSubmit)="submitform()">
 
-            <!-- NAME -->
+            <!-- NAME + MOBILE -->
 
             <div class="row">
+
+              <!-- NAME -->
 
               <div class="col-lg-6">
 
@@ -850,6 +852,8 @@
               </div>
 
             </div>
+
+            <!-- EMAIL + REQUIREMENT -->
 
             <div class="row">
 
@@ -935,13 +939,19 @@
             }
 
             <!-- BUTTON -->
-            <div class="d-flex align-items-staer justify-content-start">
-              <div type="submit" class="web_button d-flex align-items-start justify-content-start">
+
+            <div class="d-flex align-items-start justify-content-start">
+
+              <button type="submit" class="web_button d-flex align-items-start justify-content-start">
+
                 <span class="web_button__label">
                   Submit
                 </span>
-              </div>
+
+              </button>
+
             </div>
+
           </form>
         </div>
       </div>
