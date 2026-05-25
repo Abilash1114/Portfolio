@@ -71,7 +71,7 @@ a {
 /* ── Hero background ────────────────────────────────────────── */
 .hero_back {
     width: 100vw;
-    height: 100vh;
+    height: 800px;
     background: url('/assets/images/hero_back.png') no-repeat center center / cover;
     overflow: hidden;
     position: relative;

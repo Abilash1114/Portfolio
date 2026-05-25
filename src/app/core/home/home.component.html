@@ -925,33 +925,25 @@
             contactform.get('comment')?.invalid &&
             contactform.get('comment')?.touched
             ) {
-
             <div class="text-danger mt-1">
-
               @if (
               contactform.get('comment')?.errors?.['required']
-              ) {
+              )
+              {
               <small>Message is required</small>
               }
-
             </div>
-
             }
 
             <!-- BUTTON -->
 
             <div class="d-flex align-items-start justify-content-start">
-
               <button type="submit" class="web_button d-flex align-items-start justify-content-start">
-
                 <span class="web_button__label">
                   Submit
                 </span>
-
               </button>
-
             </div>
-
           </form>
         </div>
       </div>
