@@ -1,0 +1,246 @@
+<section class="get" id="contact" aria-label="Contact">
+  <div class="container-lg container-fluid">
+    <div class="row d-flex align-items-center justify-content-center">
+      <!-- Left: Contact form -->
+      <div class="col-md-6">
+        <div class="info_get">
+          <div class="info_tit">
+            <h6>Connect with me</h6>
+          </div>
+          <div class="info_sub">
+            <p>
+              Let's collaborate and bring innovative ideas to life. Reach out
+              anytime — I'm just a message away!
+            </p>
+          </div>
+          <form [formGroup]="contactform" (ngSubmit)="submitform()">
+            <div class="row">
+              <div class="col-lg-6">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  aria-label="Name"
+                  formControlName="name"
+                />
+                @if (
+                  contactform.get("name")?.invalid &&
+                  contactform.get("name")?.touched
+                ) {
+                  <div class="text-danger mt-1">
+                    @if (contactform.get("name")?.errors?.["required"]) {
+                      <small>Name is required</small>
+                    }
+                    @if (contactform.get("name")?.errors?.["minlength"]) {
+                      <small>Minimum 3 characters required</small>
+                    }
+                  </div>
+                }
+              </div>
+              <div class="col-lg-6">
+                <input
+                  type="tel"
+                  name="mobile"
+                  placeholder="Mobile Number"
+                  aria-label="Mobile Number"
+                  formControlName="mobile"
+                />
+                @if (
+                  contactform.get("mobile")?.invalid &&
+                  contactform.get("mobile")?.touched
+                ) {
+                  <div class="text-danger mt-1">
+                    @if (contactform.get("mobile")?.errors?.["required"]) {
+                      <small>Mobile number is required</small>
+                    }
+                    @if (contactform.get("mobile")?.errors?.["pattern"]) {
+                      <small>Enter valid 10 digit mobile number</small>
+                    }
+                  </div>
+                }
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6">
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email Id"
+                  aria-label="Email"
+                  formControlName="email"
+                />
+                @if (
+                  contactform.get("email")?.invalid &&
+                  contactform.get("email")?.touched
+                ) {
+                  <div class="text-danger mt-1">
+                    @if (contactform.get("email")?.errors?.["required"]) {
+                      <small>Email is required</small>
+                    }
+                    @if (contactform.get("email")?.errors?.["pattern"]) {
+                      <small>Enter valid email</small>
+                    }
+                  </div>
+                }
+              </div>
+              <div class="col-lg-6">
+                <input
+                  type="text"
+                  name="requirement"
+                  placeholder="Your Requirement"
+                  aria-label="Requirement"
+                  formControlName="requirement"
+                />
+                @if (
+                  contactform.get("requirement")?.invalid &&
+                  contactform.get("requirement")?.touched
+                ) {
+                  <div class="text-danger mt-1">
+                    @if (contactform.get("requirement")?.errors?.["required"]) {
+                      <small>Requirement field is required</small>
+                    }
+                  </div>
+                }
+              </div>
+            </div>
+
+            <textarea
+              name="comment"
+              placeholder="How can I help?"
+              aria-label="Message"
+              formControlName="comment"
+            ></textarea>
+            @if (
+              contactform.get("comment")?.invalid &&
+              contactform.get("comment")?.touched
+            ) {
+              <div class="text-danger mt-1">
+                @if (contactform.get("comment")?.errors?.["required"]) {
+                  <small>Message is required</small>
+                }
+              </div>
+            }
+
+            <div class="d-flex align-items-start justify-content-start">
+              <div
+                class="web_button d-flex align-items-start justify-content-start"
+                (click)="submitform()"
+                role="button"
+                tabindex="0"
+                (keydown.enter)="submitform()"
+                aria-label="Submit contact form"
+              >
+                <span class="web_button__label">Submit</span>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Right: Contact details -->
+      <div class="col-md-6">
+        <div class="right_con">
+          <div class="right_con_tit">
+            <h6>Contact Details</h6>
+          </div>
+          <div class="right_con_sub">
+            <p>
+              Have an idea or project in mind? I'd love to hear from you! Let's
+              connect, share ideas, and create something truly impactful
+              together.
+            </p>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="con d-flex align-items-start justify-content-start">
+                <img src="assets/images/add.svg" alt="" aria-hidden="true" />
+                <div class="fe">
+                  <p>Location</p>
+                  <h6>Chennai, India</h6>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="con d-flex align-items-start justify-content-start">
+                <img src="assets/images/mobile.svg" alt="" aria-hidden="true" />
+                <div class="fe">
+                  <p>Mobile</p>
+                  <h6>6383891982</h6>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="con d-flex align-items-start justify-content-start">
+                <img src="assets/images/avi.svg" alt="" aria-hidden="true" />
+                <div class="fe">
+                  <p>Availability</p>
+                  <h6>Daily 09 am – 09 pm</h6>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="con d-flex align-items-start justify-content-start">
+                <img src="assets/images/email.svg" alt="" aria-hidden="true" />
+                <div class="fe">
+                  <p>Email</p>
+                  <a href="mailto:abilashravi09@gmail.com">
+                    <h6>abilashravi09&#64;gmail.com</h6>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <hr />
+
+          <div class="d-flex align-items-center justify-content-between social">
+            <p>Social media</p>
+            <div class="icones">
+              <a
+                href="https://github.com/Abilash1114"
+                target="_blank"
+                rel="noopener"
+                aria-label="GitHub"
+              >
+                <img
+                  src="assets/images/git.svg"
+                  class="img-fluid"
+                  alt="GitHub"
+                />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/abilash-r/"
+                target="_blank"
+                rel="noopener"
+                aria-label="LinkedIn"
+              >
+                <img
+                  src="assets/images/lin.svg"
+                  class="img-fluid"
+                  alt="LinkedIn"
+                />
+              </a>
+              <a
+                href="https://www.behance.net/abilashravi4702"
+                target="_blank"
+                rel="noopener"
+                aria-label="Behance"
+              >
+                <img
+                  src="assets/images/lin1.svg"
+                  class="img-fluid"
+                  alt="Behance"
+                />
+              </a>
+              <a href="tel:+916383891982" aria-label="Phone">
+                <img src="assets/images/wh.svg" class="img-fluid" alt="Phone" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

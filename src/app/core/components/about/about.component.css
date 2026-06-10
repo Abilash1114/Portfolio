@@ -1,0 +1,10 @@
+/* About section styles are global in styles.css (about_section, about_me).
+   Only component-specific overrides go here. */
+
+@media screen and (min-width: 380px) and (max-width: 768px) {
+  .about_me {
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 30px;
+  }
+}

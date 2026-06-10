@@ -1,0 +1,215 @@
+/* ── Career / Timeline ── */
+.career {
+  position: relative;
+  overflow: hidden;
+}
+
+.starimage {
+  position: absolute;
+  left: 0;
+  top: 10px;
+}
+
+.my_careeor {
+  position: relative;
+  margin: 50px auto !important;
+  --line-height: 0%;
+}
+
+.my_careeor::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: var(--line-height);
+  background: linear-gradient(to bottom, #15cf8b, #00ddff);
+  border-radius: 4px;
+  box-shadow:
+    0 0 10px #15cf8b,
+    0 0 25px #00ffff;
+}
+
+.my_careeor::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, #e2e2e20c, #e1e1e10c);
+  border-radius: 4px;
+}
+
+.myes {
+  padding-top: 100px !important;
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+.bach_name h6 {
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 45px;
+  letter-spacing: 0.2px;
+  color: #f8f5f5;
+  font-family: "Roboto", sans-serif;
+}
+
+.bach_name p {
+  color: var(--color-brand);
+  font-size: 20px;
+}
+
+.bach_name__nowrap {
+  white-space: nowrap;
+}
+
+.year {
+  font-size: 36px;
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+  padding-right: 50px !important;
+}
+
+.year--indent {
+  padding-left: 20px !important;
+}
+
+.ex_detailss p {
+  text-align: justify;
+}
+
+/* ── Star marker animation ── */
+#star {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  position: absolute;
+  left: 48.45%;
+  animation: starRotation 6.5s linear infinite;
+  z-index: 999;
+  filter: drop-shadow(0 0 4px rgba(11, 223, 187, 1))
+    drop-shadow(0 0 12px rgba(11, 223, 187, 0.6))
+    drop-shadow(0 0 24px rgba(11, 223, 187, 0.25));
+}
+
+/* Outer spark — ring that pulses outward */
+#star::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(11, 223, 187, 0.6);
+  animation: starSpark 2s ease-out infinite;
+  pointer-events: none;
+}
+/*
+@keyframes starSpark {
+  0% {
+    box-shadow: 0 0 0 0px rgba(11, 223, 187, 0.65);
+  }
+  60% {
+    box-shadow: 0 0 0 18px rgba(11, 223, 187, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0px rgba(11, 223, 187, 0);
+  }
+} */
+
+.half {
+  display: flex;
+}
+
+.starQuarter {
+  width: 20px;
+  height: 20px;
+  animation: animStarSize 6.5s ease-in-out infinite;
+}
+
+#topLeft {
+  background: radial-gradient(
+    ellipse at top left,
+    transparent 70%,
+    rgb(226, 255, 229) 100%
+  );
+}
+#topRight {
+  background: radial-gradient(
+    ellipse at top right,
+    transparent 70%,
+    rgb(226, 255, 229) 100%
+  );
+}
+#bottomLeft {
+  background: radial-gradient(
+    ellipse at bottom left,
+    transparent 70%,
+    rgb(226, 255, 229) 100%
+  );
+}
+#bottomRight {
+  background: radial-gradient(
+    ellipse at bottom right,
+    transparent 70%,
+    rgb(226, 255, 229) 100%
+  );
+}
+
+/* @keyframes animStarSize {
+  0%, 100% { width: 20px; height: 20px; }
+  50%       { width: 28px; height: 28px; }
+} */
+
+/* ── Mobile ── */
+@media screen and (min-width: 380px) and (max-width: 768px) {
+  .career {
+    overflow: visible;
+  }
+
+  .career .starimage {
+    display: none;
+  }
+
+  .my_careeor::before {
+    left: 5%;
+    background: linear-gradient(to bottom, #4772ff, #00ddff);
+    box-shadow:
+      0 0 10px #4772ff,
+      0 0 25px #00ffff;
+  }
+
+  .my_careeor::after {
+    left: 5%;
+  }
+
+  #star {
+    left: 0%;
+  }
+
+  .bach_name h6 {
+    font-size: 22px;
+  }
+
+  .bach_name p {
+    font-size: 16px;
+    white-space: nowrap;
+  }
+
+  .year {
+    font-size: 14px;
+    padding-left: 50px !important;
+    padding-top: 10px;
+  }
+
+  .myes {
+    flex-direction: column;
+    padding-left: 40px;
+  }
+
+  .ex_detailss {
+    margin-top: 20px;
+  }
+}

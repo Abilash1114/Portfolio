@@ -5,7 +5,7 @@
    ================================================================ */
 
 /* ── Google Fonts ── */
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
 /*
   Available font stacks:
@@ -14,230 +14,342 @@
     font-family: "Barlow", sans-serif;
 */
 
+/* ── Loader: block scroll while site is loading ─────────────── */
+body.loading {
+  overflow: hidden !important;
+}
 
 /* ── Base reset ─────────────────────────────────────────────── */
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    width: 100vw;
-    height: auto;
-    overflow-x: hidden !important;
-    overscroll-behavior: none;
-    background: linear-gradient(180deg, rgba(1, 12, 10, 1) 0%, rgba(1, 28, 23, 1) 100%);
+  width: 100vw;
+  height: auto;
+  overflow-x: hidden !important;
+  overscroll-behavior: none;
+  background: linear-gradient(
+    180deg,
+    rgba(1, 12, 10, 1) 0%,
+    rgba(1, 28, 23, 1) 100%
+  );
 }
 
 p {
-    margin: 0;
-    padding: 0;
-    font-family: "Roboto", sans-serif !important;
-    font-weight: 400;
-    color: #FFFFFF;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif !important;
+  font-weight: 400;
+  color: #ffffff;
 }
 
 a {
-    text-decoration: none !important;
+  text-decoration: none !important;
 }
-
 
 /* ── Global CTA button ──────────────────────────────────────── */
 .pro_butn {
-    background: linear-gradient(180deg, rgba(11, 223, 187, 1) 0%, rgba(6, 121, 101, 1) 100%);
-    border-radius: 40px;
-    margin: 20px 0 !important;
-    box-shadow: rgba(0, 0, 0, 0.548) 0px 2px 4px 0px inset;
-    cursor: pointer;
-    position: relative;
-    z-index: 9999;
+  background: linear-gradient(
+    180deg,
+    rgba(11, 223, 187, 1) 0%,
+    rgba(6, 121, 101, 1) 100%
+  );
+  border-radius: 40px;
+  margin: 20px 0 !important;
+  box-shadow: rgba(0, 0, 0, 0.548) 0px 2px 4px 0px inset;
+  cursor: pointer;
+  position: relative;
+  z-index: 9999;
 }
 
 .pro_butn:hover {
-    background: linear-gradient(180deg, rgb(46, 168, 148) 100%, rgba(11, 223, 187, 1) 0%);
+  background: linear-gradient(
+    180deg,
+    rgb(46, 168, 148) 100%,
+    rgba(11, 223, 187, 1) 0%
+  );
 }
 
 .pro_butn p {
-    color: white;
-    padding: 10px 40px !important;
-    border-radius: 100px;
-    font-size: 18px;
-    font-weight: 600;
-    margin: 0px !important;
+  color: white;
+  padding: 10px 40px !important;
+  border-radius: 100px;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0px !important;
 }
-
 
 /* ── Hero background ────────────────────────────────────────── */
 .hero_back {
-    width: 100vw;
-    height: 800px;
-    background: url('/assets/images/hero_back.png') no-repeat center center / cover;
-    overflow: hidden;
-    position: relative;
+  width: 100vw;
+  height: 800px;
+  background: url("/assets/images/hero_back.png") no-repeat center center /
+    cover;
+  overflow: hidden;
+  position: relative;
 }
-
 
 /* ── Navbar ─────────────────────────────────────────────────── */
 .hero_nav {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin: 20px 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 20px 0 !important;
 }
 
 .nav_item {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
-
 
 /* ── Hero headings ──────────────────────────────────────────── */
 
 /* Large background heading (UI/UX DESIGNER) */
 .postion h6,
 .postion h6 .char {
-    font-size: 140px;
+  font-size: 140px;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  letter-spacing: 0.2px;
+  text-align: center;
+  margin: 0 !important;
+  padding: 20px 0 !important;
+  background: linear-gradient(
+    180deg,
+    rgba(244, 255, 254, 1) 0%,
+    rgba(1, 32, 26, 0.9) 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Name heading */
+.hero_name {
+  margin-top: 100px;
+}
+
+.hero_name h6 {
+  font-family: "Roboto", sans-serif;
+  font-size: 40px;
+  font-weight: 500;
+  background: linear-gradient(
+    180deg,
+    rgba(132, 255, 231, 1) 0%,
+    rgba(11, 174, 142, 1) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.hero_name p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 30px;
+  text-align: justify;
+}
+
+.hero_next .pro_butn {
+  margin-top: 30px;
+}
+
+/* Role switcher (DEVELOPER / DESIGNER) */
+.hero_smtit {
+  position: relative;
+  margin-top: 100px;
+}
+
+.hero_smtit p {
+  font-size: 20px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.hero_smtit h6,
+.hero_smtit h6 .char {
+  font-size: 60px;
+  letter-spacing: 0.6px;
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+  background: linear-gradient(
+    180deg,
+    rgba(132, 255, 230, 0.39) 0%,
+    rgba(132, 255, 230, 0.13) 31%,
+    rgba(1, 32, 26, 0) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: inline-block;
+  height: 60px;
+  overflow: hidden;
+}
+
+.hero_smtit h5 {
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  right: 0;
+  font-size: 40px;
+  letter-spacing: 0.2px;
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: white;
+  text-align: center;
+}
+
+/* Robot image — scaled up by GSAP on load */
+.robo {
+  scale: 0.5;
+}
+
+/* Hero bottom gradient overlay — fades in on scroll */
+.gradients {
+  background: linear-gradient(
+    180deg,
+    rgba(1, 15, 12, 0) 0%,
+    rgba(1, 15, 12, 0.48) 31%,
+    rgba(1, 15, 12, 1) 100%
+  );
+  width: 100vw;
+  height: 150px;
+  position: absolute;
+  left: 0;
+  bottom: 0 !important;
+  z-index: 1;
+  opacity: 0;
+}
+
+/* ── About section ──────────────────────────────────────────── */
+.about_section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.about_me {
+  /* margin-left: 50px; */
+  font-size: 20px;
+  line-height: 40px;
+  text-align: justify !important;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.about_me div {
+  display: inline;
+  background-size: 200% 100%;
+  background-position-x: 100%;
+  color: white;
+}
+
+/* ── CSS Custom Properties ──────────────────────────────────── */
+:root {
+  --color-brand: #0abb9c;
+  --color-brand-dark: #067965;
+  --color-bg: #010c0a;
+  --color-border: rgba(62, 75, 75, 0.32);
+  --color-border-soft: rgba(165, 165, 165, 0.15);
+  --color-text-muted: rgba(185, 185, 185, 0.6);
+  --transition-base: 0.4s ease;
+  --radius-card: 10px;
+}
+
+/* ── Section eyebrow label ──────────────────────────────────── */
+.section-eyebrow {
+  margin-top: 80px;
+  text-align: center;
+  position: relative;
+  font-size: 18px;
+  font-family: "Lora", serif !important;
+  text-shadow:
+    0 0 12px #189c6b,
+    0 0 20px #189c6b,
+    0 0 40px #189c6b;
+}
+
+/* ── Main title block ───────────────────────────────────────── */
+.main_title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 30px 0;
+}
+
+.main_title h6 {
+  padding: 0 !important;
+  margin-top: 20px !important;
+  font-size: 38px;
+  color: white;
+  font-family: "Roboto", sans-serif !important;
+  white-space: nowrap;
+}
+
+.main_title span {
+  background: linear-gradient(
+    180deg,
+    rgba(24, 156, 107, 1) 0%,
+    rgb(4, 97, 66) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ── Mobile: hero role switcher height fix ───────────────────── */
+@media screen and (min-width: 380px) and (max-width: 768px) {
+  .hero_smtit h6,
+  .hero_smtit h6 .char {
+    height: 60px !important;
+  }
+
+  .hero_smtit h5 {
+    bottom: -38px;
+    font-size: 50px;
+  }
+
+  .section-eyebrow {
+    margin-top: 40px !important;
+  }
+
+  .main_title h6 {
+    font-size: 28px !important;
+    white-space: nowrap;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  .postion h6,
+  .postion h6 .char {
+    font-size: 120px !important;
     font-family: "Roboto", sans-serif;
     font-weight: bold;
     letter-spacing: 0.2px;
     text-align: center;
     margin: 0 !important;
     padding: 20px 0 !important;
-    background: linear-gradient(180deg, rgba(244, 255, 254, 1) 0%, rgba(1, 32, 26, 0.9) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(244, 255, 254, 1) 0%,
+      rgba(1, 32, 26, 0.9) 100%
+    );
     background-repeat: no-repeat;
     background-size: 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-}
-
-/* Name heading */
-.hero_name {
-    margin-top: 100px;
-}
-
-.hero_name h6 {
-    font-family: "Roboto", sans-serif;
-    font-size: 40px;
-    font-weight: 500;
-    background: linear-gradient(180deg, rgba(132, 255, 231, 1) 0%, rgba(11, 174, 142, 1) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-}
-
-.hero_name p {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 30px;
-    text-align: justify;
-}
-
-.hero_next .pro_butn {
-    margin-top: 30px;
-}
-
-/* Role switcher (DEVELOPER / DESIGNER) */
-.hero_smtit {
-    position: relative;
-    margin-top: 100px;
-}
-
-.hero_smtit p {
-    font-size: 20px;
-    font-weight: 500;
-    color: #FFFFFF;
-}
-
-.hero_smtit h6,
-.hero_smtit h6 .char {
-    font-size: 60px;
-    letter-spacing: 0.6px;
-    font-weight: 600;
-    font-family: "Roboto", sans-serif;
-    background: linear-gradient(180deg, rgba(132, 255, 230, 0.39) 0%, rgba(132, 255, 230, 0.13) 31%, rgba(1, 32, 26, 0) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-    margin: 0 !important;
-    padding: 0 !important;
-    display: inline-block;
-    height: 60px;
-    overflow: hidden;
-}
-
-.hero_smtit h5 {
-    position: absolute;
-    bottom: -50px;
-    left: 0;
-    right: 0;
-    font-size: 40px;
-    letter-spacing: 0.2px;
-    font-weight: 600;
-    font-family: "Roboto", sans-serif;
-    margin: 0 !important;
-    padding: 0 !important;
-    color: white;
-    text-align: center;
-}
-
-/* Robot image — scaled up by GSAP on load */
-.robo {
-    scale: 0.5;
-}
-
-/* Hero bottom gradient overlay — fades in on scroll */
-.gradients {
-    background: linear-gradient(180deg, rgba(1, 15, 12, 0) 0%, rgba(1, 15, 12, 0.48) 31%, rgba(1, 15, 12, 1) 100%);
-    width: 100vw;
-    height: 150px;
-    position: absolute;
-    left: 0;
-    bottom: 0 !important;
-    z-index: 1;
-    opacity: 0;
-}
-
-
-/* ── About section ──────────────────────────────────────────── */
-.about_section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    position: relative;
-}
-
-.about_me {
-    /* margin-left: 50px; */
-    font-size: 20px;
-    line-height: 40px;
-    text-align: justify !important;
-    color: transparent;
-    -webkit-background-clip: text;
-    background-clip: text;
-}
-
-.about_me div {
-    display: inline;
-    background-size: 200% 100%;
-    background-position-x: 100%;
-    color: white;
-}
-
-
-/* ── Mobile: hero role switcher height fix ───────────────────── */
-@media screen and (min-width: 380px) and (max-width: 768px) {
-
-    .hero_smtit h6,
-    .hero_smtit h6 .char {
-        height: 60px !important;
-    }
-
-    .hero_smtit h5 {
-        bottom: -38px;
-        font-size: 50px;
-    }
+  }
 }

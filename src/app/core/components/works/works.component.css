@@ -1,0 +1,170 @@
+/* ── Portfolio stacked cards ── */
+.cards {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100dvh;
+  min-height: 100vh;
+  overflow: hidden;
+  margin-bottom: 90px;
+}
+
+.custom-card {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  height: 70vh;
+  color: #fff;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+}
+
+.card1 { z-index: 2; }
+.card2 { top: 30px; z-index: 3; }
+.card3 { top: 60px; z-index: 4; }
+.card4 { top: 90px; z-index: 5; }
+
+.mobile_work img {
+  margin-top: 30px;
+}
+
+/* ── Web works title ── */
+#horizontal-scoll {
+  padding-top: 60px;
+}
+
+.web-works-title {
+  margin-bottom: 40px;
+}
+
+.web-works-title .section-eyebrow {
+  margin-top: 0;
+}
+
+/* ── Horizontal scroll (web works) ── */
+.horizontal-scoll-wrapper {
+  height: 580px;
+  overflow: hidden;
+}
+
+.horizontal {
+  display: flex;
+  flex-wrap: nowrap;
+  width: max-content;
+}
+
+.occasion {
+  border: 1px solid rgba(130, 148, 148, 0.176);
+  height: 580px;
+  width: 500px;
+  padding: 40px;
+}
+
+.occasion--spacer {
+  width: 200px !important;
+}
+
+.occasion img {
+  width: 600px;
+}
+
+.webnum {
+  font-size: 60px;
+  font-weight: 800;
+  font-family: "Lora", serif !important;
+}
+
+.first {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.we {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+
+.webname { color: #fff5f8; }
+
+.wende { color: rgba(255, 245, 248, 0.376); }
+
+.detaof {
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.tools_listes p {
+  margin-top: 2px;
+  color: rgba(255, 245, 248, 0.376) !important;
+  letter-spacing: 0.5px;
+  font-size: 14px;
+}
+
+.sample_img {
+  width: 100%;
+  height: 250px;
+  margin-top: 20px;
+  cursor: pointer;
+  position: relative;
+}
+
+.sample_img img {
+  width: 100%;
+  height: 100%;
+}
+
+.arr {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.sample_img:hover .arr {
+  visibility: visible;
+  opacity: 1;
+  cursor: pointer;
+}
+
+/* ── Mobile ── */
+@media screen and (min-width: 380px) and (max-width: 768px) {
+  .sample_img {
+    height: auto !important;
+  }
+
+  .horizontal {
+    flex-direction: column;
+    width: max-content;
+  }
+
+  .horizontal-scoll-wrapper {
+    height: auto !important;
+    overflow: visible;
+  }
+
+  .occasion {
+    height: auto !important;
+    width: 100vw !important;
+    padding: 20px !important;
+  }
+
+  .occasion img {
+    width: auto !important;
+  }
+
+  #horizontal-scoll {
+    overflow-x: hidden;
+  }
+}

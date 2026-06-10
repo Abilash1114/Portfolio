@@ -1,139 +1,108 @@
 <!-- ============================================================
      SITE LOADER OVERLAY
-     Remains visible until spline-viewer fires its 'load' event
-     (or SPLINE_TIMEOUT_MS elapses). GSAP fades it out then removes
-     it from the DOM so it never blocks scroll / clicks.
      ============================================================ -->
 <div id="site-loader" aria-hidden="true" aria-label="Loading portfolio">
-
-  <!-- Animated logo mark -->
   <div class="loader-logo">
-    <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <circle cx="30" cy="30" r="28" stroke="url(#lg)" stroke-width="2" stroke-linecap="round" stroke-dasharray="176"
-        stroke-dashoffset="176">
-        <animate attributeName="stroke-dashoffset" from="176" to="0" dur="1.4s" fill="freeze" calcMode="spline"
-          keySplines="0.4 0 0.2 1" />
+    <svg
+      viewBox="0 0 60 60"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <circle
+        cx="30"
+        cy="30"
+        r="28"
+        stroke="url(#lg)"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-dasharray="176"
+        stroke-dashoffset="176"
+      >
+        <animate
+          attributeName="stroke-dashoffset"
+          from="176"
+          to="0"
+          dur="1.4s"
+          fill="freeze"
+          calcMode="spline"
+          keySplines="0.4 0 0.2 1"
+        />
       </circle>
       <defs>
-        <linearGradient id="lg" x1="0" y1="0" x2="60" y2="60" gradientUnits="userSpaceOnUse">
+        <linearGradient
+          id="lg"
+          x1="0"
+          y1="0"
+          x2="60"
+          y2="60"
+          gradientUnits="userSpaceOnUse"
+        >
           <stop offset="0%" stop-color="#0BDFBB" />
           <stop offset="100%" stop-color="#067965" />
         </linearGradient>
       </defs>
     </svg>
-    <!-- Initials inside the ring -->
     <span class="loader-initials">AR</span>
   </div>
-  <!-- Shimmer bar -->
   <div class="loader-bar">
     <div class="loader-bar__fill"></div>
   </div>
-
-  <!-- Label -->
   <p class="loader-label">Preparing my creative world…</p>
-
 </div>
-<!-- ── /SITE LOADER ── -->
-
 
 <!-- ============================================================
-     NAVBAR / HEADER
+     STICKY HEADER
      ============================================================ -->
-<header class="hero_back">
+<nav id="sticky-header" aria-label="Sticky navigation">
   <div class="container">
-
-    <nav class="row hero_nav" aria-label="Main navigation">
-      <!-- Logo -->
+    <div class="row hero_nav">
       <div class="col-md-3 col-4">
-        <img src="assets/images/logo.svg" class="img-fluid" alt="Abilash logo" />
+        <img
+          src="assets/images/logo.svg"
+          class="img-fluid"
+          alt="Abilash logo"
+        />
       </div>
-
-      <!-- Spacer (desktop) -->
       <div class="col-lg-5 d-none d-lg-block"></div>
-
-      <!-- Nav links -->
       <div class="col-lg-4 col-8">
         <div class="nav_item">
-          <a href="#about_section">
-            <p>About</p>
-          </a>
-          <a href="#Portfolio">
-            <p>Portfolio</p>
-          </a>
-          <a href="#contact">
-            <p>Contact</p>
-          </a>
+          <a href="#about_section"><p>About</p></a>
+          <a href="#Portfolio"><p>Portfolio</p></a>
+          <a href="#contact"><p>Contact</p></a>
         </div>
       </div>
-    </nav>
-
-    <!-- Hero bottom gradient overlay -->
-    <div class="gradients" aria-hidden="true"></div>
-
-    <!-- ── Hero big heading ── -->
-    <div class="postion">
-      <h6 id="hero_heading">UI/UX DESIGNER</h6>
-    </div>
-
-    <!-- ── Hero content row ── -->
-    <div class="row hero_next">
-
-      <!-- Left: name + CTA -->
-      <div class="col-lg-4 order-1">
-        <div class="hero_details">
-          <div class="hero_name">
-            <h6>Abilash Ravi</h6>
-            <p>
-              UI/UX Designer and Frontend Developer with 3 years of experience,
-              currently working as a UI/UX Designer at JRK Consultancy, Chennai.
-            </p>
-          </div>
-          <div class="d-flex align-items-center justify-content-start">
-            <div class="pro_butn">
-              <a href="https://www.linkedin.com/in/abilash-r/" target="_blank" rel="noopener">
-                <p>Hire Me</p>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Centre: robot image -->
-      <div class="col-lg-4 order-3 order-lg-2">
-        <img src="assets/images/robo.png" class="img-fluid robo" alt="3D robot illustration" />
-      </div>
-
-      <!-- Right: animated role switcher (desktop only) -->
-      <div class="col-lg-4 order-2 order-lg-3 d-none d-lg-block">
-        <div class="d-flex align-items-center justify-content-center">
-          <div class="hero_smtit">
-            <p>A Creative</p>
-            <h6 id="heading">DEVELOPER</h6>
-            <h5>DESIGNER</h5>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
-</header>
-<!-- ── /HEADER ── -->
-
+</nav>
 
 <!-- ============================================================
-     FIXED UI ELEMENTS  (social sidebar · bg decoration · resume)
+     FIXED UI ELEMENTS  (social sidebar · bg decorations · resume)
      ============================================================ -->
-
-<!-- Social icons sidebar — desktop only -->
 <aside class="d-none d-lg-block" aria-label="Social links">
   <div class="social_icons">
-    <a href="https://github.com/Abilash1114" target="_blank" rel="noopener" aria-label="GitHub">
+    <a
+      href="https://github.com/Abilash1114"
+      target="_blank"
+      rel="noopener"
+      aria-label="GitHub"
+    >
       <img src="assets/images/git.svg" class="img-fluid" alt="GitHub" />
     </a>
-    <a href="https://www.linkedin.com/in/abilash-r/" target="_blank" rel="noopener" aria-label="LinkedIn">
+    <a
+      href="https://www.linkedin.com/in/abilash-r/"
+      target="_blank"
+      rel="noopener"
+      aria-label="LinkedIn"
+    >
       <img src="assets/images/lin.svg" class="img-fluid" alt="LinkedIn" />
     </a>
-    <a href="https://www.behance.net/abilashravi4702" target="_blank" rel="noopener" aria-label="Behance">
+    <a
+      href="https://www.behance.net/abilashravi4702"
+      target="_blank"
+      rel="noopener"
+      aria-label="Behance"
+    >
       <img src="assets/images/lin1.svg" class="img-fluid" alt="Behance" />
     </a>
     <a href="tel:+916383891982" aria-label="WhatsApp">
@@ -142,7 +111,6 @@
   </div>
 </aside>
 
-<!-- Background corner decorations -->
 <div class="top_left" aria-hidden="true">
   <img src="assets/images/top.svg" class="img-fluid" alt="" />
 </div>
@@ -150,882 +118,23 @@
   <img src="assets/images/top.svg" class="img-fluid" alt="" />
 </div>
 
-<!-- Resume download button -->
 <div class="resume">
   <div class="resume_outsaid">
     <a href="assets/images/resume-1.pdf" download="Abilash_Resume.pdf">
-      <p style="margin: 0px;">Resume <img src="assets/images/resume.svg" class="img-fluid" alt="download" /></p>
+      <p style="margin: 0px">
+        Resume
+        <img src="assets/images/resume.svg" class="img-fluid" alt="download" />
+      </p>
     </a>
   </div>
 </div>
 
-
 <!-- ============================================================
-     ABOUT SECTION
+     CHILD COMPONENTS
      ============================================================ -->
-<section id="about_section" class="about_section">
-  <div class="container">
-
-    <!-- Mobile role switcher (shown only on mobile) -->
-    <div class="col-lg-4 d-block d-lg-none">
-      <div class="d-flex align-items-center justify-content-center">
-        <div class="hero_smtit mb-5">
-          <p>A Creative</p>
-          <h6 id="heading-mobile">DEVELOPER</h6>
-          <h5>DESIGNER</h5>
-        </div>
-      </div>
-    </div>
-
-    <!-- Section title -->
-    <div class="main_title">
-      <p class="section-eyebrow">About Me</p>
-      <h6>My Creative<span> Identity</span></h6>
-    </div>
-
-    <!-- Bio text + CTA -->
-    <div class="row d-flex align-items-center justify-content-center">
-      <div class="col-lg-10">
-        <p class="about_me">
-          I'm Abilash, a passionate UI/UX Designer and Frontend Developer with 3 years of experience
-          crafting intuitive and visually engaging digital experiences. My work centres on User-Centred
-          Design (UCD) principles — creating seamless, accessible, and engaging interfaces that enhance
-          user satisfaction. I specialise in Figma, Adobe Photoshop, and Illustrator to design clean,
-          modern, and user-friendly interfaces. Alongside design, I bring ideas to life through Angular
-          for web and Flutter for mobile, ensuring a perfect balance between design and functionality.
-          I've contributed to several projects including e-commerce platforms and innovative web
-          applications, delivering experiences that align with business goals and user needs.
-        </p>
-
-        <div class="d-flex align-items-center justify-content-center">
-          <div class="pro_butn">
-            <a href="https://www.linkedin.com/in/abilash-r/" target="_blank" rel="noopener">
-              <p>Hire Me</p>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-<!-- ── /ABOUT ── -->
-
-
-<!-- ============================================================
-     SKILLS / KNOWLEDGE SECTION
-     ============================================================ -->
-<section class="know" aria-label="Skills and knowledge">
-  <div class="container">
-
-    <div class="main_title">
-      <p class="section-eyebrow">Why Choose Me</p>
-      <h6>My professional<span> knowledge</span></h6>
-    </div>
-
-    <div class="row">
-      <div class="total_column">
-        <div class="first_grid">
-
-          <!-- ── Tool logo grid ── -->
-          <div class="what_grid">
-
-            <!-- Row 1: Design tools -->
-            <div class="out_card">
-              <div class="card_imge card_imge--tl">
-                <img src="assets/images/logo1.svg" class="img-fluid" alt="Tool logo" />
-              </div>
-              <div class="card_imge">
-                <img src="assets/images/logo2.svg" class="img-fluid" alt="Tool logo" />
-              </div>
-              <div class="card_imge">
-                <img src="assets/images/logo3.svg" class="img-fluid" alt="Tool logo" />
-              </div>
-              <div class="card_imge">
-                <img src="assets/images/logo4.svg" class="img-fluid" alt="Tool logo" />
-              </div>
-              <div class="card_imge card_imge--tr">
-                <img src="assets/images/logo9.svg" class="img-fluid" alt="Tool logo" />
-              </div>
-            </div>
-
-            <!-- Row 2: Dev tools -->
-            <div class="out_card">
-              <div class="card_imge card_imge--bl">
-                <img src="assets/images/logo10.svg" class="img-fluid" alt="Tool logo" />
-              </div>
-              <div class="card_imge">
-                <img src="assets/images/logo11.svg" class="img-fluid" alt="Tool logo" />
-              </div>
-              <div class="card_imge">
-                <img src="assets/images/logo12.svg" class="img-fluid" alt="Tool logo" />
-              </div>
-              <div class="card_imge">
-                <img src="assets/images/logo13.svg" class="img-fluid" alt="Tool logo" />
-              </div>
-              <div class="card_imge card_imge--br">
-                <img src="assets/images/logo14.svg" class="img-fluid" alt="Tool logo" />
-              </div>
-            </div>
-
-          </div>
-          <!-- ── /Tool logo grid ── -->
-
-          <!-- ── AI Tools card ── -->
-          <div class="what_grid1">
-            <div class="secound_cardwhat secound_it" style="height: 250px;">
-              <div class="grid_tites">
-                <p class="mb-2">AI Tools</p>
-              </div>
-              <p>I use AI tools to enhance design workflows, generate visuals, and improve UX decisions.</p>
-              <div class="d-flex align-items-center justify-content-center sec_imag">
-                <img src="assets/images/chat.png" class="img-fluid chat" alt="AI tool" />
-                <div class="sec_sub">
-                  <img src="assets/images/chat1.png" class="img-fluid chat1" alt="AI tool" />
-                  <img src="assets/images/chat2.png" class="img-fluid chat2" alt="AI tool" />
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- ── /AI Tools card ── -->
-
-          <!-- ── What I Do card ── -->
-          <div class="what_grid3">
-            <div class="secound_cardwhat secound_cardwhat--no-pad">
-
-              <div class="grid_3_border grid_3_border--padded">
-                <div class="grid_tites">
-                  <p class="mb-2">What I Do</p>
-                </div>
-                <p>I design and develop user-focused digital experiences that are visually engaging and easy to use.</p>
-              </div>
-
-              <div class="grid_cols">
-                <div id="gradient">
-                  <div class="grides">
-                    <div class="back_grid">
-
-                      <!-- UI/UX skills -->
-                      <div class="grid_tites">
-                        <p>UI UX Design</p>
-                      </div>
-                      <div>
-                        <div class="bx mt-2">
-                          <p>UI Design</p>
-                        </div>
-                        <div class="bx">
-                          <p>UX Strategy</p>
-                        </div>
-                        <div class="bx">
-                          <p>Prototyping</p>
-                        </div>
-                        <div class="bx">
-                          <p>Responsive Design</p>
-                        </div>
-                        <div class="bx">
-                          <p>User Research</p>
-                        </div>
-                        <div class="bx">
-                          <p>Wireframe</p>
-                        </div>
-                      </div>
-
-                      <hr />
-
-                      <!-- Dev skills -->
-                      <div class="grid_tites">
-                        <p>Development</p>
-                      </div>
-                      <div>
-                        <div class="bx mt-2">
-                          <p>Websites</p>
-                        </div>
-                        <div class="bx">
-                          <p>Apps</p>
-                        </div>
-                        <div class="bx">
-                          <p>API Integration</p>
-                        </div>
-                        <div class="bx">
-                          <p>Dashboard</p>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-          <!-- ── /What I Do card ── -->
-
-          <!-- ── Spline 3D card ── -->
-          <div class="what_grid5">
-            <div class="secound_cardwhat secound_cardwhat--spline">
-              <div class="grid_tites">
-                <p class="mb-2">Spline Viewer (3D)</p>
-              </div>
-              <p>Developing 3D web interfaces through Spline and interactive coding.</p>
-
-              <!-- Mobile fallback image -->
-              <div class="d-block d-lg-none">
-                <img src="assets/images/spline.png" class="img-fluid spline-fallback" alt="Spline 3D preview" />
-              </div>
-
-              <!-- Desktop Spline viewer -->
-              <div class="spline-container">
-                <div class="d-none d-lg-block">
-                  <!--
-                    opacity: 0 by default — GSAP fades it in once the global
-                    loader has finished. This prevents a flash of the 3D scene
-                    behind the loader overlay.
-                  -->
-                  <spline-viewer url="https://prod.spline.design/KZlvIB1X24d6edCd/scene.splinecode" loading="lazy"
-                    style="opacity: 0;">
-                  </spline-viewer>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- ── /Spline 3D card ── -->
-
-          <!-- ── Animation Library card ── -->
-          <div class="what_grid4">
-            <div class="secound_cardwhat">
-              <div class="grid_tites">
-                <p class="mb-2">Animation Library</p>
-              </div>
-              <div class="animactions">
-                <div class="ani_boxs">
-                  <img src="assets/images/logo15.svg" class="img-fluid" alt="jQuery" />
-                  <p>jQuery</p>
-                </div>
-                <div class="ani_boxs">
-                  <img src="assets/images/logo16.svg" class="img-fluid" alt="GSAP" />
-                  <p>GSAP</p>
-                </div>
-                <div class="ani_boxs">
-                  <img src="assets/images/logo17.svg" class="img-fluid" alt="Bootstrap" />
-                  <p>Bootstrap</p>
-                </div>
-                <div class="ani_boxs">
-                  <img src="assets/images/logo18.svg" class="img-fluid" alt="Anime.js" />
-                  <p>Anime.js</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- ── /Animation Library card ── -->
-
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-<!-- ── /SKILLS ── -->
-
-
-<!-- ============================================================
-     CAREER SECTION
-     ============================================================ -->
-<section class="career">
-  <div class="container">
-
-    <div class="main_title">
-      <p class="section-eyebrow">Career Path</p>
-      <h6>My Education &amp;<span> Experience</span></h6>
-    </div>
-
-    <!-- Decorative sword / star illustration -->
-    <div class="row d-flex align-items-center justify-content-center">
-      <div class="starimage sword-area">
-        <div class="sword-area__inner">
-          <img src="assets/images/bu.png" class="img-fluid" alt="" aria-hidden="true" />
-        </div>
-      </div>
-    </div>
-
-    <!-- Timeline -->
-    <div class="row my_careeor">
-
-      <!-- Animated star marker -->
-      <div id="starContainer" aria-hidden="true">
-        <div id="star">
-          <div class="half">
-            <div id="topLeft" class="starQuarter"></div>
-            <div id="topRight" class="starQuarter"></div>
-          </div>
-          <div class="half">
-            <div id="bottomLeft" class="starQuarter"></div>
-            <div id="bottomRight" class="starQuarter"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Entry 1: Bachelor's -->
-      <div class="col-lg-12 d-flex align-items-start justify-content-between myes">
-        <div class="col-lg-6">
-          <div class="d-flex align-items-start justify-content-between">
-            <div class="bach_name">
-              <h6>Bachelor Of<br />Engineering</h6>
-              <p>Loyola Institute of Technology</p>
-            </div>
-            <p class="year year--indent">2018–2022</p>
-          </div>
-        </div>
-        <div class="col-lg-5">
-          <div class="ex_detailss">
-            <p>
-              Gained analytical and problem-solving skills through mechanical design and project-based
-              learning. This engineering base helped me transition into tech and design, applying logic
-              and creativity in UI/UX and frontend development.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Entry 2: C-Tech certification -->
-      <div class="col-lg-12 d-flex align-items-start justify-content-between myes">
-        <div class="col-lg-6">
-          <div class="d-flex align-items-start justify-content-between">
-            <div class="bach_name">
-              <h6>C-Tech in<br />UI/UX Design</h6>
-              <p>IMAGE Creative Education</p>
-            </div>
-            <p class="year">2022–2023</p>
-          </div>
-        </div>
-        <div class="col-lg-5">
-          <div class="ex_detailss">
-            <p>
-              Earned a C-Tech certification in UI/UX Design, learning the fundamentals of user-centred
-              design, wireframing, and prototyping, along with industry tools and best practices.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Entry 3: Current role -->
-      <div class="col-lg-12 d-flex align-items-start justify-content-between myes">
-        <div class="col-lg-6">
-          <div class="d-flex align-items-start justify-content-between">
-            <div class="bach_name">
-              <h6 class="bach_name__nowrap">JRK Consulting<br />Services, Chennai</h6>
-              <p>UI/UX Designer</p>
-            </div>
-            <p class="year">NOW</p>
-          </div>
-        </div>
-        <div class="col-lg-5">
-          <div class="ex_detailss">
-            <p>
-              Focused primarily on UI/UX design, creating engaging and user-friendly interfaces for web
-              and mobile applications. Collaborating closely with developers and clients to deliver
-              intuitive, visually appealing, and functional digital experiences.
-            </p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-<!-- ── /CAREER ── -->
-
-
-<!-- ============================================================
-     PORTFOLIO / PROJECTS SECTION
-     ============================================================ -->
-<section class="resent" id="Portfolio">
-  <div class="container">
-
-    <div class="main_title">
-      <p class="section-eyebrow">Portfolio</p>
-      <h6>My Creative <span>Works</span></h6>
-    </div>
-
-    <!-- Desktop: stacked card animation -->
-    <div class="row mt-5 ">
-      <div class="col-12">
-        <div class="cards">
-          <div class="custom-card card1" id="proj-1">
-            <a href="https://www.behance.net/gallery/233455293/ForkPay-The-Smarter-Way-to-Dine-Pay" target="_blank"
-              rel="noopener">
-              <picture>
-                <source media="(min-width: 992px)" srcset="assets/images/pro-1.png" />
-                <source media="(max-width: 991px)" srcset="assets/images/pro-1.1.png" />
-                <img src="assets/images/pro-1-desktop.png" class="img-fluid" alt="ForkPay – Dine & Pay project" />
-              </picture>
-            </a>
-          </div>
-          <div class="custom-card card2" id="proj-2">
-            <a href="https://www.behance.net/gallery/238251613/Corporate-Website-Redesign-InfoPlus-Homepage-UXUI"
-              target="_blank" rel="noopener">
-              <picture>
-                <source media="(min-width: 992px)" srcset="assets/images/pro-3.png" />
-                <source media="(max-width: 991px)" srcset="assets/images/pro-3.3.png" />
-                <img src="assets/images/pro-3-desktop.png" class="img-fluid" alt="ForkPay – Dine & Pay project" />
-              </picture>
-            </a>
-          </div>
-          <div class="custom-card card3" id="proj-3">
-            <a href="https://www.behance.net/gallery/235183431/Secure-Digital-Wallet-Buy-Gold-App-(UIUX-Case-Study)"
-              target="_blank" rel="noopener">
-              <picture>
-                <source media="(min-width: 992px)" srcset="assets/images/pro-2.png" />
-                <source media="(max-width: 991px)" srcset="assets/images/pro-2.2.png" />
-                <img src="assets/images/pro-2-desktop.png" class="img-fluid" alt="ForkPay – Dine & Pay project" />
-              </picture>
-            </a>
-          </div>
-          <div class="custom-card card4" id="proj-4">
-            <a href="https://www.behance.net/gallery/238250743/Paisa-Pop-Loan-App-Redesign-UXUI-Case-Study"
-              target="_blank" rel="noopener">
-              <picture>
-                <source media="(min-width: 992px)" srcset="assets/images/pro-4.png" />
-                <source media="(max-width: 991px)" srcset="assets/images/pro-4.4.png" />
-                <img src="assets/images/pro-4-desktop.png" class="img-fluid" alt="ForkPay – Dine & Pay project" />
-              </picture>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Mobile: stacked images -->
-    <!-- <div class="row d-block d-lg-none mobile_work">
-      <div class="col-12">
-        <a href="https://www.behance.net/gallery/233455293/ForkPay-The-Smarter-Way-to-Dine-Pay" target="_blank"
-          rel="noopener">
-          <img src="assets/images/pro-1.1.png" class="img-fluid" alt="ForkPay" />
-        </a>
-      </div>
-      <div class="col-12">
-        <a href="https://www.behance.net/gallery/238251613/Corporate-Website-Redesign-InfoPlus-Homepage-UXUI"
-          target="_blank" rel="noopener">
-          <img src="assets/images/pro-3.3.png" class="img-fluid" alt="InfoPlus redesign" />
-        </a>
-      </div>
-      <div class="col-12">
-        <a href="https://www.behance.net/gallery/235183431/Secure-Digital-Wallet-Buy-Gold-App-(UIUX-Case-Study)"
-          target="_blank" rel="noopener">
-          <img src="assets/images/pro-2.2.png" class="img-fluid mb-4" alt="Digital Wallet" />
-        </a>
-      </div>
-      <div class="col-12">
-        <a href="https://www.behance.net/gallery/238250743/Paisa-Pop-Loan-App-Redesign-UXUI-Case-Study" target="_blank"
-          rel="noopener">
-          <img src="assets/images/pro-4.4.png" class="img-fluid mb-4" alt="Paisa Pop" />
-        </a>
-      </div>
-    </div> -->
-
-  </div>
-</section>
-<!-- ── /PORTFOLIO ── -->
-
-
-<!-- ============================================================
-     WEB WORKS — HORIZONTAL SCROLL SECTION
-     ============================================================ -->
-<section id="horizontal-scoll" aria-label="Web works showcase">
-  <div class="horizontal-scoll-wrapper">
-    <div class="horizontal">
-
-      <!-- 01 Digital Innovation -->
-      <div class="occasion d-flex flex-column">
-        <div class="order-2 order-lg-1">
-          <div class="first">
-            <p class="webnum">01</p>
-            <div class="we">
-              <p class="webname">Digital Innovation</p>
-              <p class="wende">Web Design &amp; Development</p>
-            </div>
-          </div>
-          <div class="details_of">
-            <p class="detaof">Tools &amp; Features</p>
-            <div class="tools_listes">
-              <p>HTML, CSS, JavaScript, TypeScript, GSAP</p>
-            </div>
-          </div>
-        </div>
-        <div class="order-1 order-lg-2">
-          <a href="https://businesstransform.vercel.app/" target="_blank" rel="noopener">
-            <div class="sample_img">
-              <img src="assets/images/01.png" class="img-fluid" alt="Digital Innovation project" />
-              <div class="arr"><img src="assets/images/arr.svg" class="img-fluid" alt="View" /></div>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <!-- 02 Portfolio -->
-      <div class="occasion">
-        <a href="https://abilashportfolio.vercel.app/" target="_blank" rel="noopener">
-          <div class="sample_img">
-            <img src="assets/images/02.png" class="img-fluid" alt="Portfolio project" />
-            <div class="arr"><img src="assets/images/arr.svg" class="img-fluid" alt="View" /></div>
-          </div>
-        </a>
-        <div class="first mt-3">
-          <p class="webnum">02</p>
-          <div class="we">
-            <p class="webname">Portfolio</p>
-            <p class="wende">Web Design &amp; Development</p>
-          </div>
-        </div>
-        <div class="details_of">
-          <p class="detaof">Tools &amp; Features</p>
-          <div class="tools_listes">
-            <p>HTML, CSS, JavaScript, TypeScript, GSAP</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- 03 Car Booking -->
-      <div class="occasion d-flex flex-column">
-        <div class="order-2 order-lg-1">
-          <div class="first">
-            <p class="webnum">03</p>
-            <div class="we">
-              <p class="webname">Car Booking</p>
-              <p class="wende">Web Design &amp; Development</p>
-            </div>
-          </div>
-          <div class="details_of">
-            <p class="detaof">Tools &amp; Features</p>
-            <div class="tools_listes">
-              <p>HTML, CSS, JavaScript, TypeScript</p>
-            </div>
-          </div>
-        </div>
-        <div class="order-1 order-lg-2">
-          <div class="sample_img">
-            <img src="assets/images/03.png" class="img-fluid" alt="Car Booking project" />
-            <div class="arr"><img src="assets/images/arr.svg" class="img-fluid" alt="View" /></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 04 Weather Dashboard -->
-      <div class="occasion">
-        <a href="https://e-com-admin-dashboard-sigma.vercel.app/" target="_blank" rel="noopener">
-          <div class="sample_img">
-            <img src="assets/images/04.png" class="img-fluid" alt="Weather Dashboard" />
-            <div class="arr"><img src="assets/images/arr.svg" class="img-fluid" alt="View" /></div>
-          </div>
-        </a>
-        <div class="first mt-3">
-          <p class="webnum">04</p>
-          <div class="we">
-            <p class="webname">E-com Dashboard</p>
-            <p class="wende">Web Design &amp; Development</p>
-          </div>
-        </div>
-        <div class="details_of">
-          <p class="detaof">Tools &amp; Features</p>
-          <div class="tools_listes">
-            <p>HTML, CSS, JavaScript, TypeScript</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- 05 ECommerce -->
-      <div class="occasion d-flex flex-column">
-        <div class="order-2 order-lg-1">
-          <div class="first">
-            <p class="webnum">05</p>
-            <div class="we">
-              <p class="webname">ECommerce</p>
-              <p class="wende">Coming Soon</p>
-            </div>
-          </div>
-          <div class="details_of">
-            <p class="detaof">Tools &amp; Features</p>
-            <div class="tools_listes">
-              <p>&nbsp;</p>
-            </div>
-          </div>
-        </div>
-        <div class="order-1 order-lg-2">
-          <div class="sample_img">
-            <img src="assets/images/05.png" class="img-fluid" alt="ECommerce project" />
-            <div class="arr"><img src="assets/images/arr.svg" class="img-fluid" alt="View" /></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Trailing spacer — desktop only -->
-      <div class="occasion occasion--spacer d-none d-lg-block" aria-hidden="true"></div>
-
-    </div>
-  </div>
-</section>
-<!-- ── /WEB WORKS ── -->
-
-
-<!-- ============================================================
-     CONTACT SECTION
-     ============================================================ -->
-<section class="get" id="contact" aria-label="Contact">
-  <div class="container-lg container-fluid">
-    <div class="row d-flex align-items-center justify-content-center">
-
-      <!-- Left: Contact form -->
-      <div class="col-md-6">
-        <div class="info_get">
-          <div class="info_tit">
-            <h6>Connect with me</h6>
-          </div>
-          <div class="info_sub">
-            <p>Let's collaborate and bring innovative ideas to life. Reach out anytime — I'm just a message away!</p>
-          </div>
-          <form [formGroup]="contactform" (ngSubmit)="submitform()">
-
-            <!-- NAME + MOBILE -->
-
-            <div class="row">
-
-              <!-- NAME -->
-
-              <div class="col-lg-6">
-
-                <input type="text" name="name" placeholder="Name" aria-label="Name" formControlName="name" />
-
-                @if (
-                contactform.get('name')?.invalid &&
-                contactform.get('name')?.touched
-                ) {
-
-                <div class="text-danger mt-1">
-
-                  @if (
-                  contactform.get('name')?.errors?.['required']
-                  ) {
-                  <small>Name is required</small>
-                  }
-
-                  @if (
-                  contactform.get('name')?.errors?.['minlength']
-                  ) {
-                  <small>Minimum 3 characters required</small>
-                  }
-
-                </div>
-
-                }
-
-              </div>
-
-              <!-- MOBILE -->
-
-              <div class="col-lg-6">
-
-                <input type="tel" name="mobile" placeholder="Mobile Number" aria-label="Mobile Number"
-                  formControlName="mobile" />
-
-                @if (
-                contactform.get('mobile')?.invalid &&
-                contactform.get('mobile')?.touched
-                ) {
-
-                <div class="text-danger mt-1">
-
-                  @if (
-                  contactform.get('mobile')?.errors?.['required']
-                  ) {
-                  <small>Mobile number is required</small>
-                  }
-
-                  @if (
-                  contactform.get('mobile')?.errors?.['pattern']
-                  ) {
-                  <small>Enter valid 10 digit mobile number</small>
-                  }
-
-                </div>
-
-                }
-
-              </div>
-
-            </div>
-
-            <!-- EMAIL + REQUIREMENT -->
-
-            <div class="row">
-
-              <!-- EMAIL -->
-
-              <div class="col-lg-6">
-
-                <input type="email" name="email" placeholder="Email Id" aria-label="Email" formControlName="email" />
-
-                @if (
-                contactform.get('email')?.invalid &&
-                contactform.get('email')?.touched
-                ) {
-
-                <div class="text-danger mt-1">
-
-                  @if (
-                  contactform.get('email')?.errors?.['required']
-                  ) {
-                  <small>Email is required</small>
-                  }
-
-                  @if (
-                  contactform.get('email')?.errors?.['pattern']
-                  ) {
-                  <small>Enter valid email</small>
-                  }
-
-                </div>
-
-                }
-
-              </div>
-
-              <!-- REQUIREMENT -->
-
-              <div class="col-lg-6">
-
-                <input type="text" name="requirement" placeholder="Your Requirement" aria-label="Requirement"
-                  formControlName="requirement" />
-
-                @if (
-                contactform.get('requirement')?.invalid &&
-                contactform.get('requirement')?.touched
-                ) {
-
-                <div class="text-danger mt-1">
-
-                  @if (
-                  contactform.get('requirement')?.errors?.['required']
-                  ) {
-                  <small>Requirement field is required</small>
-                  }
-
-                </div>
-
-                }
-
-              </div>
-
-            </div>
-
-            <!-- COMMENT -->
-
-            <textarea name="comment" placeholder="How can I help?" aria-label="Message"
-              formControlName="comment"></textarea>
-
-            @if (
-            contactform.get('comment')?.invalid &&
-            contactform.get('comment')?.touched
-            ) {
-            <div class="text-danger mt-1">
-              @if (
-              contactform.get('comment')?.errors?.['required']
-              )
-              {
-              <small>Message is required</small>
-              }
-            </div>
-            }
-
-            <!-- BUTTON -->
-
-            <div class="d-flex align-items-start justify-content-start">
-              <button type="submit" class="web_button d-flex align-items-start justify-content-start">
-                <span class="web_button__label">
-                  Submit
-                </span>
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-
-      <!-- Right: Contact details -->
-      <div class="col-md-6">
-        <div class="right_con">
-          <div class="right_con_tit">
-            <h6>Contact Details</h6>
-          </div>
-          <div class="right_con_sub">
-            <p>
-              Have an idea or project in mind? I'd love to hear from you!
-              Let's connect, share ideas, and create something truly impactful together.
-            </p>
-          </div>
-
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="con d-flex align-items-start justify-content-start">
-                <img src="assets/images/add.svg" alt="" aria-hidden="true" />
-                <div class="fe">
-                  <p>Location</p>
-                  <h6>Chennai, India</h6>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="con d-flex align-items-start justify-content-start">
-                <img src="assets/images/mobile.svg" alt="" aria-hidden="true" />
-                <div class="fe">
-                  <p>Mobile</p>
-                  <h6>6383891982</h6>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="con d-flex align-items-start justify-content-start">
-                <img src="assets/images/avi.svg" alt="" aria-hidden="true" />
-                <div class="fe">
-                  <p>Availability</p>
-                  <h6>Daily 09 am – 09 pm</h6>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="con d-flex align-items-start justify-content-start">
-                <img src="assets/images/email.svg" alt="" aria-hidden="true" />
-                <div class="fe">
-                  <p>Email</p>
-                  <a href="mailto:abilashravi09@gmail.com">
-                    <h6>abilashravi09&#64;gmail.com</h6>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <hr />
-
-          <div class="d-flex align-items-center justify-content-between social">
-            <p>Social media</p>
-            <div class="icones">
-              <a href="https://github.com/Abilash1114" target="_blank" rel="noopener" aria-label="GitHub">
-                <img src="assets/images/git.svg" class="img-fluid" alt="GitHub" />
-              </a>
-              <a href="https://www.linkedin.com/in/abilash-r/" target="_blank" rel="noopener" aria-label="LinkedIn">
-                <img src="assets/images/lin.svg" class="img-fluid" alt="LinkedIn" />
-              </a>
-              <a href="https://www.behance.net/abilashravi4702" target="_blank" rel="noopener" aria-label="Behance">
-                <img src="assets/images/lin1.svg" class="img-fluid" alt="Behance" />
-              </a>
-              <a href="tel:+916383891982" aria-label="Phone">
-                <img src="assets/images/wh.svg" class="img-fluid" alt="Phone" />
-              </a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-<!-- ── /CONTACT ── -->
+<app-hero></app-hero>
+<app-about></app-about>
+<app-skills></app-skills>
+<app-career></app-career>
+<app-works></app-works>
+<app-contact></app-contact>

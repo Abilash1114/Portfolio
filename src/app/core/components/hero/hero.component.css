@@ -1,0 +1,39 @@
+/* Hero styles are global in styles.css (hero_back, hero_nav, nav_item,
+   postion, hero_name, hero_smtit, robo, gradients).
+   Only component-specific overrides go here. */
+
+@media screen and (min-width: 380px) and (max-width: 768px) {
+  .nav_item {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .nav_item p {
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+
+  .postion {
+    position: relative;
+  }
+
+  .postion #hero_heading {
+    font-size: 30px;
+    position: absolute;
+    top: -70px;
+    left: 0;
+  }
+
+  .hero_name {
+    margin-top: 20px;
+  }
+
+  .hero_smtit {
+    margin-top: 20px;
+  }
+
+  .hero_smtit h5 {
+    font-size: 28px;
+  }
+}
+
