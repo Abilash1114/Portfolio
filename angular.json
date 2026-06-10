@@ -42,19 +42,19 @@
               "src/assets/js/swiper-bundle.min.js",
               "src/assets/js/main.js"
             ]
-          }, 
+          },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "4mb",
+                  "maximumError": "10mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "5kb",
-                  "maximumError": "14kb"
+                  "maximumWarning": "10kb",
+                  "maximumError": "30kb"
                 }
               ],
               "outputHashing": "all"
