@@ -18,7 +18,6 @@ import { WorksComponent } from '../components/works/works.component';
 /* ─── Globals loaded via index.html <script> tags ─── */
 declare const gsap: any;
 declare const ScrollTrigger: any;
-declare const Lenis: any;
 
 /* ─── Portfolio animation functions ─── */
 declare function text(): void;
@@ -55,8 +54,6 @@ declare function stickyNav(): void;
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
-  private lenis: any;
-  private lenisTickerFn: ((time: number) => void) | null = null;
   private readonly SPLINE_TIMEOUT_MS = 8000;
   private splineTimeoutId: ReturnType<typeof setTimeout> | null = null;
 
@@ -75,13 +72,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnDestroy(): void {
     if (this.splineTimeoutId) {
       clearTimeout(this.splineTimeoutId);
-    }
-    if (this.lenis) {
-      this.lenis.destroy();
-    }
-    if (this.lenisTickerFn) {
-      gsap.ticker.remove(this.lenisTickerFn);
-      this.lenisTickerFn = null;
     }
     ScrollTrigger.getAll().forEach((t: any) => t.kill());
   }
@@ -140,19 +130,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private initAllAnimations(): void {
-    this.lenis = new Lenis({
-      duration: 1.2,
-      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-      syncTouch: false,
-    });
-    this.lenisTickerFn = (time: number) => {
-      this.lenis.raf(time * 1000);
-      ScrollTrigger.update();
-    };
-    gsap.ticker.add(this.lenisTickerFn);
-    gsap.ticker.lagSmoothing(0);
-
     // Run all animations first so every ScrollTrigger is registered,
     // then refresh so pin positions are calculated correctly
     text();
