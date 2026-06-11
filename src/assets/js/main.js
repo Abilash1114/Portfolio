@@ -291,8 +291,8 @@ function careerLine() {
 
   // On mobile the section stacks vertically and is much taller,
   // so end needs to reach further down the page
-  const lineEnd   = isMobile ? 'bottom 15%' : 'bottom center';
-  const entryEnd  = isMobile ? 'bottom 85%' : 'bottom 60%';
+  const lineEnd = isMobile ? 'bottom 15%' : 'bottom center';
+  const entryEnd = isMobile ? 'bottom 85%' : 'bottom 60%';
 
   // Grow the timeline line
   gsap.to('.my_careeor', {
@@ -348,13 +348,19 @@ function careerLine() {
 function cardsAnimation() {
   gsap.registerPlugin(ScrollTrigger);
 
-  // Force correct initial states immediately on load/refresh —
-  // prevents cards 2-4 from appearing at their natural positions
-  // before GSAP has a chance to hide them
-  gsap.set('.card1', { yPercent: 0, opacity: 1, scale: 1, clearProps: 'none' });
-  gsap.set(['.card2', '.card3', '.card4'], { yPercent: 75, opacity: 0 });
+  // Prevent ScrollTrigger from auto-refreshing on every
+  // resize event — this is what causes the DevTools jump
+  ScrollTrigger.config({
+    autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load'
+    // 'resize' is intentionally excluded
+  });
 
-  const header  = document.getElementById('sticky-header');
+  gsap.set('.card1', { yPercent: 0, opacity: 1, scale: 1 });
+  gsap.set('.card2', { yPercent: 100, opacity: 0, scale: 1 });
+  gsap.set('.card3', { yPercent: 100, opacity: 0, scale: 1 });
+  gsap.set('.card4', { yPercent: 100, opacity: 0, scale: 1 });
+
+  const header = document.getElementById('sticky-header');
   const headerH = header ? header.offsetHeight : 70;
 
   const tl = gsap.timeline({
@@ -366,39 +372,56 @@ function cardsAnimation() {
       pinSpacing: true,
       scrub: 1,
       invalidateOnRefresh: true,
-      // Re-apply initial states if user refreshes mid-page and
-      // ScrollTrigger progress snaps back to 0
       onRefresh(self) {
         if (self.progress === 0) {
           gsap.set('.card1', { yPercent: 0, opacity: 1, scale: 1 });
-          gsap.set(['.card2', '.card3', '.card4'], { yPercent: 75, opacity: 0 });
+          gsap.set(['.card2', '.card3', '.card4'], {
+            yPercent: 100, opacity: 0, scale: 1
+          });
         }
       },
     },
   });
 
   tl
-    .addLabel('card1')
-    .to('.card1', { yPercent: 0, opacity: 1 })
+    .addLabel('start')
 
-    .from('.card2', { yPercent: 75, opacity: 0, immediateRender: false })
+    .to('.card1', { scale: 0.88, yPercent: -4, opacity: 0.85 })
+    .to('.card2', { yPercent: 0, opacity: 1, scale: 1 }, '<')
     .addLabel('card2')
-    .to('.card1', { scale: 0.925, yPercent: -0.75, opacity: 1 }, '-=0.3')
-    .to('.card2', { yPercent: 0, opacity: 1 })
 
-    .from('.card3', { yPercent: 75, opacity: 0, immediateRender: false })
+    .to('.card1', { scale: 0.80, yPercent: -8, opacity: 0.7 })
+    .to('.card2', { scale: 0.88, yPercent: -4, opacity: 0.85 }, '<')
+    .to('.card3', { yPercent: 0, opacity: 1, scale: 1 }, '<')
     .addLabel('card3')
-    .to('.card2', { scale: 0.95, yPercent: -0.5, opacity: 1 }, '-=0.3')
-    .to('.card3', { yPercent: 0, opacity: 1 })
 
-    .from('.card4', { yPercent: 75, opacity: 0, immediateRender: false })
-    .addLabel('card4')
-    .to('.card3', { scale: 0.96, yPercent: -0.35, opacity: 1 }, '-=0.3')
-    .to('.card4', { yPercent: 0, opacity: 1 })
+    .to('.card1', { scale: 0.72, yPercent: -12, opacity: 0.55 })
+    .to('.card2', { scale: 0.80, yPercent: -8, opacity: 0.7 }, '<')
+    .to('.card3', { scale: 0.88, yPercent: -4, opacity: 0.85 }, '<')
+    .to('.card4', { yPercent: 0, opacity: 1, scale: 1 }, '<')
+    .addLabel('card4');
 
-    .to('.card1', { scale: 0.925, yPercent: -1.5,   opacity: 0.9 }, '-=0.3')
-    .to('.card2', { scale: 0.95,  yPercent: -1.125, opacity: 0.9 }, '-=0.3')
-    .to('.card3', { scale: 0.96,  yPercent: -0.8,   opacity: 0.9 }, '-=0.3');
+  // Debounced manual refresh — fires 250ms after resize stops.
+  // Saves the current scroll progress and restores it after
+  // refresh so cards don't jump to wrong positions.
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      const st = tl.scrollTrigger;
+      const progress = st ? st.progress : 0;
+
+      ScrollTrigger.refresh();
+
+      // After refresh, scroll position may have shifted —
+      // seek the timeline back to where the user was
+      if (st && progress > 0) {
+        const newStart = st.start;
+        const newEnd = st.end;
+        window.scrollTo(0, newStart + (newEnd - newStart) * progress);
+      }
+    }, 250);
+  });
 }
 
 /* ── 11. About Me Word Animation ─────────────────────────── */
@@ -525,7 +548,7 @@ function gradientes() {
  */
 function toolsSlider() {
   var slider = document.querySelector('.sk-use-slider');
-  var track  = document.querySelector('.sk-use-track');
+  var track = document.querySelector('.sk-use-track');
   if (!slider || !track) return;
 
   var DURATION = 32; // must match CSS animation duration (seconds)
@@ -543,10 +566,10 @@ function toolsSlider() {
 
   function resumeFromX(x) {
     var halfWidth = track.offsetWidth / 2;
-    var progress  = Math.abs(x) / halfWidth;          // 0 → 1
-    var delay     = -(DURATION * progress);            // negative = already in-progress
-    track.style.transform  = '';
-    track.style.animation  = 'skToolsSlide ' + DURATION + 's linear ' + delay + 's infinite';
+    var progress = Math.abs(x) / halfWidth;          // 0 → 1
+    var delay = -(DURATION * progress);            // negative = already in-progress
+    track.style.transform = '';
+    track.style.animation = 'skToolsSlide ' + DURATION + 's linear ' + delay + 's infinite';
   }
 
   /* ── hover pause / resume ── */
@@ -571,11 +594,11 @@ function toolsSlider() {
 
   document.addEventListener('mousemove', function (e) {
     if (!isDragging) return;
-    var dx       = e.clientX - dragStartX;
-    var newX     = dragStartTranslateX + dx;
+    var dx = e.clientX - dragStartX;
+    var newX = dragStartTranslateX + dx;
     var halfWidth = track.offsetWidth / 2;
     /* wrap */
-    if (newX > 0)          newX = newX - halfWidth;
+    if (newX > 0) newX = newX - halfWidth;
     if (newX < -halfWidth) newX = newX + halfWidth;
     track.style.transform = 'translateX(' + newX + 'px)';
   });
@@ -597,10 +620,10 @@ function toolsSlider() {
   }, { passive: true });
 
   slider.addEventListener('touchmove', function (e) {
-    var dx       = e.touches[0].clientX - dragStartX;
-    var newX     = dragStartTranslateX + dx;
+    var dx = e.touches[0].clientX - dragStartX;
+    var newX = dragStartTranslateX + dx;
     var halfWidth = track.offsetWidth / 2;
-    if (newX > 0)          newX = newX - halfWidth;
+    if (newX > 0) newX = newX - halfWidth;
     if (newX < -halfWidth) newX = newX + halfWidth;
     track.style.transform = 'translateX(' + newX + 'px)';
   }, { passive: true });
@@ -642,19 +665,19 @@ function skillsFilter() {
 
 
 function stickyNav() {
-  const header      = document.getElementById('sticky-header');
-  const hero        = document.querySelector('.hero_back');
+  const header = document.getElementById('sticky-header');
+  const hero = document.querySelector('.hero_back');
   const socialAside = document.querySelector('aside .social_icons');
-  const contact     = document.getElementById('contact');
+  const contact = document.getElementById('contact');
   if (!header || !hero) return;
 
   let lastScrollY = window.scrollY;
 
   window.addEventListener('scroll', function () {
     const currentScrollY = window.scrollY;
-    const heroBottom     = hero.offsetTop + hero.offsetHeight;
-    const scrollingDown  = currentScrollY > lastScrollY;
-    const pastHero       = currentScrollY > heroBottom;
+    const heroBottom = hero.offsetTop + hero.offsetHeight;
+    const scrollingDown = currentScrollY > lastScrollY;
+    const pastHero = currentScrollY > heroBottom;
 
     if (!pastHero || scrollingDown) {
       header.style.transform = 'translateY(-100%)';

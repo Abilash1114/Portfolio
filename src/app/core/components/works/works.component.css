@@ -5,8 +5,11 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100dvh;
-  min-height: 100vh;
+
+  /* svh = small viewport height — stable, ignores DevTools */
+  height: 100svh;
+  min-height: 100svh;
+
   overflow: hidden;
   margin-bottom: 90px;
 }
@@ -15,22 +18,29 @@
   position: absolute;
   width: 100%;
   top: 0;
-  height: 70vh;
+  height: 70svh;
+  /* also use svh here */
   color: #fff;
-  margin-bottom: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50px;
 }
 
-.card1 { z-index: 2; }
-.card2 { top: 30px; z-index: 3; }
-.card3 { top: 60px; z-index: 4; }
-.card4 { top: 90px; z-index: 5; }
+.card1 {
+  z-index: 2;
+}
 
-.mobile_work img {
-  margin-top: 30px;
+.card2 {
+  z-index: 3;
+}
+
+.card3 {
+  z-index: 4;
+}
+
+.card4 {
+  z-index: 5;
 }
 
 /* ── Web works title ── */
@@ -92,9 +102,13 @@
   flex-direction: column;
 }
 
-.webname { color: #fff5f8; }
+.webname {
+  color: #fff5f8;
+}
 
-.wende { color: rgba(255, 245, 248, 0.376); }
+.wende {
+  color: rgba(255, 245, 248, 0.376);
+}
 
 .detaof {
   font-size: 18px;
