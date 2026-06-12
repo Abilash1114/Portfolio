@@ -51,11 +51,9 @@
   background: #010c0a;
   /* Subtle noise grain — pure CSS, no image required */
   background-image:
-    radial-gradient(
-      ellipse 80% 60% at 50% 0%,
+    radial-gradient(ellipse 80% 60% at 50% 0%,
       rgba(11, 223, 187, 0.08) 0%,
-      transparent 70%
-    ),
+      transparent 70%),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
   will-change: opacity;
   pointer-events: all;
@@ -102,6 +100,7 @@
 }
 
 @keyframes loaderPulse {
+
   0%,
   100% {
     opacity: 1;
@@ -261,11 +260,9 @@
 }
 
 .main_title span {
-  background: linear-gradient(
-    180deg,
-    rgba(24, 156, 107, 1) 0%,
-    rgb(4, 97, 66) 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(24, 156, 107, 1) 0%,
+      rgb(4, 97, 66) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -301,35 +298,27 @@
 }
 
 #topLeft {
-  background: radial-gradient(
-    ellipse at top left,
-    transparent 70%,
-    rgb(226, 255, 229) 100%
-  );
+  background: radial-gradient(ellipse at top left,
+      transparent 70%,
+      rgb(226, 255, 229) 100%);
 }
 
 #topRight {
-  background: radial-gradient(
-    ellipse at top right,
-    transparent 70%,
-    rgb(226, 255, 229) 100%
-  );
+  background: radial-gradient(ellipse at top right,
+      transparent 70%,
+      rgb(226, 255, 229) 100%);
 }
 
 #bottomLeft {
-  background: radial-gradient(
-    ellipse at bottom left,
-    transparent 70%,
-    rgb(226, 255, 229) 100%
-  );
+  background: radial-gradient(ellipse at bottom left,
+      transparent 70%,
+      rgb(226, 255, 229) 100%);
 }
 
 #bottomRight {
-  background: radial-gradient(
-    ellipse at bottom right,
-    transparent 70%,
-    rgb(226, 255, 229) 100%
-  );
+  background: radial-gradient(ellipse at bottom right,
+      transparent 70%,
+      rgb(226, 255, 229) 100%);
 }
 
 /* ── 5. Skills grid layout ────────────────────────────────────── */
@@ -410,11 +399,9 @@
 }
 
 .card_imge:hover {
-  background: radial-gradient(
-    circle,
-    rgba(24, 156, 108, 0.308) 0%,
-    rgba(5, 62, 43, 0) 100%
-  );
+  background: radial-gradient(circle,
+      rgba(24, 156, 108, 0.308) 0%,
+      rgba(5, 62, 43, 0) 100%);
 }
 
 /* ── 7. Skill detail cards ────────────────────────────────────── */
@@ -532,11 +519,9 @@
 .back_grid {
   width: 160px;
   height: 100vh;
-  background: linear-gradient(
-    72deg,
-    rgb(25, 25, 25) 0%,
-    rgba(22, 27, 21, 0.459) 100%
-  );
+  background: linear-gradient(72deg,
+      rgb(25, 25, 25) 0%,
+      rgba(22, 27, 21, 0.459) 100%);
   border-top-right-radius: var(--radius-card);
   padding: 10px;
 }
@@ -995,18 +980,25 @@ textarea {
   border: 1px solid rgba(11, 223, 187, 0.5);
   padding: 5px 20px;
   border-radius: 20px;
-  background: radial-gradient(
-    circle,
-    rgba(24, 156, 108, 0.308) 70%,
-    rgba(5, 62, 43, 0) 100%
-  );
+  background: radial-gradient(circle,
+      rgba(24, 156, 108, 0.308) 70%,
+      rgba(5, 62, 43, 0) 100%);
   box-shadow: 0 0 8px rgba(11, 223, 187, 0.25);
   animation: resumePulse 2.4s ease-in-out infinite;
 }
 
 @keyframes resumePulse {
-  0%, 100% { box-shadow: 0 0 6px rgba(11, 223, 187, 0.2);  border-color: rgba(11, 223, 187, 0.4); }
-  50%       { box-shadow: 0 0 14px rgba(11, 223, 187, 0.45); border-color: rgba(11, 223, 187, 0.7); }
+
+  0%,
+  100% {
+    box-shadow: 0 0 6px rgba(11, 223, 187, 0.2);
+    border-color: rgba(11, 223, 187, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 14px rgba(11, 223, 187, 0.45);
+    border-color: rgba(11, 223, 187, 0.7);
+  }
 }
 
 .resume_outsaid:hover {
@@ -1284,10 +1276,25 @@ button {
   flex-shrink: 0;
 }
 
-.sk-stat__icon--teal  { background: rgba(11, 223, 187, 0.15); color: #0BDFBB; }
-.sk-stat__icon--purple { background: rgba(139, 92, 246, 0.15); color: #A78BFA; }
-.sk-stat__icon--blue  { background: rgba(59, 130, 246, 0.15);  color: #60A5FA; }
-.sk-stat__icon--gold  { background: rgba(245, 158, 11, 0.15);  color: #FCD34D; }
+.sk-stat__icon--teal {
+  background: rgba(11, 223, 187, 0.15);
+  color: #0BDFBB;
+}
+
+.sk-stat__icon--purple {
+  background: rgba(139, 92, 246, 0.15);
+  color: #A78BFA;
+}
+
+.sk-stat__icon--blue {
+  background: rgba(59, 130, 246, 0.15);
+  color: #60A5FA;
+}
+
+.sk-stat__icon--gold {
+  background: rgba(245, 158, 11, 0.15);
+  color: #FCD34D;
+}
 
 .sk-stat__num {
   font-size: 28px !important;
@@ -1380,12 +1387,35 @@ button {
   flex-shrink: 0;
 }
 
-.sk-cat-icon--green  { background: rgba(11, 223, 187, 0.15); color: #0BDFBB; }
-.sk-cat-icon--blue   { background: rgba(59, 130, 246, 0.15);  color: #60A5FA; }
-.sk-cat-icon--violet { background: rgba(139, 92, 246, 0.15);  color: #A78BFA; }
-.sk-cat-icon--lime   { background: rgba(132, 204, 22, 0.15);  color: #BEF264; }
-.sk-cat-icon--red    { background: rgba(239, 68, 68, 0.15);   color: #FCA5A5; }
-.sk-cat-icon--cyan   { background: rgba(6, 182, 212, 0.15);   color: #67E8F9; }
+.sk-cat-icon--green {
+  background: rgba(11, 223, 187, 0.15);
+  color: #0BDFBB;
+}
+
+.sk-cat-icon--blue {
+  background: rgba(59, 130, 246, 0.15);
+  color: #60A5FA;
+}
+
+.sk-cat-icon--violet {
+  background: rgba(139, 92, 246, 0.15);
+  color: #A78BFA;
+}
+
+.sk-cat-icon--lime {
+  background: rgba(132, 204, 22, 0.15);
+  color: #BEF264;
+}
+
+.sk-cat-icon--red {
+  background: rgba(239, 68, 68, 0.15);
+  color: #FCA5A5;
+}
+
+.sk-cat-icon--cyan {
+  background: rgba(6, 182, 212, 0.15);
+  color: #67E8F9;
+}
 
 .sk-card__name {
   font-size: 15px;
@@ -1584,8 +1614,13 @@ button {
 }
 
 @keyframes skToolsSlide {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .sk-use-icon {
@@ -1679,8 +1714,13 @@ button {
 }
 
 @keyframes skMarquee {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .sk-marquee__label {
@@ -1709,8 +1749,14 @@ button {
     display: grid;
   }
 
-  .sk-stat { min-width: unset; padding: 14px 16px; }
-  .sk-stat__num { font-size: 22px !important; }
+  .sk-stat {
+    min-width: unset;
+    padding: 14px 16px;
+  }
+
+  .sk-stat__num {
+    font-size: 22px !important;
+  }
 
   .sk-grid {
     grid-template-columns: 1fr;
