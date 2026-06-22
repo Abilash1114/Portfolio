@@ -1,68 +1,100 @@
 <!-- ============================================================
-     SITE LOADER OVERLAY
+     SITE LOADER OVERLAY — radar/HUD style
      ============================================================ -->
 <div id="site-loader" aria-hidden="true" aria-label="Loading portfolio">
-  <div class="loader-logo">
-    <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <circle cx="30" cy="30" r="28" stroke="url(#lg)" stroke-width="2" stroke-linecap="round" stroke-dasharray="176"
-        stroke-dashoffset="176">
-        <animate attributeName="stroke-dashoffset" from="176" to="0" dur="1.4s" fill="freeze" calcMode="spline"
-          keySplines="0.4 0 0.2 1" />
-      </circle>
-      <defs>
-        <linearGradient id="lg" x1="0" y1="0" x2="60" y2="60" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stop-color="#0BDFBB" />
-          <stop offset="100%" stop-color="#067965" />
-        </linearGradient>
-      </defs>
-    </svg>
-    <span class="loader-initials">AR</span>
-  </div>
-  <div class="loader-bar">
-    <div class="loader-bar__fill"></div>
-  </div>
-  <p class="loader-label">Preparing my creative world…</p>
-</div>
+  <p class="ldr-time" id="ldrTime">Local time: 00:00:00 (12:00 AM)</p>
 
-<!-- ============================================================
-     STICKY HEADER
-     ============================================================ -->
-<nav id="sticky-header" aria-label="Sticky navigation">
-  <div class="container">
-    <div class="row hero_nav">
-      <div class="col-md-3 col-4">
-        <img src="assets/images/logo.svg" class="img-fluid" alt="Abilash logo" />
-      </div>
-      <div class="col-lg-5 d-none d-lg-block"></div>
-      <div class="col-lg-4 col-8">
-        <div class="nav_item">
-          <a href="#about_section">
-            <p>About</p>
-          </a>
-          <a href="#Portfolio">
-            <p>Portfolio</p>
-          </a>
-          <a href="#contact">
-            <p>Contact</p>
-          </a>
-        </div>
-      </div>
+  <div class="ldr-radar">
+    <svg class="ldr-rings" viewBox="0 0 400 400" aria-hidden="true">
+      <circle cx="200" cy="200" r="190" class="ldr-ring-track" />
+      <circle
+        cx="200"
+        cy="200"
+        r="190"
+        class="ldr-ring-progress"
+        id="ldrRingProgress"
+        pathLength="100"
+        stroke-dasharray="100"
+        stroke-dashoffset="100"
+      />
+      <circle
+        cx="200"
+        cy="200"
+        r="140"
+        class="ldr-ring-track ldr-ring-track--mid"
+      />
+      <circle
+        cx="200"
+        cy="200"
+        r="98"
+        class="ldr-ring-track ldr-ring-track--inner"
+      />
+    </svg>
+
+    <div class="ldr-labels">
+      <span class="ldr-label" style="transform: rotate(0deg) translateY(-185px)">UI / UX</span>
+      <span class="ldr-label" style="transform: rotate(36deg) translateY(-185px)">Animation</span>
+      <span class="ldr-label" style="transform: rotate(72deg) translateY(-185px)">Prototype</span>
+      <span class="ldr-label" style="transform: rotate(108deg) translateY(-185px)">Strategy</span>
+      <span class="ldr-label" style="transform: rotate(144deg) translateY(-185px)">Branding</span>
+      <span class="ldr-label" style="transform: rotate(180deg) translateY(-185px)">Back-End</span>
+      <span class="ldr-label" style="transform: rotate(216deg) translateY(-185px)">Front-End</span>
+      <span class="ldr-label" style="transform: rotate(252deg) translateY(-185px)">Testing</span>
+      <span class="ldr-label" style="transform: rotate(288deg) translateY(-185px)">Research</span>
+      <span class="ldr-label" style="transform: rotate(324deg) translateY(-185px)">Design</span>
     </div>
+
+    <span class="ldr-tick ldr-tick--n"></span>
+    <span class="ldr-tick ldr-tick--e"></span>
+    <span class="ldr-tick ldr-tick--s"></span>
+    <span class="ldr-tick ldr-tick--w"></span>
+    <span class="ldr-tick ldr-tick--ne"></span>
+    <span class="ldr-tick ldr-tick--nw"></span>
+    <span class="ldr-tick ldr-tick--se"></span>
+    <span class="ldr-tick ldr-tick--sw"></span>
+
+    <div class="ldr-percent"><span id="ldrPercent">00</span></div>
   </div>
-</nav>
+
+  <div class="ldr-corner ldr-corner--bl">
+    <p class="ldr-since">
+      since <span id="ldrYear">2023</span> <span class="ldr-cursor"></span>
+    </p>
+    <h2 class="ldr-title">Creative<br />UI/UX<br />Designer & Development</h2>
+  </div>
+
+  <div class="ldr-corner ldr-corner--br">
+    <p>Creating<br />Memorable</p>
+  </div>
+</div>
 
 <!-- ============================================================
      FIXED UI ELEMENTS  (social sidebar · bg decorations · resume)
      ============================================================ -->
 <aside class="d-none d-lg-block" aria-label="Social links">
   <div class="social_icons">
-    <a href="https://github.com/Abilash1114" target="_blank" rel="noopener" aria-label="GitHub">
+    <a
+      href="https://github.com/Abilash1114"
+      target="_blank"
+      rel="noopener"
+      aria-label="GitHub"
+    >
       <img src="assets/images/git.svg" class="img-fluid" alt="GitHub" />
     </a>
-    <a href="https://www.linkedin.com/in/abilash-r/" target="_blank" rel="noopener" aria-label="LinkedIn">
+    <a
+      href="https://www.linkedin.com/in/abilash-r/"
+      target="_blank"
+      rel="noopener"
+      aria-label="LinkedIn"
+    >
       <img src="assets/images/lin.svg" class="img-fluid" alt="LinkedIn" />
     </a>
-    <a href="https://www.behance.net/abilashravi4702" target="_blank" rel="noopener" aria-label="Behance">
+    <a
+      href="https://www.behance.net/abilashravi4702"
+      target="_blank"
+      rel="noopener"
+      aria-label="Behance"
+    >
       <img src="assets/images/lin1.svg" class="img-fluid" alt="Behance" />
     </a>
     <a href="tel:+916383891982" aria-label="WhatsApp">
@@ -96,5 +128,6 @@
 <app-about></app-about>
 <app-skills></app-skills>
 <app-career></app-career>
+<app-gallery-3d></app-gallery-3d>
 <app-works></app-works>
 <app-contact></app-contact>

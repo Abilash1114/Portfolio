@@ -1,0 +1,132 @@
+.gallery3d-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #041a12;
+}
+
+.gallery3d-canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+/* ── Intro overlay — fills the empty top/left/right space at the start of
+   the section, fades out as the user scrolls into the image flythrough. ── */
+.gallery3d-intro {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 36px 64px;
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+
+.gallery3d-intro__topbar {
+  display: flex;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.gallery3d-intro__main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+}
+
+.gallery3d-intro__desc {
+  max-width: 320px;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: "Roboto", sans-serif;
+}
+
+.gallery3d-intro__heading {
+  text-align: right;
+}
+
+.gallery3d-intro__eyebrow {
+  margin: 0 0 6px;
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.55);
+  font-family: "Roboto", sans-serif;
+}
+
+.gallery3d-intro__title {
+  margin: 0;
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+}
+
+.gallery3d-intro__title--dim {
+  display: block;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.gallery3d-intro__title--bright {
+  display: block;
+  color: #ffffff;
+}
+
+.gallery3d-intro__footer {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.gallery3d-intro__stat {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  font-family: "Roboto", sans-serif;
+}
+
+.gallery3d-intro__dot {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+@media screen and (max-width: 768px) {
+  .gallery3d-intro {
+    padding: 24px 24px;
+  }
+
+  .gallery3d-intro__main {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .gallery3d-intro__heading {
+    text-align: left;
+  }
+
+  .gallery3d-intro__title {
+    font-size: 32px;
+  }
+
+  .gallery3d-intro__footer {
+    flex-wrap: wrap;
+  }
+}

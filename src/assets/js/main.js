@@ -340,90 +340,6 @@ function careerLine() {
   });
 }
 
-/* ── 10. Portfolio Stacked Card Animation ────────────────── */
-/**
- * Pins the .cards section and animates four portfolio cards
- * stacking on top of each other as the user scrolls.
- */
-function cardsAnimation() {
-  gsap.registerPlugin(ScrollTrigger);
-
-  // Prevent ScrollTrigger from auto-refreshing on every
-  // resize event — this is what causes the DevTools jump
-  ScrollTrigger.config({
-    autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load'
-    // 'resize' is intentionally excluded
-  });
-
-  gsap.set('.card1', { yPercent: 0, opacity: 1, scale: 1 });
-  gsap.set('.card2', { yPercent: 100, opacity: 0, scale: 1 });
-  gsap.set('.card3', { yPercent: 100, opacity: 0, scale: 1 });
-  gsap.set('.card4', { yPercent: 100, opacity: 0, scale: 1 });
-
-  const header = document.getElementById('sticky-header');
-  const headerH = header ? header.offsetHeight : 70;
-
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: '.cards',
-      start: 'top ' + headerH + 'px',
-      end: '+=2600',
-      pin: true,
-      pinSpacing: true,
-      scrub: 1,
-      invalidateOnRefresh: true,
-      onRefresh(self) {
-        if (self.progress === 0) {
-          gsap.set('.card1', { yPercent: 0, opacity: 1, scale: 1 });
-          gsap.set(['.card2', '.card3', '.card4'], {
-            yPercent: 100, opacity: 0, scale: 1
-          });
-        }
-      },
-    },
-  });
-
-  tl
-    .addLabel('start')
-
-    .to('.card1', { scale: 0.88, yPercent: -4, opacity: 0.85 })
-    .to('.card2', { yPercent: 0, opacity: 1, scale: 1 }, '<')
-    .addLabel('card2')
-
-    .to('.card1', { scale: 0.80, yPercent: -8, opacity: 0.7 })
-    .to('.card2', { scale: 0.88, yPercent: -4, opacity: 0.85 }, '<')
-    .to('.card3', { yPercent: 0, opacity: 1, scale: 1 }, '<')
-    .addLabel('card3')
-
-    .to('.card1', { scale: 0.72, yPercent: -12, opacity: 0.55 })
-    .to('.card2', { scale: 0.80, yPercent: -8, opacity: 0.7 }, '<')
-    .to('.card3', { scale: 0.88, yPercent: -4, opacity: 0.85 }, '<')
-    .to('.card4', { yPercent: 0, opacity: 1, scale: 1 }, '<')
-    .addLabel('card4');
-
-  // Debounced manual refresh — fires 250ms after resize stops.
-  // Saves the current scroll progress and restores it after
-  // refresh so cards don't jump to wrong positions.
-  let resizeTimer;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      const st = tl.scrollTrigger;
-      const progress = st ? st.progress : 0;
-
-      ScrollTrigger.refresh();
-
-      // After refresh, scroll position may have shifted —
-      // seek the timeline back to where the user was
-      if (st && progress > 0) {
-        const newStart = st.start;
-        const newEnd = st.end;
-        window.scrollTo(0, newStart + (newEnd - newStart) * progress);
-      }
-    }, 250);
-  });
-}
-
 /* ── 11. About Me Word Animation ─────────────────────────── */
 /**
  * Splits the .about_me paragraph into words, sets them invisible,
@@ -531,12 +447,6 @@ function gradientes() {
   setInterval(updateGradient, 10);
 }
 
-/* ── 14. Sticky Header on Scroll-Up ─────────────────────── */
-/**
- * Shows #sticky-header only when the user has scrolled past
- * the hero banner AND is scrolling UP.
- * Hides it immediately on scroll-down or when back inside the hero.
- */
 /* ── 15. Tools I Use — Auto-Sliding Strip ────────────────── */
 /**
  * The track uses a CSS @keyframes animation (skToolsSlide) for
@@ -635,6 +545,32 @@ function toolsSlider() {
 }
 
 
+/* ── 15b. Project Cards Reveal (Portfolio grid) ──────────── */
+/**
+ * Staggers each .pf-project-card in from below with a slight
+ * scale-up as the featured-projects grid scrolls into view.
+ */
+function projectCardsReveal() {
+  gsap.registerPlugin(ScrollTrigger);
+
+  const cards = gsap.utils.toArray('.pf-project-card');
+  if (!cards.length) return;
+
+  gsap.from(cards, {
+    y: 50,
+    scale: 0.94,
+    opacity: 0,
+    duration: 0.7,
+    stagger: 0.12,
+    ease: 'power3.out',
+    scrollTrigger: {
+      trigger: '.pf-featured-grid',
+      start: 'top 88%',
+      toggleActions: 'play none none none',
+    },
+  });
+}
+
 /* ── 16. Skills Section Filter tabs ─────────────────────── */
 /**
  * Handles the skill filter tab clicks in the redesigned
@@ -664,37 +600,23 @@ function skillsFilter() {
 }
 
 
-function stickyNav() {
-  const header = document.getElementById('sticky-header');
-  const hero = document.querySelector('.hero_back');
+/* ── Social Sidebar — hide near Contact section ──────────── */
+/**
+ * Hides the fixed social-icons sidebar once the user scrolls
+ * close enough to the contact section that it would overlap.
+ */
+function socialAsideVisibility() {
   const socialAside = document.querySelector('aside .social_icons');
   const contact = document.getElementById('contact');
-  if (!header || !hero) return;
-
-  let lastScrollY = window.scrollY;
+  if (!socialAside || !contact) return;
 
   window.addEventListener('scroll', function () {
-    const currentScrollY = window.scrollY;
-    const heroBottom = hero.offsetTop + hero.offsetHeight;
-    const scrollingDown = currentScrollY > lastScrollY;
-    const pastHero = currentScrollY > heroBottom;
-
-    if (!pastHero || scrollingDown) {
-      header.style.transform = 'translateY(-100%)';
+    const contactTop = contact.offsetTop;
+    if (window.scrollY + window.innerHeight * 0.6 >= contactTop) {
+      socialAside.style.visibility = 'hidden';
     } else {
-      header.style.transform = 'translateY(0)';
+      socialAside.style.visibility = 'visible';
     }
-
-    if (socialAside && contact) {
-      const contactTop = contact.offsetTop;
-      if (currentScrollY + window.innerHeight * 0.6 >= contactTop) {
-        socialAside.style.visibility = 'hidden';
-      } else {
-        socialAside.style.visibility = 'visible';
-      }
-    }
-
-    lastScrollY = currentScrollY <= 0 ? 0 : currentScrollY;
   }, { passive: true });
 }
 

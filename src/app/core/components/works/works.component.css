@@ -1,46 +1,400 @@
-/* ── Portfolio stacked cards ── */
-.cards {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-
-  /* svh = small viewport height — stable, ignores DevTools */
-  height: 100svh;
-  min-height: 100svh;
-
-  overflow: hidden;
-  margin-bottom: 90px;
-}
-
-.custom-card {
-  position: absolute;
-  width: 100%;
-  top: 0;
-  height: 70svh;
-  /* also use svh here */
+/* ── Featured / All Projects (Portfolio) ── */
+.pf-section-label {
+  font-size: 22px;
+  font-weight: 700;
   color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50px;
+  font-family: "Roboto", sans-serif;
+  margin: 0;
 }
 
-.card1 {
+.pf-featured-head,
+.pf-all-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 60px 0 24px;
+}
+
+.pf-viewall {
+  font-size: 14px;
+  color: rgba(185, 185, 185, 0.8);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.25s ease;
+}
+
+.pf-viewall:hover {
+  color: #0bdfbb;
+}
+
+/* Featured grid — CSS grid, row-major order (1,2,3 / 4,5,6) */
+.pf-featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media screen and (min-width: 769px) and (max-width: 1100px) {
+  .pf-featured-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 380px) and (max-width: 768px) {
+  .pf-featured-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pf-project-card {
+  display: block;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.pf-project-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pf-project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.5);
+}
+
+.pf-feature-card {
+  position: relative;
+  isolation: isolate;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  background: linear-gradient(
+    160deg,
+    rgba(11, 223, 187, 0.1) 0%,
+    rgba(255, 255, 255, 0.025) 45%,
+    rgba(0, 0, 0, 0.12) 100%
+  );
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition:
+    box-shadow 0.35s ease,
+    transform 0.35s ease;
+}
+
+/* Glowing gradient stroke — brighter top-left, fading toward bottom-right */
+.pf-feature-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(11, 223, 187, 0.7) 0%,
+    rgba(11, 223, 187, 0.05) 35%,
+    rgba(11, 223, 187, 0) 60%,
+    rgba(11, 223, 187, 0.3) 100%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.65;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.pf-feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 18px 48px rgba(11, 223, 187, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.pf-feature-card:hover::before {
+  opacity: 1;
+}
+
+.pf-feature-card__media {
+  display: block;
+  height: 260px;
+  overflow: hidden;
+  background: linear-gradient(
+    160deg,
+    rgba(11, 223, 187, 0.12),
+    rgba(6, 121, 101, 0.04)
+  );
+}
+
+.pf-feature-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.pf-feature-card:hover .pf-feature-card__media img {
+  transform: scale(1.04);
+}
+
+.pf-feature-card__body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pf-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(11, 223, 187, 0.12);
+  color: #0bdfbb;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.pf-num--sm {
+  position: absolute;
+  top: 14px;
+  left: 14px;
   z-index: 2;
 }
 
-.card2 {
-  z-index: 3;
+.pf-feature-card__title {
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  color: #fff !important;
+  font-family: "Roboto", sans-serif !important;
+  margin: 0 !important;
 }
 
-.card3 {
-  z-index: 4;
+.pf-feature-card__tagline {
+  font-size: 14px !important;
+  color: #0bdfbb !important;
+  font-weight: 600 !important;
 }
 
-.card4 {
-  z-index: 5;
+.pf-feature-card__desc {
+  font-size: 14px !important;
+  color: rgba(185, 185, 185, 0.7) !important;
+  line-height: 1.6 !important;
+}
+
+.pf-feature-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+/* Category badges */
+.pf-cat-badge {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 100px;
+  background: rgba(11, 223, 187, 0.12);
+  color: #0bdfbb;
+  border: 1px solid rgba(11, 223, 187, 0.25);
+  white-space: nowrap;
+}
+
+.pf-cat-badge--Fintech {
+  background: rgba(59, 130, 246, 0.12);
+  color: #60a5fa;
+  border-color: rgba(59, 130, 246, 0.25);
+}
+
+.pf-cat-badge--Food {
+  background: rgba(245, 158, 11, 0.12);
+  color: #fcd34d;
+  border-color: rgba(245, 158, 11, 0.25);
+}
+
+.pf-cat-badge--Corporate {
+  background: rgba(139, 92, 246, 0.12);
+  color: #a78bfa;
+  border-color: rgba(139, 92, 246, 0.25);
+}
+
+.pf-cat-badge--sm {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+}
+
+.pf-case-link {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.25s ease;
+}
+
+.pf-case-link:hover {
+  color: #0bdfbb;
+}
+
+/* Filters */
+.pf-filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.pf-filter {
+  padding: 8px 20px;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.pf-filter:hover {
+  border-color: rgba(11, 223, 187, 0.4);
+  color: #fff;
+}
+
+.pf-filter.active {
+  background: #0bdfbb;
+  border-color: #0bdfbb;
+  color: #010c0a;
+  font-weight: 600;
+}
+
+/* All Projects grid */
+.pf-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 90px;
+}
+
+.pf-card {
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  overflow: hidden;
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.pf-card:hover {
+  border-color: rgba(11, 223, 187, 0.3);
+  transform: translateY(-4px);
+}
+
+.pf-card__media {
+  position: relative;
+  display: block;
+  height: 160px;
+  overflow: hidden;
+  background: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.04),
+    rgba(255, 255, 255, 0.01)
+  );
+}
+
+.pf-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.pf-card:hover .pf-card__media img {
+  transform: scale(1.05);
+}
+
+.pf-card__body {
+  padding: 16px;
+  position: relative;
+}
+
+.pf-card__title {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  color: #fff !important;
+  font-family: "Roboto", sans-serif !important;
+  margin: 0 0 4px !important;
+}
+
+.pf-card__desc {
+  font-size: 12px !important;
+  color: rgba(185, 185, 185, 0.65) !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+  padding-right: 30px;
+}
+
+.pf-card__link {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.25s ease;
+}
+
+.pf-card__link:hover {
+  background: #0bdfbb;
+  border-color: #0bdfbb;
+  color: #010c0a;
+}
+
+.pf-empty {
+  text-align: center;
+  padding: 40px 0 90px;
+  color: rgba(185, 185, 185, 0.6) !important;
+  font-size: 14px !important;
+}
+
+/* Mobile */
+@media screen and (min-width: 380px) and (max-width: 768px) {
+  .pf-section-label {
+    font-size: 18px;
+  }
+
+  .pf-feature-card__media {
+    height: 200px;
+  }
+
+  .pf-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* ── Web works title ── */
@@ -143,7 +497,9 @@
   bottom: 10px;
   visibility: hidden;
   opacity: 0;
-  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  transition:
+    opacity 0.3s ease-in-out,
+    visibility 0.3s ease-in-out;
 }
 
 .sample_img:hover .arr {

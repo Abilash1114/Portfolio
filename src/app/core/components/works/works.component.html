@@ -6,115 +6,49 @@
       <h6>My Creative <span>Works</span></h6>
     </div>
 
-    <div class="row mt-5">
-      <div class="col-12">
-        <div class="cards">
-          <div class="custom-card card1" id="proj-1">
-            <a
-              href="https://www.behance.net/gallery/233455293/ForkPay-The-Smarter-Way-to-Dine-Pay"
-              target="_blank"
-              rel="noopener"
-            >
-              <picture>
-                <source
-                  media="(min-width: 992px)"
-                  srcset="assets/images/pro-1.png"
-                />
-                <source
-                  media="(max-width: 991px)"
-                  srcset="assets/images/pro-1.1.png"
-                />
-                <img
-                  src="assets/images/pro-1-desktop.png"
-                  class="img-fluid"
-                  alt="ForkPay – Dine & Pay project"
-                />
-              </picture>
-            </a>
-          </div>
-          <div class="custom-card card2" id="proj-2">
-            <a
-              href="https://www.behance.net/gallery/238251613/Corporate-Website-Redesign-InfoPlus-Homepage-UXUI"
-              target="_blank"
-              rel="noopener"
-            >
-              <picture>
-                <source
-                  media="(min-width: 992px)"
-                  srcset="assets/images/pro-3.png"
-                />
-                <source
-                  media="(max-width: 991px)"
-                  srcset="assets/images/pro-3.3.png"
-                />
-                <img
-                  src="assets/images/pro-3-desktop.png"
-                  class="img-fluid"
-                  alt="InfoPlus Corporate Redesign"
-                />
-              </picture>
-            </a>
-          </div>
-          <div class="custom-card card3" id="proj-3">
-            <a
-              href="https://www.behance.net/gallery/235183431/Secure-Digital-Wallet-Buy-Gold-App-(UIUX-Case-Study)"
-              target="_blank"
-              rel="noopener"
-            >
-              <picture>
-                <source
-                  media="(min-width: 992px)"
-                  srcset="assets/images/pro-2.png"
-                />
-                <source
-                  media="(max-width: 991px)"
-                  srcset="assets/images/pro-2.2.png"
-                />
-                <img
-                  src="assets/images/pro-2-desktop.png"
-                  class="img-fluid"
-                  alt="Secure Digital Wallet"
-                />
-              </picture>
-            </a>
-          </div>
-          <div class="custom-card card4" id="proj-4">
-            <a
-              href="https://www.behance.net/gallery/238250743/Paisa-Pop-Loan-App-Redesign-UXUI-Case-Study"
-              target="_blank"
-              rel="noopener"
-            >
-              <picture>
-                <source
-                  media="(min-width: 992px)"
-                  srcset="assets/images/pro-4.png"
-                />
-                <source
-                  media="(max-width: 991px)"
-                  srcset="assets/images/pro-4.4.png"
-                />
-                <img
-                  src="assets/images/pro-4-desktop.png"
-                  class="img-fluid"
-                  alt="Paisa Pop Loan App"
-                />
-              </picture>
-            </a>
-          </div>
-        </div>
+    <!-- My Projects -->
+    <div class="pf-featured-head">
+      <p class="pf-section-label">My Projects</p>
+      <div class="pf-filters">
+        <button
+          *ngFor="let cat of cardFilters"
+          type="button"
+          class="pf-filter"
+          [class.active]="activeCardFilter === cat"
+          (click)="setCardFilter(cat)"
+        >
+          {{ cat }}
+        </button>
       </div>
     </div>
+
+    <div class="pf-featured-grid">
+      <a
+        *ngFor="let p of filteredProjectCards"
+        [href]="p.href"
+        target="_blank"
+        rel="noopener"
+        class="pf-project-card"
+      >
+        <img [src]="p.img" class="img-fluid" [alt]="p.title + ' project'" />
+      </a>
+    </div>
+
+    <p class="pf-empty" *ngIf="!filteredProjectCards.length">
+      More {{ activeCardFilter }} projects coming soon.
+    </p>
   </div>
 </section>
 
 <!-- Web Works — Horizontal Scroll -->
 <section id="horizontal-scoll" aria-label="Web works showcase">
   <div class="container">
-    <!-- <div class="main_title web-works-title">
+    <div class="main_title web-works-title">
       <p class="section-eyebrow">Frontend</p>
-      <h6>Frontend <span>Developments</span></h6>
-    </div> -->
+      <h6>UI <span>Development</span></h6>
+    </div>
   </div>
+
   <div class="horizontal-scoll-wrapper">
     <div class="horizontal">
       <!-- 01 Digital Innovation -->

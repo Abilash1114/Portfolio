@@ -4,7 +4,7 @@
    Global resets/fonts live in styles.css only.
 
    TABLE OF CONTENTS
-   0.  Site Loader Overlay          ← NEW
+   0.  Site loader (radar/HUD)
    1.  CSS Custom Properties
    2.  Section label (eyebrow)
    3.  Main title
@@ -24,190 +24,284 @@
    17. Mobile responsive overrides (380 – 768 px)
    ================================================================ */
 
-/* ── 0. SITE LOADER OVERLAY ───────────────────────────────────── */
-/*
-  Fullscreen overlay shown on first paint.
-  GSAP fades it to opacity:0 then sets display:none once Spline
-  fires its 'load' event (or SPLINE_TIMEOUT_MS elapses).
-
-  Uses :host-context so the overlay participates in Angular
-  view-encapsulation without requiring ::ng-deep.
-*/
-
-/* Block scroll while loading */
-:host-context(body.loading) {
-  overflow: hidden !important;
-}
-
+/* ── 0. SITE LOADER (radar/HUD) ───────────────────────────────── */
 #site-loader {
   position: fixed;
   inset: 0;
   z-index: 99999;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 28px;
-  background: #010c0a;
-  /* Subtle noise grain — pure CSS, no image required */
-  background-image:
-    radial-gradient(ellipse 80% 60% at 50% 0%,
-      rgba(11, 223, 187, 0.08) 0%,
-      transparent 70%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-  will-change: opacity;
-  pointer-events: all;
+  background: #041a12;
+  background-image: radial-gradient(
+    ellipse 70% 60% at 50% 50%,
+    rgba(11, 223, 187, 0.06) 0%,
+    transparent 70%
+  );
+  font-family: "Orbitron", sans-serif;
+  color: rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+  transition: opacity 0.6s ease;
 }
 
-/* ── Spinning ring + initials ── */
-.loader-logo {
+#site-loader.sl-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ldr-time {
+  position: absolute;
+  top: 28px;
+  right: 36px;
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* ── Radar rings ── */
+.ldr-radar {
   position: relative;
-  width: 80px;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 400px;
+  height: 400px;
 }
 
-.loader-logo svg {
+.ldr-rings {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  animation: loaderSpin 2.4s linear infinite;
 }
 
-@keyframes loaderSpin {
+.ldr-ring-track {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.14);
+  stroke-width: 1;
+}
+
+.ldr-ring-track--mid {
+  stroke: rgba(255, 255, 255, 0.1);
+}
+
+.ldr-ring-track--inner {
+  stroke: rgba(255, 255, 255, 0.22);
+}
+
+.ldr-ring-progress {
+  fill: none;
+  stroke: #0bdfbb;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  filter: drop-shadow(0 0 4px rgba(11, 223, 187, 0.6));
+  transition: stroke-dashoffset 0.2s linear;
+}
+
+/* ── Orbiting keyword labels ── */
+.ldr-labels {
+  position: absolute;
+  inset: 0;
+  animation: ldrSpinSlow 90s linear infinite;
+}
+
+.ldr-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90px;
+  margin-left: -45px;
+  text-align: center;
+  transform-origin: 50% 0%;
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  white-space: nowrap;
+}
+
+@keyframes ldrSpinSlow {
   to {
     transform: rotate(360deg);
   }
 }
 
-.loader-initials {
-  font-family: "Lora", serif;
-  font-size: 22px;
-  font-weight: 700;
+/* ── Cardinal / diagonal tick marks ── */
+.ldr-tick {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.ldr-tick--n,
+.ldr-tick--s {
+  left: 50%;
+  width: 1px;
+  height: 14px;
+  margin-left: -0.5px;
+}
+
+.ldr-tick--n {
+  top: -6px;
+}
+
+.ldr-tick--s {
+  bottom: -6px;
+}
+
+.ldr-tick--e,
+.ldr-tick--w {
+  top: 50%;
+  width: 14px;
+  height: 1px;
+  margin-top: -0.5px;
+}
+
+.ldr-tick--e {
+  right: -6px;
+}
+
+.ldr-tick--w {
+  left: -6px;
+}
+
+.ldr-tick--ne,
+.ldr-tick--nw,
+.ldr-tick--se,
+.ldr-tick--sw {
+  width: 22px;
+  height: 1px;
+}
+
+.ldr-tick--ne {
+  top: 28px;
+  right: 28px;
+  transform: rotate(-45deg);
+}
+
+.ldr-tick--nw {
+  top: 28px;
+  left: 28px;
+  transform: rotate(45deg);
+}
+
+.ldr-tick--se {
+  bottom: 28px;
+  right: 28px;
+  transform: rotate(45deg);
+}
+
+.ldr-tick--sw {
+  bottom: 28px;
+  left: 28px;
+  transform: rotate(-45deg);
+}
+
+/* ── Center percentage ── */
+.ldr-percent {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 44px;
+  font-weight: 600;
   letter-spacing: 2px;
-  background: linear-gradient(180deg, #84ffe7 0%, #0bdfbb 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-  position: relative;
-  z-index: 1;
-  /* Subtle pulse */
-  animation: loaderPulse 2.4s ease-in-out infinite;
+  color: rgba(255, 255, 255, 0.92);
 }
 
-@keyframes loaderPulse {
+/* ── Bottom corners ── */
+.ldr-corner {
+  position: absolute;
+  bottom: 36px;
+}
 
-  0%,
-  100% {
-    opacity: 1;
-  }
+.ldr-corner--bl {
+  left: 36px;
+}
 
+.ldr-corner--br {
+  right: 36px;
+  text-align: right;
+}
+
+.ldr-since {
+  margin: 0 0 8px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.ldr-cursor {
+  animation: ldrBlink 1s step-end infinite;
+}
+
+@keyframes ldrBlink {
   50% {
-    opacity: 0.6;
+    opacity: 0;
   }
 }
 
-/* ── Progress shimmer bar ── */
-.loader-bar {
-  width: 200px;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.06);
-  border-radius: 2px;
-  overflow: hidden;
+.ldr-title {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.92);
 }
 
-.loader-bar__fill {
-  height: 100%;
-  width: 40%;
-  background: linear-gradient(90deg, transparent, #0bdfbb, transparent);
-  border-radius: 2px;
-  animation: loaderShimmer 1.6s ease-in-out infinite;
-}
-
-@keyframes loaderShimmer {
-  0% {
-    transform: translateX(-300%);
-  }
-
-  100% {
-    transform: translateX(600%);
-  }
-}
-
-/* ── Loading label ── */
-.loader-label {
-  font-family: "Barlow", sans-serif !important;
+.ldr-corner--br p {
+  margin: 0;
   font-size: 13px;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.3) !important;
-  margin: 0 !important;
-  animation: loaderFade 2s ease-in-out infinite alternate;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.5);
 }
 
-@keyframes loaderFade {
-  from {
-    opacity: 0.3;
+@media screen and (max-width: 768px) {
+  .ldr-radar {
+    width: 280px;
+    height: 280px;
   }
 
-  to {
-    opacity: 0.7;
-  }
-}
-
-/* Mobile: slightly smaller ring */
-@media screen and (max-width: 480px) {
-  .loader-logo {
-    width: 64px;
-    height: 64px;
+  .ldr-rings {
+    transform: scale(0.7);
+    transform-origin: center;
   }
 
-  .loader-initials {
+  .ldr-label {
+    font-size: 7px;
+  }
+
+  .ldr-percent {
+    font-size: 30px;
+  }
+
+  .ldr-title {
     font-size: 18px;
   }
 
-  .loader-bar {
-    width: 140px;
+  .ldr-time {
+    top: 16px;
+    right: 16px;
+    font-size: 10px;
   }
-}
 
-/* ── 0b. STICKY HEADER ────────────────────────────────────────── */
-/*
-  Fixed bar hidden above the viewport.
-  Slides down (translateY → 0) only when:
-    - the user has scrolled past the hero section AND
-    - they are scrolling UP.
-  Slides back up on scroll-down or when back inside the hero.
-*/
-#sticky-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 9998;
-  background: rgba(1, 12, 10, 0.88);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(11, 223, 187, 0.1);
-  transform: translateY(-100%);
-  transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform;
-}
+  .ldr-corner {
+    bottom: 16px;
+  }
 
-#sticky-header .nav_item a p {
-  font-size: 16px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.8);
-  transition: color 0.25s ease;
-}
+  .ldr-corner--bl {
+    left: 16px;
+  }
 
-#sticky-header .nav_item a:hover p {
-  color: #0bdfbb;
+  .ldr-corner--br {
+    right: 16px;
+  }
 }
 
 /* ── 1. CSS Custom Properties ─────────────────────────────────── */
@@ -694,51 +788,6 @@ spline-viewer {
 
 .ex_detailss p {
   text-align: justify;
-}
-
-/* ── 13. Portfolio stacked cards ──────────────────────────────── */
-.cards {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100dvh;
-  min-height: 100vh;
-  overflow: hidden;
-  margin-bottom: 90px;
-}
-
-.custom-card {
-  position: absolute;
-  width: 100%;
-  top: 0;
-  height: 70vh;
-  color: #fff;
-  margin-bottom: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50px;
-}
-
-.card1 {
-  z-index: 2;
-}
-
-.card2 {
-  top: 30px;
-  z-index: 3;
-}
-
-.card3 {
-  top: 60px;
-  z-index: 4;
-}
-
-.card4 {
-  top: 90px;
-  z-index: 5;
 }
 
 .mobile_work img {

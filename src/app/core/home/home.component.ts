@@ -11,6 +11,7 @@ import {
 import { AboutComponent } from '../components/about/about.component';
 import { CareerComponent } from '../components/career/career.component';
 import { ContactComponent } from '../components/contact/contact.component';
+import { Gallery3dComponent } from '../components/gallery-3d/gallery-3d.component';
 import { HeroComponent } from '../components/hero/hero.component';
 import { SkillsComponent } from '../components/skills/skills.component';
 import { WorksComponent } from '../components/works/works.component';
@@ -27,13 +28,13 @@ declare function about(): void;
 declare function title(): void;
 declare function what(): void;
 declare function careerLine(): void;
-declare function cardsAnimation(): void;
 declare function about_text(): void;
 declare function horizontals(): void;
 declare function gradientes(): void;
 declare function toolsSlider(): void;
 declare function skillsFilter(): void;
-declare function stickyNav(): void;
+declare function projectCardsReveal(): void;
+declare function socialAsideVisibility(): void;
 
 @Component({
   selector: 'app-home',
@@ -45,6 +46,7 @@ declare function stickyNav(): void;
     SkillsComponent,
     CareerComponent,
     WorksComponent,
+    Gallery3dComponent,
     ContactComponent,
   ],
   templateUrl: './home.component.html',
@@ -54,9 +56,13 @@ declare function stickyNav(): void;
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly FALLBACK_MS = 12000;
   private fallbackTimer: ReturnType<typeof setTimeout> | null = null;
+  private clockInterval: ReturnType<typeof setInterval> | null = null;
   private rafId: number | null = null;
-  private progressValue = 0;
+  private progressValue = 0; // currently displayed (animated) percent
+  private targetValue = 0; // percent we're animating toward
+  private realLoadDone = false; // true once every image + the window 'load' event has fired
   private revealed = false;
+  private readonly preventScroll = (e: Event) => e.preventDefault();
 
   constructor(private ngZone: NgZone) {}
 
@@ -77,36 +83,76 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     if (this.fallbackTimer) clearTimeout(this.fallbackTimer);
-    if (this.rafId) cancelAnimationFrame(this.rafId);
+    if (this.clockInterval) clearInterval(this.clockInterval);
+    if (this.rafId !== null) cancelAnimationFrame(this.rafId);
+    this.unlockScroll();
     if (typeof ScrollTrigger !== 'undefined') {
       ScrollTrigger.getAll().forEach((t: any) => t.kill());
     }
   }
 
   // ─────────────────────────────────────────────
-  //  LOADER LOGIC
+  //  LOADER
   // ─────────────────────────────────────────────
 
   private startLoader(): void {
     const loader = document.getElementById('site-loader');
     if (!loader) {
-      // No loader in HTML — skip straight to animations
-      setTimeout(() => this.initAllAnimations(), 100);
+      requestAnimationFrame(() => this.initAllAnimations());
       return;
     }
 
-    document.body.classList.add('sl-loading');
+    document.body.classList.add('loading');
+    this.lockScroll();
 
-    // Track real asset loading
+    this.startClock();
     this.trackRealProgress();
+    this.runProgressLoop();
 
     // Hard fallback — reveal after 12s no matter what
-    this.fallbackTimer = setTimeout(
-      () => this.revealSite(100),
-      this.FALLBACK_MS,
-    );
+    this.fallbackTimer = setTimeout(() => this.revealSite(), this.FALLBACK_MS);
   }
 
+  /** Belt-and-suspenders scroll lock — body.loading handles most browsers,
+   *  this blocks wheel/touch directly in case overflow:hidden isn't enough. */
+  private lockScroll(): void {
+    window.addEventListener('wheel', this.preventScroll, { passive: false });
+    window.addEventListener('touchmove', this.preventScroll, {
+      passive: false,
+    });
+  }
+
+  private unlockScroll(): void {
+    window.removeEventListener('wheel', this.preventScroll);
+    window.removeEventListener('touchmove', this.preventScroll);
+  }
+
+  private startClock(): void {
+    const timeEl = document.getElementById('ldrTime');
+    if (!timeEl) return;
+
+    const update = () => {
+      const now = new Date();
+      const hh = String(now.getHours()).padStart(2, '0');
+      const mm = String(now.getMinutes()).padStart(2, '0');
+      const ss = String(now.getSeconds()).padStart(2, '0');
+      const hour12 = now.getHours() % 12 || 12;
+      const ampm = now.getHours() >= 12 ? 'PM' : 'AM';
+      const mm12 = String(now.getMinutes()).padStart(2, '0');
+      timeEl.textContent = `Local time: ${hh}:${mm}:${ss} (${hour12}:${mm12} ${ampm})`;
+    };
+
+    update();
+    this.clockInterval = setInterval(update, 1000);
+  }
+
+  /**
+   * Tracks real asset loading (images + the window 'load' event, which only
+   * fires once every script — jquery/gsap/ScrollTrigger/main.js/etc — has
+   * also finished). This only sets the *target* the visual counter animates
+   * toward (see runProgressLoop) — it never jumps the displayed number directly,
+   * which is what caused the old "snap to 90, stall, snap to 100" feel.
+   */
   private trackRealProgress(): void {
     const images = Array.from(document.images);
     const total = Math.max(images.length, 1);
@@ -114,14 +160,14 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
     const onAssetLoad = () => {
       loaded++;
-      // Images count for 70% of progress; last 30% reserved for scripts/spline
-      const imgProgress = (loaded / total) * 70;
-      this.updateLoaderUI(imgProgress);
+      // Images only ever drive the target up to 92% — the final stretch to
+      // 100 is reserved for confirmation that the whole page (incl. scripts)
+      // has truly finished loading via the window 'load' event below.
+      this.targetValue = Math.max(this.targetValue, (loaded / total) * 92);
     };
 
     if (images.length === 0) {
-      // No images — jump to 70% and wait for window.load
-      this.animateTo(70, 1200);
+      this.targetValue = Math.max(this.targetValue, 92);
     } else {
       images.forEach((img) => {
         if (img.complete) {
@@ -133,96 +179,55 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       });
     }
 
-    // window 'load' = all scripts + images + fonts done → drive to 100%
     window.addEventListener(
       'load',
       () => {
-        this.animateTo(100, 600, () => {
-          setTimeout(() => this.revealSite(100), 400);
-        });
+        this.realLoadDone = true;
+        this.targetValue = 100;
       },
       { once: true },
     );
-
-    // Spline viewer (if present) — wait for it before revealing
-    const splineEl = document.querySelector(
-      'spline-viewer',
-    ) as HTMLElement | null;
-    if (splineEl) {
-      const alreadyLoaded =
-        (splineEl as any).loaded === true ||
-        splineEl.shadowRoot?.querySelector('canvas') !== null;
-
-      if (!alreadyLoaded) {
-        splineEl.addEventListener('load', () => this.revealSite(100), {
-          once: true,
-        });
-      }
-    }
   }
 
-  // Smooth animate progress from current value to target
-  private animateTo(
-    target: number,
-    durationMs: number,
-    onDone?: () => void,
-  ): void {
-    const start = this.progressValue;
-    const startTime = performance.now();
+  /** Smoothly animates the displayed percent toward targetValue every frame,
+   *  so it's a continuous 0→100 ramp no matter how the real progress arrives. */
+  private runProgressLoop(): void {
+    const step = () => {
+      // Ease toward the target — fast enough to feel responsive, slow enough
+      // to never look like an instant jump even when the target itself jumps.
+      this.progressValue += (this.targetValue - this.progressValue) * 0.08;
 
-    const step = (now: number) => {
-      const t = Math.min((now - startTime) / durationMs, 1);
-      const val = start + (target - start) * t;
-      this.updateLoaderUI(val);
-      if (t < 1) {
-        this.rafId = requestAnimationFrame(step);
-      } else {
-        this.progressValue = target;
-        if (onDone) onDone();
+      const displayPct = this.realLoadDone
+        ? Math.max(this.progressValue, 99.5)
+        : this.progressValue;
+
+      this.renderLoaderUI(displayPct);
+
+      if (this.realLoadDone && this.progressValue >= 99.5) {
+        this.renderLoaderUI(100);
+        this.revealSite();
+        return;
       }
+
+      this.rafId = requestAnimationFrame(step);
     };
 
-    if (this.rafId) cancelAnimationFrame(this.rafId);
     this.rafId = requestAnimationFrame(step);
   }
 
-  private updateLoaderUI(rawPct: number): void {
+  private renderLoaderUI(rawPct: number): void {
     const pct = Math.min(100, Math.max(0, Math.round(rawPct)));
-    this.progressValue = pct;
 
-    const fillEl = document.getElementById('slFill');
-    const pctEl = document.getElementById('slPct');
-    const statusEl = document.getElementById('slStatus');
-    const blocks = document.querySelectorAll<HTMLElement>('.sl-block');
+    const pctEl = document.getElementById('ldrPercent');
+    if (pctEl) pctEl.textContent = String(pct).padStart(2, '0');
 
-    if (fillEl) fillEl.style.width = pct + '%';
-    if (pctEl) pctEl.textContent = String(pct);
-
-    // Light up blocks proportionally
-    blocks.forEach((b, i) => {
-      const threshold = (i / blocks.length) * 100;
-      b.classList.toggle('sl-on', pct > threshold);
-    });
-
-    // Status messages
-    if (statusEl) {
-      const msg =
-        pct >= 100
-          ? 'Ready!'
-          : pct >= 90
-            ? 'Almost there…'
-            : pct >= 70
-              ? 'Rendering UI…'
-              : pct >= 45
-                ? 'Mounting components…'
-                : pct >= 20
-                  ? 'Fetching assets…'
-                  : 'Loading scripts…';
-      statusEl.textContent = msg;
+    const ringEl = document.getElementById('ldrRingProgress');
+    if (ringEl) {
+      ringEl.setAttribute('stroke-dashoffset', String(100 - pct));
     }
   }
 
-  private revealSite(finalPct: number): void {
+  private revealSite(): void {
     if (this.revealed) return;
     this.revealed = true;
 
@@ -230,31 +235,29 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       clearTimeout(this.fallbackTimer);
       this.fallbackTimer = null;
     }
+    if (this.clockInterval) {
+      clearInterval(this.clockInterval);
+      this.clockInterval = null;
+    }
+    if (this.rafId !== null) {
+      cancelAnimationFrame(this.rafId);
+      this.rafId = null;
+    }
 
-    this.animateTo(100, 400, () => {
-      const loader = document.getElementById('site-loader');
-      if (!loader) {
-        this.afterReveal();
-        return;
-      }
+    this.unlockScroll();
+    document.body.classList.remove('loading');
 
-      loader.classList.add('sl-complete');
+    const loader = document.getElementById('site-loader');
+    if (!loader) {
+      this.initAllAnimations();
+      return;
+    }
 
-      setTimeout(() => {
-        loader.classList.add('sl-hidden');
-        document.body.classList.remove('sl-loading');
-        setTimeout(() => {
-          loader.style.display = 'none';
-          this.afterReveal();
-        }, 900);
-      }, 600);
-    });
-  }
-
-  private afterReveal(): void {
-    requestAnimationFrame(() => {
-      setTimeout(() => this.initAllAnimations(), 200);
-    });
+    loader.classList.add('sl-hidden');
+    setTimeout(() => {
+      loader.style.display = 'none';
+      this.initAllAnimations();
+    }, 700);
   }
 
   // ─────────────────────────────────────────────
@@ -296,10 +299,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       'careerLine',
     );
     run(
-      typeof cardsAnimation !== 'undefined' ? cardsAnimation : undefined,
-      'cardsAnimation',
-    );
-    run(
       typeof horizontals !== 'undefined' ? horizontals : undefined,
       'horizontals',
     );
@@ -315,7 +314,16 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       typeof skillsFilter !== 'undefined' ? skillsFilter : undefined,
       'skillsFilter',
     );
-    run(typeof stickyNav !== 'undefined' ? stickyNav : undefined, 'stickyNav');
+    run(
+      typeof projectCardsReveal !== 'undefined' ? projectCardsReveal : undefined,
+      'projectCardsReveal',
+    );
+    run(
+      typeof socialAsideVisibility !== 'undefined'
+        ? socialAsideVisibility
+        : undefined,
+      'socialAsideVisibility',
+    );
 
     if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
   }
