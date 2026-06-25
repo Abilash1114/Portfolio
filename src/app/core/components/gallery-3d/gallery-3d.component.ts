@@ -37,52 +37,51 @@ export class Gallery3dComponent implements AfterViewInit, OnDestroy {
    */
   private readonly IMAGES = [
     {
-      path: 'assets/images/project 1.png',
+      path: 'assets/images/zoom/1.png',
+      href: 'https://www.figma.com/design/c0YVEqJ32diynIZfJfnNHy/Ev-Booking?node-id=356-2045&t=jknJuln0n4YxIEV7-1',
+    },
+    {
+      path: 'assets/images/zoom/4.png',
+      href: 'https://www.figma.com/design/njHD5544N2MBVQEfkM0o7w/SAAS-Project?node-id=3-1344&t=OhgeyGdZaEXYIyRZ-1',
+    },
+
+    {
+      path: 'assets/images/zoom/3.png',
+      href: 'https://www.figma.com/design/q3RcdlBzKYhyPIDAIArIZx/JReport?node-id=0-1&t=DokHTlLI7cf7WoDg-1',
+    },
+    {
+      path: 'assets/images/zoom/8.png',
+      href: 'https://theauraeliteevents.com/',
+    },
+
+    {
+      path: 'assets/images/zoom/5.png',
+      href: 'https://www.figma.com/design/9tBZ7gspssItJ6drWOVJub/jcompanion?node-id=0-1&t=OqRFXZp3SI90Z10x-1',
+    },
+    {
+      path: 'assets/images/zoom/6.png',
       href: 'https://www.behance.net/abilashravi4702',
     },
     {
-      path: 'assets/images/project 2.png',
-      href: 'https://www.behance.net/gallery/238250743/Paisa-Pop-Loan-App-Redesign-UXUI-Case-Study',
+      path: 'assets/images/zoom/7.png',
+      href: 'https://www.behance.net/abilashravi4702',
     },
+
     {
-      path: 'assets/images/project 3.png',
+      path: 'assets/images/zoom/9.png',
       href: 'https://www.behance.net/abilashravi4702',
     },
     {
-      path: 'assets/images/project 4.png',
-      href: 'https://www.behance.net/gallery/235183431/Secure-Digital-Wallet-Buy-Gold-App-(UIUX-Case-Study)',
-    },
-    {
-      path: 'assets/images/project 5.png',
+      path: 'assets/images/zoom/10.png',
       href: 'https://www.behance.net/abilashravi4702',
     },
     {
-      path: 'assets/images/project 6.png',
-      href: 'https://www.behance.net/gallery/238251613/Corporate-Website-Redesign-InfoPlus-Homepage-UXUI',
-    },
-    {
-      path: 'assets/images/project 1.png',
+      path: 'assets/images/zoom/5.png',
       href: 'https://www.behance.net/abilashravi4702',
     },
     {
-      path: 'assets/images/project 2.png',
-      href: 'https://www.behance.net/gallery/238250743/Paisa-Pop-Loan-App-Redesign-UXUI-Case-Study',
-    },
-    {
-      path: 'assets/images/project 3.png',
-      href: 'https://www.behance.net/abilashravi4702',
-    },
-    {
-      path: 'assets/images/project 4.png',
-      href: 'https://www.behance.net/gallery/235183431/Secure-Digital-Wallet-Buy-Gold-App-(UIUX-Case-Study)',
-    },
-    {
-      path: 'assets/images/project 5.png',
-      href: 'https://www.behance.net/abilashravi4702',
-    },
-    {
-      path: 'assets/images/project 6.png',
-      href: 'https://www.behance.net/gallery/238251613/Corporate-Website-Redesign-InfoPlus-Homepage-UXUI',
+      path: 'assets/images/zoom/2.png',
+      href: 'https://www.behance.net/gallery/168801133/milk-home-delivery',
     },
   ];
 
@@ -128,7 +127,9 @@ export class Gallery3dComponent implements AfterViewInit, OnDestroy {
       this.firstZ - Gallery3dComponent.IMAGE_SPACING * (this.IMAGES.length - 1);
     // Camera's flight ends just past the last image's peak — not way past it.
     this.END_Z =
-      this.lastZ + Gallery3dComponent.PEAK_OFFSET + Gallery3dComponent.FINISH_BUFFER;
+      this.lastZ +
+      Gallery3dComponent.PEAK_OFFSET +
+      Gallery3dComponent.FINISH_BUFFER;
 
     // The intro overlay should be fully gone by the moment the first image
     // reaches its peak/zoomed-in moment (camera.z = firstZ + PEAK_OFFSET).
@@ -153,7 +154,10 @@ export class Gallery3dComponent implements AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     window.removeEventListener('resize', this.resizeHandler);
-    this.canvasRef.nativeElement.removeEventListener('click', this.clickHandler);
+    this.canvasRef.nativeElement.removeEventListener(
+      'click',
+      this.clickHandler,
+    );
     cancelAnimationFrame(this.rafId);
     this.scrollTriggerInstance?.kill();
 

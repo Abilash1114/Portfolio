@@ -70,6 +70,20 @@ export class WorksComponent {
       href: 'https://www.behance.net/gallery/238251613/Corporate-Website-Redesign-InfoPlus-Homepage-UXUI',
       img: 'assets/images/project 6.png',
     },
+    {
+      id: '07',
+      title: 'Food App',
+      category: '0 to 1 Concept',
+      href: 'https://www.behance.net/gallery/233455293/ForkPay-The-Smarter-Way-to-Dine-Pay',
+      img: 'assets/images/project 7.png',
+    },
+    {
+      id: '08',
+      title: 'InfoPlus (Redesign)',
+      category: 'Website',
+      href: 'https://www.behance.net/gallery/238251613/Corporate-Website-Redesign-InfoPlus-Homepage-UXUI',
+      img: 'assets/images/project 8.png',
+    },
   ];
 
   get filteredProjectCards(): ProjectCard[] {
