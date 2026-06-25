@@ -60,11 +60,11 @@ export class Gallery3dComponent implements AfterViewInit, OnDestroy {
     },
     {
       path: 'assets/images/zoom/6.png',
-      href: 'https://www.behance.net/abilashravi4702',
+      href: 'https://www.figma.com/design/njHD5544N2MBVQEfkM0o7w/SAAS-Project?node-id=2-2&t=OhgeyGdZaEXYIyRZ-1',
     },
     {
       path: 'assets/images/zoom/7.png',
-      href: 'https://www.behance.net/abilashravi4702',
+      href: 'https://www.figma.com/design/k6z9pSOfE2OPcXlYstzM5y/Payment-Website?node-id=1-7&t=MQeIYWQKR52kvJIl-1',
     },
 
     {
@@ -77,7 +77,7 @@ export class Gallery3dComponent implements AfterViewInit, OnDestroy {
     },
     {
       path: 'assets/images/zoom/5.png',
-      href: 'https://www.behance.net/abilashravi4702',
+      href: 'https://www.figma.com/design/9tBZ7gspssItJ6drWOVJub/jcompanion?node-id=0-1&t=OqRFXZp3SI90Z10x-1',
     },
     {
       path: 'assets/images/zoom/2.png',
