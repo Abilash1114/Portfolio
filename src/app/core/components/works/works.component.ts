@@ -32,7 +32,7 @@ export class WorksComponent {
       id: '01',
       title: 'Interview AI',
       category: '0 to 1 Concept',
-      href: 'https://www.behance.net/abilashravi4702',
+      href: 'https://www.behance.net/gallery/251770687/InterviewAI-AI-Mock-Interview-App-Product-Design',
       img: 'assets/images/project 1.png',
     },
     {
