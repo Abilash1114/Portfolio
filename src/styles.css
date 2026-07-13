@@ -39,6 +39,22 @@ body {
   );
 }
 
+/* Subtle city/country-based background accent — set per visitor by VisitorService.
+   Purely additive: sits behind all existing content, never overrides it. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.16;
+  background: radial-gradient(
+    circle at 15% 10%,
+    var(--visitor-accent, var(--color-brand, #0bdfbb)) 0%,
+    transparent 55%
+  );
+}
+
 p {
   margin: 0;
   padding: 0;

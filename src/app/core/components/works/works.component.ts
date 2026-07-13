@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
+import { VisitorService } from '../../../services/visitor.service';
+
 type ProjectCardCategory = 'Fintech' | 'Website' | '0 to 1 Concept';
 
 interface ProjectCard {
@@ -19,6 +21,13 @@ interface ProjectCard {
   styleUrls: ['./works.component.css'],
 })
 export class WorksComponent {
+  constructor(private visitorService: VisitorService) {}
+
+  /** Logs a click on a filter/project-card link as a distinct event in the tracking sheet. */
+  trackClick(label: string): void {
+    this.visitorService.track(label);
+  }
+
   readonly cardFilters: Array<'All' | ProjectCardCategory> = [
     'All',
     'Fintech',
@@ -94,5 +103,6 @@ export class WorksComponent {
 
   setCardFilter(cat: 'All' | ProjectCardCategory): void {
     this.activeCardFilter = cat;
+    this.trackClick(`Filter Click: ${cat}`);
   }
 }

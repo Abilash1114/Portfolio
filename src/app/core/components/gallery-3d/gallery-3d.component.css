@@ -59,11 +59,49 @@
 }
 
 .gallery3d-intro__eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
   margin: 0 0 6px;
   font-size: 15px;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.55);
   font-family: "Roboto", sans-serif;
+}
+
+.gallery3d-intro__live {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  display: inline-flex;
+}
+
+.gallery3d-intro__live-dot {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #0bdfbb;
+  box-shadow: 0 0 6px rgba(11, 223, 187, 0.8);
+}
+
+.gallery3d-intro__live-wave {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(11, 223, 187, 0.6);
+  animation: gallery3dLiveWave 1.8s ease-out infinite;
+}
+
+@keyframes gallery3dLiveWave {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(3.2);
+    opacity: 0;
+  }
 }
 
 .gallery3d-intro__title {

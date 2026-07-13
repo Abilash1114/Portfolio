@@ -7,6 +7,11 @@ import {
   Validators,
 } from '@angular/forms';
 
+import { VisitorService } from '../../../services/visitor.service';
+import { ContactFormService } from '../../../services/contact-form.service';
+
+type SubmitStatus = 'idle' | 'sending' | 'success' | 'error';
+
 @Component({
   selector: 'app-contact',
   standalone: true,
@@ -15,6 +20,18 @@ import {
   styleUrls: ['./contact.component.css'],
 })
 export class ContactComponent {
+  constructor(
+    private visitorService: VisitorService,
+    private contactFormService: ContactFormService,
+  ) {}
+
+  submitStatus: SubmitStatus = 'idle';
+
+  /** Logs a click on a social/CTA link as a distinct event in the tracking sheet. */
+  trackClick(label: string): void {
+    this.visitorService.track(label);
+  }
+
   contactform = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
     mobile: new FormControl('', [
@@ -25,34 +42,35 @@ export class ContactComponent {
       Validators.required,
       Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$'),
     ]),
-    requirement: new FormControl('', [Validators.required]),
-    comment: new FormControl('', [Validators.required]),
+    message: new FormControl('', [Validators.required]),
   });
 
   submitform(): void {
-    if (this.contactform.valid) {
-      const formvalue = this.contactform.value;
-      const companyemail = 'abilashravi09@gmail.com';
-      const subject = 'Contact Form Message';
-      const body = `
-Name: ${formvalue.name}
-
-Mobile: ${formvalue.mobile}
-
-Email: ${formvalue.email}
-
-Requirement: ${formvalue.requirement}
-
-Comment:
-${formvalue.comment}
-      `;
-      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${encodeURIComponent(
-        companyemail,
-      )}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      window.open(gmailUrl, '_blank');
-      this.contactform.reset();
-    } else {
+    if (!this.contactform.valid) {
       this.contactform.markAllAsTouched();
+      return;
     }
+
+    this.trackClick('Contact Form Submit');
+    this.submitStatus = 'sending';
+
+    const formvalue = this.contactform.value;
+
+    this.contactFormService
+      .submit({
+        name: formvalue.name ?? '',
+        mobile: formvalue.mobile ?? '',
+        email: formvalue.email ?? '',
+        message: formvalue.message ?? '',
+      })
+      .then(() => {
+        this.submitStatus = 'success';
+        this.contactform.reset();
+        setTimeout(() => (this.submitStatus = 'idle'), 4000);
+      })
+      .catch(() => {
+        this.submitStatus = 'error';
+        setTimeout(() => (this.submitStatus = 'idle'), 4000);
+      });
   }
 }

@@ -1010,6 +1010,31 @@ textarea {
   z-index: 99;
 }
 
+.social_icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: socialGlowPulse 2.4s ease-in-out infinite;
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.social_icons a:hover,
+.social_icons a:focus-visible {
+  animation-play-state: paused;
+  filter: drop-shadow(0 0 12px rgba(11, 223, 187, 1));
+  transform: translateY(-3px) scale(1.08);
+}
+
+@keyframes socialGlowPulse {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 3px rgba(11, 223, 187, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 9px rgba(11, 223, 187, 0.9));
+  }
+}
+
 .resume {
   position: fixed;
   right: 50px;

@@ -29,6 +29,7 @@
         target="_blank"
         rel="noopener"
         class="pf-project-card"
+        (click)="trackClick('Project Card Click: ' + p.title)"
       >
         <img [src]="p.img" class="img-fluid" [alt]="p.title + ' project'" />
       </a>
@@ -44,7 +45,6 @@
 <section id="horizontal-scoll" aria-label="Web works showcase">
   <div class="container">
     <div class="main_title web-works-title">
-      <p class="section-eyebrow">Frontend</p>
       <h6>UI <span>Development</span></h6>
     </div>
   </div>
@@ -73,6 +73,7 @@
             href="https://businesstransform.vercel.app/"
             target="_blank"
             rel="noopener"
+            (click)="trackClick('Web Work Click: Digital Innovation')"
           >
             <div class="sample_img">
               <img
@@ -94,6 +95,7 @@
           href="https://abilashportfolio.vercel.app/"
           target="_blank"
           rel="noopener"
+          (click)="trackClick('Web Work Click: Portfolio')"
         >
           <div class="sample_img">
             <img
@@ -158,6 +160,7 @@
           href="https://e-com-admin-dashboard-sigma.vercel.app/"
           target="_blank"
           rel="noopener"
+          (click)="trackClick('Web Work Click: E-com Dashboard')"
         >
           <div class="sample_img">
             <img

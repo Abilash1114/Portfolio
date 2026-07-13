@@ -69,6 +69,31 @@ textarea {
   box-shadow: 0 0 18px rgba(11, 223, 187, 0.35);
 }
 
+.contact-form-status {
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  animation: contactStatusIn 0.3s ease-out;
+}
+
+.contact-form-status--success {
+  color: #0bdfbb;
+}
+
+.contact-form-status--error {
+  color: #ff6b6b;
+}
+
+@keyframes contactStatusIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .right_con_tit h6 {
   font-size: 36px;
   font-weight: 600;

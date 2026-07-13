@@ -1,0 +1,41 @@
+<section class="work-process" #section aria-label="My work process">
+  <canvas #canvas class="wp-canvas" aria-hidden="true"></canvas>
+
+  <div class="container wp-content">
+    <div class="main_title">
+      <p class="section-eyebrow">My Approach</p>
+      <h6>My Work <span>Process</span></h6>
+    </div>
+    <!--
+    <div class="wp-divider" aria-hidden="true">
+      <span class="wp-divider__line"></span>
+      <i class="ri-shape-2-line"></i>
+      <span class="wp-divider__line"></span>
+    </div>
+
+    <p class="wp-subtitle">
+      A structured approach that helps me turn ideas into impactful digital
+      experiences.
+    </p> -->
+
+    <div class="wp-timeline" #timeline>
+      <div class="wp-row" *ngFor="let step of steps">
+        <div class="wp-row__marker">
+          <span class="wp-num">{{ step.number }}</span>
+          <span class="wp-dot" aria-hidden="true"></span>
+        </div>
+        <div class="wp-row__card">
+          <div class="wp-icon"><i [class]="step.icon"></i></div>
+          <h4 class="wp-row__title">{{ step.title }}</h4>
+          <p class="wp-row__desc">{{ step.description }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="wp-footer-line" aria-hidden="true">
+      <span></span>
+      <span class="wp-footer-dot"></span>
+      <span></span>
+    </div>
+  </div>
+</section>

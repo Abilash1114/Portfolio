@@ -109,10 +109,10 @@
     rgba(11, 223, 187, 0) 60%,
     rgba(11, 223, 187, 0.3) 100%
   );
-  -webkit-mask:
+  /* -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
+  -webkit-mask-composite: xor; */
   mask-composite: exclude;
   opacity: 0.65;
   pointer-events: none;
@@ -399,11 +399,12 @@
 
 /* ── Web works title ── */
 #horizontal-scoll {
-  padding-top: 60px;
+  padding-top: 20px;
+  padding-bottom: 40px;
 }
 
 .web-works-title {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .web-works-title .section-eyebrow {

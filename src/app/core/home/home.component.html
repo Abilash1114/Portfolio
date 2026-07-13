@@ -78,6 +78,7 @@
       target="_blank"
       rel="noopener"
       aria-label="GitHub"
+      (click)="trackClick('GitHub Icon Click')"
     >
       <img src="assets/images/git.svg" class="img-fluid" alt="GitHub" />
     </a>
@@ -86,6 +87,7 @@
       target="_blank"
       rel="noopener"
       aria-label="LinkedIn"
+      (click)="trackClick('LinkedIn Icon Click')"
     >
       <img src="assets/images/lin.svg" class="img-fluid" alt="LinkedIn" />
     </a>
@@ -94,10 +96,15 @@
       target="_blank"
       rel="noopener"
       aria-label="Behance"
+      (click)="trackClick('Behance Icon Click')"
     >
       <img src="assets/images/lin1.svg" class="img-fluid" alt="Behance" />
     </a>
-    <a href="tel:+916383891982" aria-label="WhatsApp">
+    <a
+      href="tel:+916383891982"
+      aria-label="WhatsApp"
+      (click)="trackClick('Phone Icon Click')"
+    >
       <img src="assets/images/wh.svg" class="img-fluid" alt="Phone" />
     </a>
   </div>
@@ -112,7 +119,11 @@
 
 <div class="resume">
   <div class="resume_outsaid">
-    <a href="assets/images/resume-1.pdf" download="Abilash_Resume.pdf">
+    <a
+      href="assets/images/resume-1.pdf"
+      download="Abilash_Resume.pdf"
+      (click)="trackClick('Resume Click')"
+    >
       <p style="margin: 0px">
         Resume
         <img src="assets/images/resume.svg" class="img-fluid" alt="download" />
@@ -126,6 +137,7 @@
      ============================================================ -->
 <app-hero></app-hero>
 <app-about></app-about>
+<app-work-process></app-work-process>
 <app-skills></app-skills>
 <app-career></app-career>
 <app-gallery-3d></app-gallery-3d>

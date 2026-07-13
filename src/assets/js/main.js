@@ -16,12 +16,12 @@ function text(container) {
   gsap.registerPlugin(SplitText);
 
   const target = container
-    ? container.querySelector('#heading')
-    : document.querySelector('#heading');
+    ? container.querySelector("#heading")
+    : document.querySelector("#heading");
 
   if (!target) return;
 
-  const split = SplitText.create(target, { type: 'chars', charsClass: 'char' });
+  const split = SplitText.create(target, { type: "chars", charsClass: "char" });
 
   gsap.from(split.chars, {
     y: 20,
@@ -29,7 +29,7 @@ function text(container) {
     opacity: 0,
     stagger: 0.09,
     duration: 1,
-    ease: 'power2.out',
+    ease: "power2.out",
   });
 }
 
@@ -41,9 +41,9 @@ function text(container) {
 function timer() {
   gsap.registerPlugin(SplitText);
 
-  document.querySelectorAll('.hero_smtit').forEach((item) => {
-    const h6 = item.querySelector('h6');
-    const h5 = item.querySelector('h5');
+  document.querySelectorAll(".hero_smtit").forEach((item) => {
+    const h6 = item.querySelector("h6");
+    const h5 = item.querySelector("h5");
 
     gsap.set(h6, { opacity: 1 });
 
@@ -64,7 +64,10 @@ function timer() {
 function heroheading() {
   gsap.registerPlugin(SplitText, ScrollTrigger);
 
-  const split = SplitText.create('#hero_heading', { type: 'chars', charsClass: 'char' });
+  const split = SplitText.create("#hero_heading", {
+    type: "chars",
+    charsClass: "char",
+  });
 
   split.chars.forEach((char, i) => {
     gsap.from(char, {
@@ -73,29 +76,35 @@ function heroheading() {
       opacity: 0,
       duration: 1,
       delay: i * 0.05,
-      ease: 'power2.out',
+      ease: "power2.out",
     });
   });
 
-  // Responsive font size
-  const isMobile = window.innerWidth >= 380 && window.innerWidth <= 991;
-  document.querySelectorAll('#hero_heading, #hero_heading .char').forEach((el) => {
-    el.style.fontSize = isMobile ? '30px' : '140px';
-  });
+  // Responsive font size — threshold matches the site's actual mobile CSS
+  // breakpoint (max-width: 768px, see hero.component.css / styles.css).
+  // This used to go up to 991px, so 769-991px (tablet) viewports got the
+  // small "mobile" inline font size forced onto an otherwise desktop-styled
+  // layout — now they correctly get the desktop size.
+  const isMobile = window.innerWidth >= 380 && window.innerWidth <= 768;
+  document
+    .querySelectorAll("#hero_heading, #hero_heading .char")
+    .forEach((el) => {
+      el.style.fontSize = isMobile ? "30px" : "140px";
+    });
 
   // Robot scale-in
-  gsap.to('.robo', {
+  gsap.to(".robo", {
     scale: 1,
     duration: 1,
-    ease: 'power2.out',
+    ease: "power2.out",
   });
 
   // Details panel slide-in from right
-  gsap.from('.hero_details', {
+  gsap.from(".hero_details", {
     x: 100,
     opacity: 0,
     duration: 2,
-    ease: 'power2.out',
+    ease: "power2.out",
   });
 }
 
@@ -108,37 +117,39 @@ function parallax() {
   gsap.registerPlugin(ScrollTrigger);
 
   // Hero background parallax
-  gsap.to('.hero_back', {
-    backgroundPosition: 'center 10%',
-    ease: 'none',
+  gsap.to(".hero_back", {
+    backgroundPosition: "center 10%",
+    ease: "none",
     scrollTrigger: {
-      trigger: '.hero_back',
-      start: 'top top',
-      end: 'bottom top',
+      trigger: ".hero_back",
+      start: "top top",
+      end: "bottom top",
       scrub: true,
     },
   });
 
   // About section fade + rise
-  gsap.from('.about_section', {
-    y: '30%',
+  gsap.from(".about_section", {
+    y: "30%",
     opacity: 0,
-    ease: 'power2.out',
+    zIndex: 0,
+    ease: "power2.out",
     scrollTrigger: {
-      trigger: '.about_section',
-      start: 'top 85%',
-      end: 'top 50%',
+      trigger: ".about_section",
+      start: "top 85%",
+      end: "top 50%",
       scrub: true,
     },
   });
 
   // Hero bottom gradient reveal
-  gsap.to('.gradients', {
+  gsap.to(".gradients", {
     opacity: 1,
+    zIndex: 1,
     scrollTrigger: {
-      trigger: '.about_section',
-      start: 'top 85%',
-      end: 'top 50%',
+      trigger: ".about_section",
+      start: "top 85%",
+      end: "top 50%", 
       scrub: true,
     },
   });
@@ -152,34 +163,34 @@ function parallax() {
 function sward() {
   gsap.registerPlugin(ScrollTrigger);
 
-  gsap.to('.sword-area', {
-    ease: 'power1.inOut',
+  gsap.to(".sword-area", {
+    ease: "power1.inOut",
     scrollTrigger: {
-      trigger: '.sword-area',
-      start: 'top 90%',
-      end: 'bottom 50%',
+      trigger: ".sword-area",
+      start: "top 90%",
+      end: "bottom 50%",
       scrub: 1,
     },
   });
 
-  gsap.to('.sword-area', {
-    rotate: '60deg',
-    ease: 'none',
+  gsap.to(".sword-area", {
+    rotate: "60deg",
+    ease: "none",
     scrollTrigger: {
-      trigger: '.sword-area',
-      start: 'bottom 25%',
-      end: 'bottom top',
+      trigger: ".sword-area",
+      start: "bottom 25%",
+      end: "bottom top",
       scrub: 1,
     },
   });
 
-  gsap.to('.sword-area', {
-    rotate: '180deg',
-    ease: 'none',
+  gsap.to(".sword-area", {
+    rotate: "180deg",
+    ease: "none",
     scrollTrigger: {
-      trigger: '.sword-area',
-      start: 'bottom 80%',
-      end: 'bottom 30%',
+      trigger: ".sword-area",
+      start: "bottom 80%",
+      end: "bottom 30%",
       scrub: 1,
     },
   });
@@ -193,25 +204,25 @@ function sward() {
 function about() {
   gsap.registerPlugin(ScrollTrigger);
 
-  document.querySelectorAll('#about-title').forEach((titleEl) => {
+  document.querySelectorAll("#about-title").forEach((titleEl) => {
     gsap.to(titleEl, {
-      color: '#ffffffff',
-      ease: 'power2.out',
+      color: "#ffffffff",
+      ease: "power2.out",
       scrollTrigger: {
         trigger: titleEl,
-        start: 'top center',
-        end: 'bottom center',
+        start: "top center",
+        end: "bottom center",
         scrub: 1,
       },
     });
 
     gsap.to(titleEl, {
       scale: 1.4,
-      ease: 'power2.out',
+      ease: "power2.out",
       scrollTrigger: {
         trigger: titleEl,
-        start: 'top center',
-        end: 'bottom center',
+        start: "top center",
+        end: "bottom center",
         scrub: 1,
       },
     });
@@ -224,28 +235,32 @@ function about() {
  * them in from the left as they enter the viewport.
  */
 function title() {
-  if (document.querySelectorAll('.title-anim').length === 0) return;
+  if (document.querySelectorAll(".title-anim").length === 0) return;
 
-  const isMobile = window.innerWidth >= 380 && window.innerWidth <= 991;
+  // Same 768px threshold as heroheading() above — matches the site's real
+  // mobile CSS breakpoint instead of over-shrinking tablet (769-991px) text.
+  const isMobile = window.innerWidth >= 380 && window.innerWidth <= 768;
 
-  gsap.utils.toArray('.title-anim').forEach((el) => {
+  gsap.utils.toArray(".title-anim").forEach((el) => {
     const split = new SplitText(el, {
-      type: 'chars, words',
-      charsClass: 'char',
+      type: "chars, words",
+      charsClass: "char",
       lineThreshold: 0.5,
     });
 
-    document.querySelectorAll('.title-anim, .title-anim .char').forEach((node) => {
-      node.style.fontSize = isMobile ? '60px' : '140px';
-    });
+    document
+      .querySelectorAll(".title-anim, .title-anim .char")
+      .forEach((node) => {
+        node.style.fontSize = isMobile ? "60px" : "140px";
+      });
 
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: el,
-        start: 'top bottom',
-        end: 'bottom 10%',
+        start: "top bottom",
+        end: "bottom 10%",
         scrub: false,
-        toggleActions: 'play none none none',
+        toggleActions: "play none none none",
       },
     });
 
@@ -266,13 +281,13 @@ function title() {
 function what() {
   gsap.registerPlugin(ScrollTrigger);
 
-  gsap.to('.roboclass', {
+  gsap.to(".roboclass", {
     x: 0,
     scale: 1.1,
     scrollTrigger: {
-      trigger: '.roboclass',
-      start: 'top bottom',
-      end: 'bottom center',
+      trigger: ".roboclass",
+      start: "top bottom",
+      end: "bottom center",
       scrub: true,
     },
   });
@@ -287,20 +302,20 @@ function what() {
 function careerLine() {
   gsap.registerPlugin(ScrollTrigger);
 
-  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
   // On mobile the section stacks vertically and is much taller,
   // so end needs to reach further down the page
-  const lineEnd = isMobile ? 'bottom 15%' : 'bottom center';
-  const entryEnd = isMobile ? 'bottom 85%' : 'bottom 60%';
+  const lineEnd = isMobile ? "bottom 15%" : "bottom center";
+  const entryEnd = isMobile ? "bottom 85%" : "bottom 60%";
 
   // Grow the timeline line
-  gsap.to('.my_careeor', {
-    '--line-height': '100%',
-    ease: 'none',
+  gsap.to(".my_careeor", {
+    "--line-height": "100%",
+    ease: "none",
     scrollTrigger: {
-      trigger: '.my_careeor',
-      start: 'top 85%',
+      trigger: ".my_careeor",
+      start: "top 85%",
       end: lineEnd,
       scrub: true,
       invalidateOnRefresh: true,
@@ -308,12 +323,12 @@ function careerLine() {
   });
 
   // Move the star down the line
-  gsap.to('#star', {
-    bottom: '-2%',
-    ease: 'none',
+  gsap.to("#star", {
+    bottom: "-2%",
+    ease: "none",
     scrollTrigger: {
-      trigger: '.my_careeor',
-      start: 'top 85%',
+      trigger: ".my_careeor",
+      start: "top 85%",
       end: lineEnd,
       scrub: true,
       invalidateOnRefresh: true,
@@ -321,21 +336,21 @@ function careerLine() {
   });
 
   // Fade in each career entry
-  gsap.utils.toArray('.myes').forEach((section) => {
+  gsap.utils.toArray(".myes").forEach((section) => {
     gsap.fromTo(
       section,
       { opacity: 0 },
       {
         opacity: 1,
-        ease: 'power1.out',
+        ease: "power1.out",
         scrollTrigger: {
           trigger: section,
-          start: 'top 100%',
+          start: "top 100%",
           end: entryEnd,
           scrub: true,
           invalidateOnRefresh: true,
         },
-      }
+      },
     );
   });
 }
@@ -346,7 +361,7 @@ function careerLine() {
  * then fades + slides them in as the paragraph scrolls into view.
  */
 function about_text() {
-  const split = new SplitText('.about_me', { type: 'words' });
+  const split = new SplitText(".about_me", { type: "words" });
 
   gsap.set(split.words, { y: 20, opacity: 0 });
 
@@ -355,11 +370,11 @@ function about_text() {
     opacity: 1,
     duration: 0.6,
     stagger: 0.02,
-    ease: 'power2.out',
+    ease: "power2.out",
     scrollTrigger: {
-      trigger: '.about_me',
-      start: 'top 100%',
-      end: 'bottom bottom',
+      trigger: ".about_me",
+      start: "top 100%",
+      end: "bottom bottom",
       scrub: 1,
     },
   });
@@ -367,25 +382,30 @@ function about_text() {
 
 /* ── 12. Horizontal Scroll Section ───────────────────────── */
 /**
- * On desktop (≥ 768px), pins the #horizontal-scoll section and
+ * On desktop (≥ 769px), pins the #horizontal-scoll section and
  * scrolls .horizontal sideways as the user scrolls vertically.
  * On mobile the section stacks normally (no horizontal scroll).
+ * NOTE: the CSS mobile override in works.component.css uses
+ * "max-width: 768px" — this must stay "min-width: 769px" (not 768px)
+ * so the two ranges never both match at the same viewport width, which
+ * previously pinned+animated a section CSS had simultaneously forced
+ * into a vertical column at exactly 768px (e.g. iPad portrait).
  */
 function horizontals() {
   gsap.registerPlugin(ScrollTrigger);
 
-  const horizontalSection = document.querySelector('.horizontal');
+  const horizontalSection = document.querySelector(".horizontal");
   if (!horizontalSection) return;
 
   ScrollTrigger.matchMedia({
-    '(min-width: 768px)': function () {
+    "(min-width: 769px)": function () {
       gsap.to(horizontalSection, {
         x: () => -(horizontalSection.scrollWidth - window.innerWidth),
-        ease: 'none',
+        ease: "none",
         scrollTrigger: {
-          trigger: '#horizontal-scoll',
-          start: 'top 80px',
-          end: () => '+=' + (horizontalSection.scrollWidth - window.innerWidth),
+          trigger: "#horizontal-scoll",
+          start: "top 80px",
+          end: () => "+=" + (horizontalSection.scrollWidth - window.innerWidth),
           scrub: true,
           pin: true,
           pinSpacing: true,
@@ -416,7 +436,7 @@ function gradientes() {
   const speed = 0.02;
 
   function updateGradient() {
-    if (typeof $ === 'undefined') return;
+    if (typeof $ === "undefined") return;
 
     const [c00, c01, c10, c11] = colorIndices.map((i) => colors[i]);
     const t = 1 - step;
@@ -429,7 +449,7 @@ function gradientes() {
     const g2 = Math.round(t * c10[1] + step * c11[1]);
     const b2 = Math.round(t * c10[2] + step * c11[2]);
 
-    $('#gradient').css({
+    $("#gradient").css({
       background: `linear-gradient(to right, rgb(${r1},${g1},${b1}), rgb(${r2},${g2},${b2}))`,
     });
 
@@ -439,8 +459,14 @@ function gradientes() {
       step %= 1;
       colorIndices[0] = colorIndices[1];
       colorIndices[2] = colorIndices[3];
-      colorIndices[1] = (colorIndices[1] + Math.floor(1 + Math.random() * (colors.length - 1))) % colors.length;
-      colorIndices[3] = (colorIndices[3] + Math.floor(1 + Math.random() * (colors.length - 1))) % colors.length;
+      colorIndices[1] =
+        (colorIndices[1] +
+          Math.floor(1 + Math.random() * (colors.length - 1))) %
+        colors.length;
+      colorIndices[3] =
+        (colorIndices[3] +
+          Math.floor(1 + Math.random() * (colors.length - 1))) %
+        colors.length;
     }
   }
 
@@ -457,8 +483,8 @@ function gradientes() {
  *              exactly where the drag ended (no jump).
  */
 function toolsSlider() {
-  var slider = document.querySelector('.sk-use-slider');
-  var track = document.querySelector('.sk-use-track');
+  var slider = document.querySelector(".sk-use-slider");
+  var track = document.querySelector(".sk-use-track");
   if (!slider || !track) return;
 
   var DURATION = 32; // must match CSS animation duration (seconds)
@@ -469,40 +495,41 @@ function toolsSlider() {
   /* ── helpers ── */
   function getTranslateX(el) {
     var m = window.getComputedStyle(el).transform;
-    if (!m || m === 'none') return 0;
+    if (!m || m === "none") return 0;
     var parts = m.match(/matrix.*\((.+)\)/);
-    return parts ? parseFloat(parts[1].split(',')[4]) : 0;
+    return parts ? parseFloat(parts[1].split(",")[4]) : 0;
   }
 
   function resumeFromX(x) {
     var halfWidth = track.offsetWidth / 2;
-    var progress = Math.abs(x) / halfWidth;          // 0 → 1
-    var delay = -(DURATION * progress);            // negative = already in-progress
-    track.style.transform = '';
-    track.style.animation = 'skToolsSlide ' + DURATION + 's linear ' + delay + 's infinite';
+    var progress = Math.abs(x) / halfWidth; // 0 → 1
+    var delay = -(DURATION * progress); // negative = already in-progress
+    track.style.transform = "";
+    track.style.animation =
+      "skToolsSlide " + DURATION + "s linear " + delay + "s infinite";
   }
 
   /* ── hover pause / resume ── */
-  slider.addEventListener('mouseenter', function () {
-    if (!isDragging) track.style.animationPlayState = 'paused';
+  slider.addEventListener("mouseenter", function () {
+    if (!isDragging) track.style.animationPlayState = "paused";
   });
-  slider.addEventListener('mouseleave', function () {
-    if (!isDragging) track.style.animationPlayState = 'running';
+  slider.addEventListener("mouseleave", function () {
+    if (!isDragging) track.style.animationPlayState = "running";
   });
 
   /* ── mouse drag ── */
-  slider.addEventListener('mousedown', function (e) {
+  slider.addEventListener("mousedown", function (e) {
     isDragging = true;
-    slider.classList.add('is-dragging');
+    slider.classList.add("is-dragging");
     dragStartX = e.clientX;
     dragStartTranslateX = getTranslateX(track);
     /* Freeze animation at current position */
-    track.style.transform = 'translateX(' + dragStartTranslateX + 'px)';
-    track.style.animation = 'none';
+    track.style.transform = "translateX(" + dragStartTranslateX + "px)";
+    track.style.animation = "none";
     e.preventDefault();
   });
 
-  document.addEventListener('mousemove', function (e) {
+  document.addEventListener("mousemove", function (e) {
     if (!isDragging) return;
     var dx = e.clientX - dragStartX;
     var newX = dragStartTranslateX + dx;
@@ -510,40 +537,51 @@ function toolsSlider() {
     /* wrap */
     if (newX > 0) newX = newX - halfWidth;
     if (newX < -halfWidth) newX = newX + halfWidth;
-    track.style.transform = 'translateX(' + newX + 'px)';
+    track.style.transform = "translateX(" + newX + "px)";
   });
 
-  document.addEventListener('mouseup', function () {
+  document.addEventListener("mouseup", function () {
     if (!isDragging) return;
     isDragging = false;
-    slider.classList.remove('is-dragging');
-    var currentX = parseFloat((track.style.transform.match(/-?[\d.]+/) || ['0'])[0]);
+    slider.classList.remove("is-dragging");
+    var currentX = parseFloat(
+      (track.style.transform.match(/-?[\d.]+/) || ["0"])[0],
+    );
     resumeFromX(currentX);
   });
 
   /* ── touch drag ── */
-  slider.addEventListener('touchstart', function (e) {
-    dragStartX = e.touches[0].clientX;
-    dragStartTranslateX = getTranslateX(track);
-    track.style.transform = 'translateX(' + dragStartTranslateX + 'px)';
-    track.style.animation = 'none';
-  }, { passive: true });
+  slider.addEventListener(
+    "touchstart",
+    function (e) {
+      dragStartX = e.touches[0].clientX;
+      dragStartTranslateX = getTranslateX(track);
+      track.style.transform = "translateX(" + dragStartTranslateX + "px)";
+      track.style.animation = "none";
+    },
+    { passive: true },
+  );
 
-  slider.addEventListener('touchmove', function (e) {
-    var dx = e.touches[0].clientX - dragStartX;
-    var newX = dragStartTranslateX + dx;
-    var halfWidth = track.offsetWidth / 2;
-    if (newX > 0) newX = newX - halfWidth;
-    if (newX < -halfWidth) newX = newX + halfWidth;
-    track.style.transform = 'translateX(' + newX + 'px)';
-  }, { passive: true });
+  slider.addEventListener(
+    "touchmove",
+    function (e) {
+      var dx = e.touches[0].clientX - dragStartX;
+      var newX = dragStartTranslateX + dx;
+      var halfWidth = track.offsetWidth / 2;
+      if (newX > 0) newX = newX - halfWidth;
+      if (newX < -halfWidth) newX = newX + halfWidth;
+      track.style.transform = "translateX(" + newX + "px)";
+    },
+    { passive: true },
+  );
 
-  slider.addEventListener('touchend', function () {
-    var currentX = parseFloat((track.style.transform.match(/-?[\d.]+/) || ['0'])[0]);
+  slider.addEventListener("touchend", function () {
+    var currentX = parseFloat(
+      (track.style.transform.match(/-?[\d.]+/) || ["0"])[0],
+    );
     resumeFromX(currentX);
   });
 }
-
 
 /* ── 15b. Project Cards Reveal (Portfolio grid) ──────────── */
 /**
@@ -553,7 +591,7 @@ function toolsSlider() {
 function projectCardsReveal() {
   gsap.registerPlugin(ScrollTrigger);
 
-  const cards = gsap.utils.toArray('.pf-project-card');
+  const cards = gsap.utils.toArray(".pf-project-card");
   if (!cards.length) return;
 
   gsap.from(cards, {
@@ -562,11 +600,11 @@ function projectCardsReveal() {
     opacity: 0,
     duration: 0.7,
     stagger: 0.12,
-    ease: 'power3.out',
+    ease: "power3.out",
     scrollTrigger: {
-      trigger: '.pf-featured-grid',
-      start: 'top 88%',
-      toggleActions: 'play none none none',
+      trigger: ".pf-featured-grid",
+      start: "top 88%",
+      toggleActions: "play none none none",
     },
   });
 }
@@ -577,28 +615,29 @@ function projectCardsReveal() {
  * skills section. Shows/hides .sk-card elements by data-skcat.
  */
 function skillsFilter() {
-  var btns = document.querySelectorAll('.sk-filter');
-  var cards = document.querySelectorAll('.sk-card');
+  var btns = document.querySelectorAll(".sk-filter");
+  var cards = document.querySelectorAll(".sk-card");
   if (!btns.length) return;
 
   btns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      btns.forEach(function (b) { b.classList.remove('active'); });
-      btn.classList.add('active');
+    btn.addEventListener("click", function () {
+      btns.forEach(function (b) {
+        b.classList.remove("active");
+      });
+      btn.classList.add("active");
 
-      var filter = btn.getAttribute('data-skfilter');
+      var filter = btn.getAttribute("data-skfilter");
 
       cards.forEach(function (card) {
-        if (filter === 'all' || card.getAttribute('data-skcat') === filter) {
-          card.style.display = '';
+        if (filter === "all" || card.getAttribute("data-skcat") === filter) {
+          card.style.display = "";
         } else {
-          card.style.display = 'none';
+          card.style.display = "none";
         }
       });
     });
   });
 }
-
 
 /* ── Social Sidebar — hide near Contact section ──────────── */
 /**
@@ -606,20 +645,23 @@ function skillsFilter() {
  * close enough to the contact section that it would overlap.
  */
 function socialAsideVisibility() {
-  const socialAside = document.querySelector('aside .social_icons');
-  const contact = document.getElementById('contact');
+  const socialAside = document.querySelector("aside .social_icons");
+  const contact = document.getElementById("contact");
   if (!socialAside || !contact) return;
 
-  window.addEventListener('scroll', function () {
-    const contactTop = contact.offsetTop;
-    if (window.scrollY + window.innerHeight * 0.6 >= contactTop) {
-      socialAside.style.visibility = 'hidden';
-    } else {
-      socialAside.style.visibility = 'visible';
-    }
-  }, { passive: true });
+  window.addEventListener(
+    "scroll",
+    function () {
+      const contactTop = contact.offsetTop;
+      if (window.scrollY + window.innerHeight * 0.6 >= contactTop) {
+        socialAside.style.visibility = "hidden";
+      } else {
+        socialAside.style.visibility = "visible";
+      }
+    },
+    { passive: true },
+  );
 }
-
 
 /* ── (Optional) Swiper Carousel ──────────────────────────── */
 /**
@@ -628,9 +670,9 @@ function socialAsideVisibility() {
  * Uncomment the call in home.component.ts if needed.
  */
 function swipe() {
-  const swiper = new Swiper('.swiper', {
+  const swiper = new Swiper(".swiper", {
     speed: 2000,
-    direction: 'horizontal',
+    direction: "horizontal",
     loop: true,
     slidesPerView: 6,
     freeMode: true,
@@ -650,10 +692,10 @@ function swipe() {
   });
 
   if (swiper?.el) {
-    swiper.el.addEventListener('mouseenter', () => {
+    swiper.el.addEventListener("mouseenter", () => {
       if (swiper.autoplay?.running) swiper.autoplay.stop();
     });
-    swiper.el.addEventListener('mouseleave', () => {
+    swiper.el.addEventListener("mouseleave", () => {
       if (!swiper.autoplay?.running) swiper.autoplay.start();
     });
   }

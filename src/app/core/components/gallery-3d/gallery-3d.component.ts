@@ -15,6 +15,9 @@ interface GalleryImage {
   mesh: THREE.Mesh;
   material: THREE.MeshBasicMaterial;
   href: string;
+  laneIndex: number;
+  randomWidth: number;
+  aspect: number;
 }
 
 @Component({
@@ -120,6 +123,11 @@ export class Gallery3dComponent implements AfterViewInit, OnDestroy {
   private scrollTriggerInstance: any = null;
   private readonly resizeHandler = () => this.onResize();
   private readonly clickHandler = (e: MouseEvent) => this.onCanvasClick(e);
+  private destroyed = false;
+  private isIntersecting = true;
+  private intersectionObserver?: IntersectionObserver;
+  private maxCardWidth = 0;
+  private xOffset = 0;
 
   constructor(private ngZone: NgZone) {
     this.firstZ = this.START_Z - this.leadIn;
@@ -148,16 +156,22 @@ export class Gallery3dComponent implements AfterViewInit, OnDestroy {
       this.setupScrollTrigger();
       window.addEventListener('resize', this.resizeHandler);
       this.canvasRef.nativeElement.addEventListener('click', this.clickHandler);
+      this.setupVisibilityGate();
       this.animate();
     });
   }
 
   ngOnDestroy(): void {
+    // Set first so any texture load that resolves after this point bails out
+    // instead of writing into (and re-leaking a texture onto) disposed materials.
+    this.destroyed = true;
+
     window.removeEventListener('resize', this.resizeHandler);
     this.canvasRef.nativeElement.removeEventListener(
       'click',
       this.clickHandler,
     );
+    this.intersectionObserver?.disconnect();
     cancelAnimationFrame(this.rafId);
     this.scrollTriggerInstance?.kill();
 
@@ -173,6 +187,25 @@ export class Gallery3dComponent implements AfterViewInit, OnDestroy {
     }
 
     this.renderer?.dispose();
+  }
+
+  /** Pauses the render loop while the section is scrolled off-screen — avoids
+   *  burning GPU/battery on a scene nobody can see. */
+  private setupVisibilityGate(): void {
+    if (typeof IntersectionObserver === 'undefined') return;
+
+    this.intersectionObserver = new IntersectionObserver(
+      ([entry]) => {
+        const wasIntersecting = this.isIntersecting;
+        this.isIntersecting = entry.isIntersecting;
+
+        if (this.isIntersecting && !wasIntersecting) {
+          this.animate();
+        }
+      },
+      { threshold: 0 },
+    );
+    this.intersectionObserver.observe(this.sectionRef.nativeElement);
   }
 
   // ─────────────────────────────────────────────
@@ -234,18 +267,15 @@ export class Gallery3dComponent implements AfterViewInit, OnDestroy {
   }
 
   /**
-   * Places the 12 case-study images along the flight path in strict depth
-   * order — center, right, left, center, right, left, ... looping — so as
-   * the camera passes each one in turn, the active image alternates
-   * center → right → left rather than landing in a random spot.
+   * Scale card size and lane offset to the actual viewport shape — on a
+   * narrow/mobile aspect ratio the visible frustum is much narrower, so a
+   * fixed world-unit width/offset would overflow both edges in every lane
+   * and make left/right/center all look the same ("centered"). Stored on
+   * the instance so onResize() can recompute lane positions/widths too —
+   * previously this only ran once at build time and went stale after any
+   * resize or orientation change.
    */
-  private buildImages(): void {
-    const loader = new THREE.TextureLoader();
-
-    // Scale card size and lane offset to the actual viewport shape — on a
-    // narrow/mobile aspect ratio the visible frustum is much narrower, so a
-    // fixed world-unit width/offset would overflow both edges in every lane
-    // and make left/right/center all look the same ("centered").
+  private updateLayoutMetrics(): void {
     const distance = Gallery3dComponent.PEAK_OFFSET;
     const visibleWidth =
       2 *
@@ -253,9 +283,20 @@ export class Gallery3dComponent implements AfterViewInit, OnDestroy {
       Math.tan(THREE.MathUtils.degToRad(this.camera.fov / 2)) *
       this.camera.aspect;
 
-    const maxCardWidth = visibleWidth * 0.55;
-    const X_OFFSET = Math.min(3.2, visibleWidth * 0.32);
-    const LANES = [0, X_OFFSET, -X_OFFSET]; // center, right, left
+    this.maxCardWidth = visibleWidth * 0.55;
+    this.xOffset = Math.min(3.2, visibleWidth * 0.32);
+  }
+
+  /**
+   * Places the 12 case-study images along the flight path in strict depth
+   * order — center, right, left, center, right, left, ... looping — so as
+   * the camera passes each one in turn, the active image alternates
+   * center → right → left rather than landing in a random spot.
+   */
+  private buildImages(): void {
+    const loader = new THREE.TextureLoader();
+    this.updateLayoutMetrics();
+    const lanes = [0, this.xOffset, -this.xOffset]; // center, right, left
 
     this.IMAGES.forEach(({ path, href }, i) => {
       const geometry = new THREE.PlaneGeometry(1, 1);
@@ -273,26 +314,64 @@ export class Gallery3dComponent implements AfterViewInit, OnDestroy {
         this.firstZ -
         Gallery3dComponent.IMAGE_SPACING * i +
         (Math.random() - 0.5) * 1.5;
-      const x = LANES[i % LANES.length];
+      const laneIndex = i % lanes.length;
       const y = (Math.random() - 0.5) * 1.5;
-      mesh.position.set(x, y, z);
+      mesh.position.set(lanes[laneIndex], y, z);
       // No tilt — these face the camera flat (billboarded each frame in animate()).
 
-      const baseWidth = Math.min(4.2 + Math.random() * 1.4, maxCardWidth);
+      const randomWidth = 4.2 + Math.random() * 1.4;
+      const baseWidth = Math.min(randomWidth, this.maxCardWidth);
       mesh.scale.set(baseWidth, baseWidth / 1.4, 1); // default aspect until the texture loads
 
-      const entry: GalleryImage = { mesh, material, href };
+      const entry: GalleryImage = {
+        mesh,
+        material,
+        href,
+        laneIndex,
+        randomWidth,
+        aspect: 1.4,
+      };
       this.scene.add(mesh);
       this.images.push(entry);
 
-      loader.load(path, (texture) => {
-        texture.colorSpace = THREE.SRGBColorSpace;
-        material.map = texture;
-        material.needsUpdate = true;
+      loader.load(
+        path,
+        (texture) => {
+          // The component may have been destroyed while this load was in flight —
+          // writing into (or leaving undisposed) a texture after that leaks GPU
+          // memory and mutates an already-disposed material.
+          if (this.destroyed) {
+            texture.dispose();
+            return;
+          }
 
-        const aspect = texture.image.width / texture.image.height || 1.4;
-        mesh.scale.set(baseWidth, baseWidth / aspect, 1);
-      });
+          texture.colorSpace = THREE.SRGBColorSpace;
+          material.map = texture;
+          material.needsUpdate = true;
+
+          entry.aspect = texture.image.width / texture.image.height || 1.4;
+          const width = Math.min(entry.randomWidth, this.maxCardWidth);
+          mesh.scale.set(width, width / entry.aspect, 1);
+        },
+        undefined,
+        (err) => {
+          console.warn(`[Gallery3dComponent] failed to load image "${path}"`, err);
+        },
+      );
+    });
+  }
+
+  /** Recomputes lane x-positions and card widths for the current viewport — called on resize. */
+  private repositionImages(): void {
+    if (!this.images.length) return;
+
+    this.updateLayoutMetrics();
+    const lanes = [0, this.xOffset, -this.xOffset];
+
+    this.images.forEach((img) => {
+      img.mesh.position.x = lanes[img.laneIndex];
+      const width = Math.min(img.randomWidth, this.maxCardWidth);
+      img.mesh.scale.set(width, width / img.aspect, 1);
     });
   }
 
@@ -350,6 +429,8 @@ export class Gallery3dComponent implements AfterViewInit, OnDestroy {
   // ─────────────────────────────────────────────
 
   private animate(): void {
+    if (!this.isIntersecting) return; // IntersectionObserver restarts this loop when back in view.
+
     this.rafId = requestAnimationFrame(() => this.animate());
 
     const t = this.clock.getElapsedTime();
@@ -396,6 +477,7 @@ export class Gallery3dComponent implements AfterViewInit, OnDestroy {
     this.camera.aspect = host.clientWidth / host.clientHeight;
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(host.clientWidth, host.clientHeight);
+    this.repositionImages();
   }
 
   /**

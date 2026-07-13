@@ -14,7 +14,9 @@ import { ContactComponent } from '../components/contact/contact.component';
 import { Gallery3dComponent } from '../components/gallery-3d/gallery-3d.component';
 import { HeroComponent } from '../components/hero/hero.component';
 import { SkillsComponent } from '../components/skills/skills.component';
+import { WorkProcessComponent } from '../components/work-process/work-process.component';
 import { WorksComponent } from '../components/works/works.component';
+import { VisitorService } from '../../services/visitor.service';
 
 declare const gsap: any;
 declare const ScrollTrigger: any;
@@ -43,6 +45,7 @@ declare function socialAsideVisibility(): void;
     CommonModule,
     HeroComponent,
     AboutComponent,
+    WorkProcessComponent,
     SkillsComponent,
     CareerComponent,
     WorksComponent,
@@ -54,7 +57,7 @@ declare function socialAsideVisibility(): void;
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
-  private readonly FALLBACK_MS = 12000;
+  private readonly FALLBACK_MS = 5000;
   private fallbackTimer: ReturnType<typeof setTimeout> | null = null;
   private clockInterval: ReturnType<typeof setInterval> | null = null;
   private rafId: number | null = null;
@@ -64,7 +67,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private revealed = false;
   private readonly preventScroll = (e: Event) => e.preventDefault();
 
-  constructor(private ngZone: NgZone) {}
+  constructor(private ngZone: NgZone, private visitorService: VisitorService) {}
 
   ngOnInit(): void {
     // Scroll to top on every refresh
@@ -73,6 +76,13 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
       gsap.registerPlugin(ScrollTrigger);
     }
+
+    this.visitorService.track();
+  }
+
+  /** Logs a click on resume/social/icon links as a distinct event in the tracking sheet. */
+  trackClick(label: string): void {
+    this.visitorService.track(label);
   }
 
   ngAfterViewInit(): void {
@@ -109,7 +119,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.trackRealProgress();
     this.runProgressLoop();
 
-    // Hard fallback — reveal after 12s no matter what
+    // Hard fallback — reveal after FALLBACK_MS no matter what
     this.fallbackTimer = setTimeout(() => this.revealSite(), this.FALLBACK_MS);
   }
 
@@ -326,5 +336,16 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     );
 
     if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+
+    // Google Fonts loads with display=swap, which does NOT block window 'load' —
+    // the real font can still swap in and reflow text (changing section heights)
+    // after the refresh() above already measured stale (fallback-font) positions.
+    // One follow-up refresh once fonts truly settle keeps every ScrollTrigger's
+    // start/end offsets accurate instead of silently drifting.
+    if (typeof document !== 'undefined' && document.fonts?.ready) {
+      document.fonts.ready.then(() => {
+        if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+      });
+    }
   }
 }
