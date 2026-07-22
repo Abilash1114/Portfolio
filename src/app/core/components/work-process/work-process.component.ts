@@ -32,46 +32,48 @@ export class WorkProcessComponent implements AfterViewInit, OnDestroy {
   @ViewChild('timeline', { static: true }) timelineRef!: ElementRef<HTMLElement>;
 
   readonly steps: ProcessStep[] = [
-    {
-      number: '01',
-      icon: 'ri-search-line',
-      title: 'Discovery',
-      description: 'Define business goals, understand user problems, and align project requirements.',
-    },
-    {
-      number: '02',
-      icon: 'ri-bar-chart-2-line',
-      title: 'Research & Strategy',
-      description:
-        'Analyze user behavior, competitors, and market trends to create a data-driven UX strategy.',
-    },
-    {
-      number: '03',
-      icon: 'ri-pencil-line',
-      title: 'UX/UI Design',
-      description:
-        'Design intuitive user experiences through wireframes, visual interfaces, and scalable design systems.',
-    },
-    {
-      number: '04',
-      icon: 'ri-box-3-line',
-      title: 'Prototype & Testing',
-      description:
-        'Validate ideas with interactive prototypes, usability testing, and iterative design improvements.',
-    },
-    {
-      number: '05',
-      icon: 'ri-code-s-slash-line',
-      title: 'Frontend Development',
-      description:
-        'Build responsive, pixel-perfect interfaces using Angular, HTML, CSS, JavaScript, and modern web technologies.',
-    },
-    {
-      number: '06',
-      icon: 'ri-rocket-line',
-      title: 'Optimize & Scale',
-      description: 'Improve performance, accessibility, SEO, and user experience through continuous monitoring and optimization',
-    },
+   {
+  number: '01',
+  icon: 'ri-search-line',
+  title: 'Discovery',
+  description:
+    'Understand your business goals, target users, and market context to define a clear project scope and success metrics.',
+},
+{
+  number: '02',
+  icon: 'ri-bar-chart-2-line',
+  title: 'Research & Strategy',
+  description:
+    'Conduct user research, competitor analysis, and behavioral insights to shape a data-backed UX strategy and information architecture.',
+},
+{
+  number: '03',
+  icon: 'ri-pencil-line',
+  title: 'UX/UI Design',
+  description:
+    'Craft intuitive user flows, wireframes, and high-fidelity interfaces backed by a scalable, reusable design system.',
+},
+{
+  number: '04',
+  icon: 'ri-box-3-line',
+  title: 'Prototype & Testing',
+  description:
+    'Build interactive prototypes and run usability testing to validate design decisions before development begins.',
+},
+{
+  number: '05',
+  icon: 'ri-code-s-slash-line',
+  title: 'Frontend Development',
+  description:
+    'Translate designs into pixel-perfect, responsive interfaces using Angular, HTML, CSS, and modern JavaScript frameworks.',
+},
+{
+  number: '06',
+  icon: 'ri-rocket-line',
+  title: 'Optimize & Scale',
+  description:
+    'Continuously monitor performance, accessibility, and SEO — refining the experience through user feedback and data.',
+},
   ];
 
   private renderer!: THREE.WebGLRenderer;
