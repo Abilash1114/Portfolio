@@ -35,42 +35,42 @@ export class WorkProcessComponent implements AfterViewInit, OnDestroy {
     {
       number: '01',
       icon: 'ri-search-line',
-      title: 'Discover',
-      description: 'Understanding business goals, user needs, and project requirements.',
+      title: 'Discovery',
+      description: 'Define business goals, understand user problems, and align project requirements.',
     },
     {
       number: '02',
       icon: 'ri-bar-chart-2-line',
-      title: 'Research',
+      title: 'Research & Strategy',
       description:
-        'Analyzing competitors, user behavior, and market trends to create the right strategy.',
+        'Analyze user behavior, competitors, and market trends to create a data-driven UX strategy.',
     },
     {
       number: '03',
       icon: 'ri-pencil-line',
-      title: 'Design',
+      title: 'UX/UI Design',
       description:
-        'Creating wireframes, high-fidelity UI designs, design systems and visual solutions.',
+        'Design intuitive user experiences through wireframes, visual interfaces, and scalable design systems.',
     },
     {
       number: '04',
       icon: 'ri-box-3-line',
-      title: 'Prototype',
+      title: 'Prototype & Testing',
       description:
-        'Building interactive prototypes to test user flows, validate ideas and gather feedback.',
+        'Validate ideas with interactive prototypes, usability testing, and iterative design improvements.',
     },
     {
       number: '05',
       icon: 'ri-code-s-slash-line',
-      title: 'Develop',
+      title: 'Frontend Development',
       description:
-        'Converting designs into clean, responsive code using Angular, HTML, CSS, JavaScript and more.',
+        'Build responsive, pixel-perfect interfaces using Angular, HTML, CSS, JavaScript, and modern web technologies.',
     },
     {
       number: '06',
       icon: 'ri-rocket-line',
-      title: 'Test & Improve',
-      description: 'Testing for performance, fixing issues and continuously improving based on feedback.',
+      title: 'Optimize & Scale',
+      description: 'Improve performance, accessibility, SEO, and user experience through continuous monitoring and optimization',
     },
   ];
 
