@@ -10,27 +10,16 @@
     <div class="pf-featured-head">
       <p class="pf-section-label">My Projects</p>
       <div class="pf-filters">
-        <button
-          *ngFor="let cat of cardFilters"
-          type="button"
-          class="pf-filter"
-          [class.active]="activeCardFilter === cat"
-          (click)="setCardFilter(cat)"
-        >
+        <button *ngFor="let cat of cardFilters" type="button" class="pf-filter"
+          [class.active]="activeCardFilter === cat" (click)="setCardFilter(cat)">
           {{ cat }}
         </button>
       </div>
     </div>
 
     <div class="pf-featured-grid">
-      <a
-        *ngFor="let p of filteredProjectCards"
-        [href]="p.href"
-        target="_blank"
-        rel="noopener"
-        class="pf-project-card"
-        (click)="trackClick('Project Card Click: ' + p.title)"
-      >
+      <a *ngFor="let p of filteredProjectCards" [href]="p.href" target="_blank" rel="noopener" class="pf-project-card"
+        (click)="trackClick('Project Card Click: ' + p.title)">
         <img [src]="p.img" class="img-fluid" [alt]="p.title + ' project'" />
       </a>
     </div>
@@ -64,23 +53,279 @@
           <div class="details_of">
             <p class="detaof">Tools &amp; Features</p>
             <div class="tools_listes">
-              <p>HTML, CSS, JavaScript, TypeScript, GSAP</p>
+              <p>Figma, HTML, CSS, JavaScript, TypeScript, GSAP</p>
             </div>
           </div>
         </div>
         <div class="order-1 order-lg-2">
-          <a
-            href="https://businesstransform.vercel.app/"
-            target="_blank"
-            rel="noopener"
-            (click)="trackClick('Web Work Click: Digital Innovation')"
-          >
+          <a href="https://businesstransform.vercel.app/" target="_blank" rel="noopener"
+            (click)="trackClick('Web Work Click: Digital Innovation')">
             <div class="sample_img">
-              <img
-                src="assets/images/01.png"
-                class="img-fluid"
-                alt="Digital Innovation project"
-              />
+              <img src="assets/images/work/1.png" class="img-fluid" alt="Digital Innovation project" />
+              <div class="arr">
+                <img src="assets/images/arr.svg" class="img-fluid" alt="View" />
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- 02 -->
+      <div class="occasion d-flex flex-column">
+        <div class="order-2 order-lg-1">
+          <div class="first">
+            <p class="webnum">02</p>
+            <div class="we">
+              <p class="webname">portfolio </p>
+              <p class="wende">Web Design &amp; Development</p>
+            </div>
+          </div>
+          <div class="details_of">
+            <p class="detaof">Tools &amp; Features</p>
+            <div class="tools_listes">
+              <p>Figma, HTML, CSS, JavaScript, TypeScript, GSAP, three.js</p>
+            </div>
+          </div>
+        </div>
+        <div class="order-1 order-lg-2">
+          <a href="https://businesstransform.vercel.app/" target="_blank" rel="noopener"
+            (click)="trackClick('Web Work Click: portfolio')">
+            <div class="sample_img">
+              <img src="assets/images/work/2.png" class="img-fluid" alt="portfolio project" />
+              <div class="arr">
+                <img src="assets/images/arr.svg" class="img-fluid" alt="View" />
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+
+      <div class="occasion d-flex flex-column">
+        <div class="order-2 order-lg-1">
+          <div class="first">
+            <p class="webnum">03</p>
+            <div class="we">
+              <p class="webname">Jewellery ECommerce</p>
+              <p class="wende">Web Design &amp; Development</p>
+            </div>
+          </div>
+          <div class="details_of">
+            <p class="detaof">Tools &amp; Features</p>
+            <div class="tools_listes">
+              <p>Figma, HTML, CSS, JavaScript, TypeScript</p>
+            </div>
+          </div>
+        </div>
+        <div class="order-1 order-lg-2">
+          <a href="https://vysyarajujewellers.com/#/" target="_blank" rel="noopener"
+            (click)="trackClick('Web Work Click: Digital Innovation')">
+            <div class="sample_img">
+              <img src="assets/images/work/3.png" class="img-fluid" alt="Digital Innovation project" />
+              <div class="arr">
+                <img src="assets/images/arr.svg" class="img-fluid" alt="View" />
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+
+      <div class="occasion d-flex flex-column">
+        <div class="order-2 order-lg-1">
+          <div class="first">
+            <p class="webnum">04</p>
+            <div class="we">
+              <p class="webname">Event Website</p>
+              <p class="wende">Web Design &amp; Development</p>
+            </div>
+          </div>
+          <div class="details_of">
+            <p class="detaof">Tools &amp; Features</p>
+            <div class="tools_listes">
+              <p>Figma, HTML, CSS, JavaScript, TypeScript</p>
+            </div>
+          </div>
+        </div>
+        <div class="order-1 order-lg-2">
+          <a href="https://theauraeliteevents.com/" target="_blank" rel="noopener"
+            (click)="trackClick('Web Work Click: Digital Innovation')">
+            <div class="sample_img">
+              <img src="assets/images/work/4.png" class="img-fluid" alt="Digital Innovation project" />
+              <div class="arr">
+                <img src="assets/images/arr.svg" class="img-fluid" alt="View" />
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="occasion d-flex flex-column">
+        <div class="order-2 order-lg-1">
+          <div class="first">
+            <p class="webnum">05</p>
+            <div class="we">
+              <p class="webname">Jewellery ECommerce</p>
+              <p class="wende">Web Design &amp; Development</p>
+            </div>
+          </div>
+          <div class="details_of">
+            <p class="detaof">Tools &amp; Features</p>
+            <div class="tools_listes">
+              <p>Figma, HTML, CSS, JavaScript, TypeScript, Supabase SQL</p>
+            </div>
+          </div>
+        </div>
+        <div class="order-1 order-lg-2">
+          <a href="https://jilaba.com/bkm/#/" target="_blank" rel="noopener"
+            (click)="trackClick('Web Work Click: Digital Innovation')">
+            <div class="sample_img">
+              <img src="assets/images/work/5.png" class="img-fluid" alt="Digital Innovation project" />
+              <div class="arr">
+                <img src="assets/images/arr.svg" class="img-fluid" alt="View" />
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="occasion d-flex flex-column">
+        <div class="order-2 order-lg-1">
+          <div class="first">
+            <p class="webnum">06</p>
+            <div class="we">
+              <p class="webname">Jewellery ECommerce</p>
+              <p class="wende">Web Design &amp; Development</p>
+            </div>
+          </div>
+          <div class="details_of">
+            <p class="detaof">Tools &amp; Features</p>
+            <div class="tools_listes">
+              <p>Figma, HTML, CSS, JavaScript, TypeScript, GSAP</p>
+            </div>
+          </div>
+        </div>
+        <div class="order-1 order-lg-2">
+          <a href="https://sakthijeweller.com/#/" target="_blank" rel="noopener"
+            (click)="trackClick('Web Work Click: Digital Innovation')">
+            <div class="sample_img">
+              <img src="assets/images/work/6.png" class="img-fluid" alt="Digital Innovation project" />
+              <div class="arr">
+                <img src="assets/images/arr.svg" class="img-fluid" alt="View" />
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="occasion d-flex flex-column">
+        <div class="order-2 order-lg-1">
+          <div class="first">
+            <p class="webnum">07</p>
+            <div class="we">
+              <p class="webname">Scheme Website</p>
+              <p class="wende">Web Design &amp; Development</p>
+            </div>
+          </div>
+          <div class="details_of">
+            <p class="detaof">Tools &amp; Features</p>
+            <div class="tools_listes">
+              <p>HTML, CSS, JavaScript, TypeScript</p>
+            </div>
+          </div>
+        </div>
+        <div class="order-1 order-lg-2">
+          <a href="https://www.susheeljewellery.com/#/" target="_blank" rel="noopener"
+            (click)="trackClick('Web Work Click: Digital Innovation')">
+            <div class="sample_img">
+              <img src="assets/images/work/7.png" class="img-fluid" alt="Digital Innovation project" />
+              <div class="arr">
+                <img src="assets/images/arr.svg" class="img-fluid" alt="View" />
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="occasion d-flex flex-column">
+        <div class="order-2 order-lg-1">
+          <div class="first">
+            <p class="webnum">08</p>
+            <div class="we">
+              <p class="webname">Dashboard</p>
+              <p class="wende">Web Design &amp; Development</p>
+            </div>
+          </div>
+          <div class="details_of">
+            <p class="detaof">Tools &amp; Features</p>
+            <div class="tools_listes">
+              <p>HTML, CSS, JavaScript, TypeScript</p>
+            </div>
+          </div>
+        </div>
+        <div class="order-1 order-lg-2">
+          <a href="https://e-com-admin-dashboard-sigma.vercel.app/" target="_blank" rel="noopener"
+            (click)="trackClick('Web Work Click: Digital Innovation')">
+            <div class="sample_img">
+              <img src="assets/images/work/8.png" class="img-fluid" alt="Digital Innovation project" />
+              <div class="arr">
+                <img src="assets/images/arr.svg" class="img-fluid" alt="View" />
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="occasion d-flex flex-column">
+        <div class="order-2 order-lg-1">
+          <div class="first">
+            <p class="webnum">09</p>
+            <div class="we">
+              <p class="webname">Scheme Website</p>
+              <p class="wende">Web Design &amp; Development</p>
+            </div>
+          </div>
+          <div class="details_of">
+            <p class="detaof">Tools &amp; Features</p>
+            <div class="tools_listes">
+              <p>HTML, CSS, JavaScript, TypeScript</p>
+            </div>
+          </div>
+        </div>
+        <div class="order-1 order-lg-2">
+          <a href="https://revathistores.net/#/" target="_blank" rel="noopener"
+            (click)="trackClick('Web Work Click: Digital Innovation')">
+            <div class="sample_img">
+              <img src="assets/images/work/9.png" class="img-fluid" alt="Digital Innovation project" />
+              <div class="arr">
+                <img src="assets/images/arr.svg" class="img-fluid" alt="View" />
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="occasion d-flex flex-column">
+        <div class="order-2 order-lg-1">
+          <div class="first">
+            <p class="webnum">10</p>
+            <div class="we">
+              <p class="webname">Car Booking</p>
+              <p class="wende">Web Design &amp; Development</p>
+            </div>
+          </div>
+          <div class="details_of">
+            <p class="detaof">Tools &amp; Features</p>
+            <div class="tools_listes">
+              <p>HTML, CSS, JavaScript, TypeScript, Supabase SQL</p>
+            </div>
+          </div>
+        </div>
+        <div class="order-1 order-lg-2">
+          <a href="https://dropdaxi.vercel.app/" target="_blank" rel="noopener"
+            (click)="trackClick('Web Work Click: Digital Innovation')">
+            <div class="sample_img">
+              <img src="assets/images/work/10.png" class="img-fluid" alt="Digital Innovation project" />
               <div class="arr">
                 <img src="assets/images/arr.svg" class="img-fluid" alt="View" />
               </div>
@@ -90,19 +335,11 @@
       </div>
 
       <!-- 02 Portfolio -->
-      <div class="occasion">
-        <a
-          href="https://abilashportfolio.vercel.app/"
-          target="_blank"
-          rel="noopener"
-          (click)="trackClick('Web Work Click: Portfolio')"
-        >
+      <!-- <div class="occasion">
+        <a href="https://abilashportfolio.vercel.app/" target="_blank" rel="noopener"
+          (click)="trackClick('Web Work Click: Portfolio')">
           <div class="sample_img">
-            <img
-              src="assets/images/02.png"
-              class="img-fluid"
-              alt="Portfolio project"
-            />
+            <img src="assets/images/work/2.png" class="img-fluid" alt="Portfolio project" />
             <div class="arr">
               <img src="assets/images/arr.svg" class="img-fluid" alt="View" />
             </div>
@@ -118,13 +355,13 @@
         <div class="details_of">
           <p class="detaof">Tools &amp; Features</p>
           <div class="tools_listes">
-            <p>HTML, CSS, JavaScript, TypeScript, GSAP</p>
+            <p>HTML, CSS, JavaScript, TypeScript, GSAP, three.js</p>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- 03 Car Booking -->
-      <div class="occasion d-flex flex-column">
+      <!-- <div class="occasion d-flex flex-column">
         <div class="order-2 order-lg-1">
           <div class="first">
             <p class="webnum">03</p>
@@ -142,32 +379,20 @@
         </div>
         <div class="order-1 order-lg-2">
           <div class="sample_img">
-            <img
-              src="assets/images/03.png"
-              class="img-fluid"
-              alt="Car Booking project"
-            />
+            <img src="assets/images/03.png" class="img-fluid" alt="Car Booking project" />
             <div class="arr">
               <img src="assets/images/arr.svg" class="img-fluid" alt="View" />
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- 04 E-com Dashboard -->
-      <div class="occasion">
-        <a
-          href="https://e-com-admin-dashboard-sigma.vercel.app/"
-          target="_blank"
-          rel="noopener"
-          (click)="trackClick('Web Work Click: E-com Dashboard')"
-        >
+      <!-- <div class="occasion">
+        <a href="https://e-com-admin-dashboard-sigma.vercel.app/" target="_blank" rel="noopener"
+          (click)="trackClick('Web Work Click: E-com Dashboard')">
           <div class="sample_img">
-            <img
-              src="assets/images/04.png"
-              class="img-fluid"
-              alt="E-com Dashboard"
-            />
+            <img src="assets/images/04.png" class="img-fluid" alt="E-com Dashboard" />
             <div class="arr">
               <img src="assets/images/arr.svg" class="img-fluid" alt="View" />
             </div>
@@ -186,10 +411,10 @@
             <p>HTML, CSS, JavaScript, TypeScript</p>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- 05 ECommerce -->
-      <div class="occasion d-flex flex-column">
+      <!-- <div class="occasion d-flex flex-column">
         <div class="order-2 order-lg-1">
           <div class="first">
             <p class="webnum">05</p>
@@ -200,27 +425,22 @@
           </div>
           <div class="details_of">
             <p class="detaof">Tools &amp; Features</p>
-            <div class="tools_listes"><p>&nbsp;</p></div>
+            <div class="tools_listes">
+              <p>&nbsp;</p>
+            </div>
           </div>
         </div>
         <div class="order-1 order-lg-2">
           <div class="sample_img">
-            <img
-              src="assets/images/05.png"
-              class="img-fluid"
-              alt="ECommerce project"
-            />
+            <img src="assets/images/05.png" class="img-fluid" alt="ECommerce project" />
             <div class="arr">
               <img src="assets/images/arr.svg" class="img-fluid" alt="View" />
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
-      <div
-        class="occasion occasion--spacer d-none d-lg-block"
-        aria-hidden="true"
-      ></div>
+      <div class="occasion occasion--spacer d-none d-lg-block" aria-hidden="true"></div>
     </div>
   </div>
 </section>

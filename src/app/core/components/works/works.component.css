@@ -75,12 +75,10 @@
   isolation: isolate;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 24px;
-  background: linear-gradient(
-    160deg,
-    rgba(11, 223, 187, 0.1) 0%,
-    rgba(255, 255, 255, 0.025) 45%,
-    rgba(0, 0, 0, 0.12) 100%
-  );
+  background: linear-gradient(160deg,
+      rgba(11, 223, 187, 0.1) 0%,
+      rgba(255, 255, 255, 0.025) 45%,
+      rgba(0, 0, 0, 0.12) 100%);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   box-shadow:
@@ -102,13 +100,11 @@
   z-index: 1;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(
-    135deg,
-    rgba(11, 223, 187, 0.7) 0%,
-    rgba(11, 223, 187, 0.05) 35%,
-    rgba(11, 223, 187, 0) 60%,
-    rgba(11, 223, 187, 0.3) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(11, 223, 187, 0.7) 0%,
+      rgba(11, 223, 187, 0.05) 35%,
+      rgba(11, 223, 187, 0) 60%,
+      rgba(11, 223, 187, 0.3) 100%);
   /* -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
@@ -134,11 +130,9 @@
   display: block;
   height: 260px;
   overflow: hidden;
-  background: linear-gradient(
-    160deg,
-    rgba(11, 223, 187, 0.12),
-    rgba(6, 121, 101, 0.04)
-  );
+  background: linear-gradient(160deg,
+      rgba(11, 223, 187, 0.12),
+      rgba(6, 121, 101, 0.04));
 }
 
 .pf-feature-card__media img {
@@ -315,11 +309,9 @@
   display: block;
   height: 160px;
   overflow: hidden;
-  background: linear-gradient(
-    160deg,
-    rgba(255, 255, 255, 0.04),
-    rgba(255, 255, 255, 0.01)
-  );
+  background: linear-gradient(160deg,
+      rgba(255, 255, 255, 0.04),
+      rgba(255, 255, 255, 0.01));
 }
 
 .pf-card__media img {
