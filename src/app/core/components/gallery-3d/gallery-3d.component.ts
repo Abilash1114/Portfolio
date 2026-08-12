@@ -41,33 +41,33 @@ export class Gallery3dComponent implements AfterViewInit, OnDestroy {
   private readonly IMAGES = [
     {
       path: 'assets/images/zoom/1.png',
-      href: 'https://www.figma.com/design/c0YVEqJ32diynIZfJfnNHy/Ev-Booking?node-id=356-2045&t=jknJuln0n4YxIEV7-1',
+      href: 'https://www.behance.net/abilashravi4702',
     },
     {
       path: 'assets/images/zoom/4.png',
-      href: 'https://www.figma.com/design/njHD5544N2MBVQEfkM0o7w/SAAS-Project?node-id=3-1344&t=OhgeyGdZaEXYIyRZ-1',
+      href: 'https://www.behance.net/abilashravi4702',
     },
 
     {
       path: 'assets/images/zoom/3.png',
-      href: 'https://www.figma.com/design/q3RcdlBzKYhyPIDAIArIZx/JReport?node-id=0-1&t=DokHTlLI7cf7WoDg-1',
+      href: 'https://www.behance.net/abilashravi4702',
     },
     {
       path: 'assets/images/zoom/8.png',
-      href: 'https://theauraeliteevents.com/',
+      href: 'https://www.behance.net/abilashravi4702',
     },
 
     {
       path: 'assets/images/zoom/5.png',
-      href: 'https://www.figma.com/design/9tBZ7gspssItJ6drWOVJub/jcompanion?node-id=0-1&t=OqRFXZp3SI90Z10x-1',
+      href: 'https://www.behance.net/abilashravi4702',
     },
     {
       path: 'assets/images/zoom/6.png',
-      href: 'https://www.figma.com/design/njHD5544N2MBVQEfkM0o7w/SAAS-Project?node-id=2-2&t=OhgeyGdZaEXYIyRZ-1',
+      href: 'https://www.behance.net/abilashravi4702',
     },
     {
       path: 'assets/images/zoom/7.png',
-      href: 'https://www.figma.com/design/k6z9pSOfE2OPcXlYstzM5y/Payment-Website?node-id=1-7&t=MQeIYWQKR52kvJIl-1',
+      href: 'https://www.behance.net/abilashravi4702',
     },
 
     {
@@ -80,7 +80,7 @@ export class Gallery3dComponent implements AfterViewInit, OnDestroy {
     },
     {
       path: 'assets/images/zoom/5.png',
-      href: 'https://www.figma.com/design/9tBZ7gspssItJ6drWOVJub/jcompanion?node-id=0-1&t=OqRFXZp3SI90Z10x-1',
+      href: 'https://www.behance.net/abilashravi4702',
     },
     {
       path: 'assets/images/zoom/2.png',
