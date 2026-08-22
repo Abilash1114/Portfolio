@@ -65,7 +65,7 @@ export class WorkProcessComponent implements AfterViewInit, OnDestroy {
   icon: 'ri-code-s-slash-line',
   title: 'Frontend Development',
   description:
-    'Translate designs into pixel-perfect, responsive interfaces using Angular, HTML, CSS, and modern JavaScript frameworks.',
+    'Translate designs into responsive interfaces using Angular, HTML, CSS, and JavaScript. Integrate REST APIs and handle data using RxJS, Observables, and operators.',
 },
 {
   number: '06',
