@@ -90,7 +90,7 @@ export class WorksComponent {
       id: '08',
       title: 'InfoPlus (Redesign)',
       category: 'Website',
-      href: 'https://www.behance.net/gallery/238251613/Corporate-Website-Redesign-InfoPlus-Homepage-UXUI',
+      href: 'https://www.behance.net/gallery/253184431/Supply-Management-System-SaaS-Dashboard-Design',
       img: 'assets/images/project 8.png',
     },
   ];
