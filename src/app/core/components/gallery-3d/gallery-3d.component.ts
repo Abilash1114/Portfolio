@@ -41,11 +41,11 @@ export class Gallery3dComponent implements AfterViewInit, OnDestroy {
   private readonly IMAGES = [
     {
       path: 'assets/images/zoom/1.png',
-      href: 'https://www.behance.net/abilashravi4702',
+      href: 'https://www.figma.com/design/GsGtBnW446ZpqVIN1DAuwl/Car-Showroom---UX-Design-for-Sales-Manager?node-id=3-6106&t=KPDoSemx7wbZlUdi-1',
     },
     {
       path: 'assets/images/zoom/4.png',
-      href: 'https://www.behance.net/abilashravi4702',
+      href: 'https://www.figma.com/design/iOGFQJCU44mBAiXZ4ATAYj/HR-Talent-Hub?node-id=10-1397&t=lySpcUwtE74PE1DH-1',
     },
 
     {
